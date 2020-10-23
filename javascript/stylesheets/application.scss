@@ -1,0 +1,48 @@
+/*
+	As we start to extra common components out of tailwind html we'll put them
+	individually here. Anything that needs to change for a specific page
+	should go in stylesheets/name_of_context.
+	For instance if we need a special button color on the login page, then we
+	should override the .btn component in context-specific file such as context/login.scss
+	with the class name from that page (e.g .login .btn)
+	Base styles that are shared across the entire site should go in application.scss
+	(e.g. this will be for things like a, h1, h2, h3, p, etc. Setting custom defaults
+	like base fonts and link colors.)
+	Layout files for the page shell such as the header and footer go in components/layout.scss.
+	# Default Tailwind breakpoints
+		'sm': '640px',
+		// => @media (min-width: 640px) { ... }
+		'md': '768px',
+		// => @media (min-width: 768px) { ... }
+		'lg': '1024px',
+		// => @media (min-width: 1024px) { ... }
+		'xl': '1280px',
+		// => @media (min-width: 1280px) { ... }
+ *= require_tree .
+ *= require_self
+*/
+
+/* Tailwind */
+ @import "tailwindcss/base";
+
+/* Add custom base styles to Tailwind here before importing stylesheets */
+
+body {
+	@apply bg-white;
+  @apply font-sans;
+	@apply text-gray-700;
+	@apply antialiased;
+	@apply leading-normal;
+}
+
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Components Used Throughout The Site */
+@import "components/shared.scss";
+
+/* Context Specific Components */
+// @import "components/header.scss";
+// @import "components/main.scss";
+// @import "components/footer.scss";
+// @import "components/admin.scss";

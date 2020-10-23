@@ -1,0 +1,5 @@
+# Put this in ~/.railsrc to use postgres and
+#   the Spark template when running `rails new`
+
+--database=postgresql
+--template=~/Code/spark/spark_rails_template.rb
