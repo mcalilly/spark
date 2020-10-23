@@ -21,4 +21,4 @@ I started this to make the type of CMS I want to use. I know, I know, yet anothe
 
 If you'd like to see some of the options on the omakase menu change, please show me how to do it better! Fork it and submit a pull request. Let's do this.
 
-- [Lee McAlilly] (https://mcalilly.com)
+- [Lee McAlilly](https://mcalilly.com)
