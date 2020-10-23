@@ -19,10 +19,6 @@ end
 rails_command "db:create"
 
 after_bundle do
-  # Install Clearance
-  rails_command "generate clearance:install"
-  rails_command "db:migrate"
-
   # Set up Stimulus
   rails_command "webpacker:install:stimulus"
 
@@ -55,19 +51,24 @@ after_bundle do
 
   # Create a static pages controller
   rails_command "generate controller StaticPages home --no-stylesheets"
-  run "cp -rf ~/Code/spark/views/static_pages/home.html.erb app/views/static_pages"
+  run "cp -f ~/Code/spark/views/static_pages/home.html.erb app/views/static_pages"
 
-  # Add initial homepage route and copy initial templates that confirm that tailwind is installed properly
+  # Install Clearance
+  rails_command "generate clearance:install"
+  rails_command "db:migrate"
+  run "cp -f ~/Code/spark/config/initializers/clearance.rb config/initializers"
+  rails_command "generate clearance:views"
 
   # Set up tests
 
-  # Add Rubocop
-
-  # Set up minitest
-
   # Set up pundit
 
+  # Add Rubocop
+
   # Set up a blog
+
+  # Create a settings scaffold
+  ## in the views, if nil it goes to Spark defaults, if present, then pulls from the database settings. This would be for something like reply-to email
 
   # TO DO
   # - Add questions to configure things like admin email address, domain name, etc. These can be used to
