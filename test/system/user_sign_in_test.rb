@@ -29,6 +29,8 @@ class UserSignInTest < ApplicationSystemTestCase
     assert_current_path root_path
     within("footer") do
       assert_selector "p", text: "Signed in as #{@user.email}."
+      assert_selector "span", text: "User role: Guest"
+      assert_no_selector "span", text: "User role: Admin"
     end
   end
 
