@@ -50,6 +50,7 @@ after_bundle do
 
   # Install Clearance
   rails_command "generate clearance:install"
+  generate(:migration, "AddRoleToUsers", "role:integer")
   rails_command "db:migrate"
   run "cp -f ~/Code/spark/config/initializers/clearance.rb config/initializers"
   ## Copy a user model with validations

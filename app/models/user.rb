@@ -7,21 +7,21 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX }
 
-  # enum role: [:guest, :admin]
-  # after_initialize :set_default_role, :if => :new_record?
-  #
-  #
-  # def admin?
-  #   self.role == "admin"
-  # end
-  #
-  # def guest?
-  #   self.role == "guest"
-  # end
-  #
-  # private
-  #   def set_default_role
-  #     self.role ||= :guest
-  #   end
+  enum role: [:guest, :admin]
+  after_initialize :set_default_role, :if => :new_record?
+
+
+  def admin?
+    self.role == "admin"
+  end
+
+  def guest?
+    self.role == "guest"
+  end
+
+  private
+    def set_default_role
+      self.role ||= :guest
+    end
 
 end

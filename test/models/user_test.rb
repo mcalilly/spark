@@ -60,11 +60,11 @@ end
     @potential_user.password = " " * 6
     assert_not @potential_user.valid?
   end
-  #
-  # test "New users should not be admins" do
-  #   assert @signed_up_user.admin?
-  #   assert_not @non_admin.admin?
-  #   assert @non_admin.guest?
-  # end
+  
+  test "New users should not be admins" do
+    assert @signed_up_user.admin?
+    assert_not @non_admin.admin?
+    assert @non_admin.guest?
+  end
 
 end
