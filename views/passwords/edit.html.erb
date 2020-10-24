@@ -1,0 +1,24 @@
+<% provide(:title, "Change your password") %>
+
+<section>
+  <h1>
+    Change your password
+  </h1>
+
+  <p>
+    Your password has been reset. Choose a new password below.
+  </p>
+
+  <%= form_for :password_reset,
+        url: user_password_path(@user, token: @user.confirmation_token),
+        html: { method: :put } do |form| %>
+    <fieldset>
+      <%= form.label :password %>
+      <%= form.password_field :password %>
+    </fieldset>
+
+    <fieldset>
+      <%= form.submit %>
+    </fieldset>
+  <% end %>
+</section>

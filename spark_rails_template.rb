@@ -3,11 +3,6 @@
 gem "clearance"
 
 ## groups
-gem_group :development do
-  gem "guard", "~> 2.14", require: false
-  gem "guard-minitest", "~> 2.4", require: false
-end
-
 gem_group :test do
   gem "minitest-reporters"
   gem "guard"
@@ -57,31 +52,61 @@ after_bundle do
   rails_command "generate clearance:install"
   rails_command "db:migrate"
   run "cp -f ~/Code/spark/config/initializers/clearance.rb config/initializers"
-  rails_command "generate clearance:views"
+  ## Copy a user model with validations
+  run "cp -f ~/Code/spark/app/models/user.rb app/models"
+  ## Copy custom Clearance views
+  run "cp -rf ~/Code/spark/views/clearance_mailer app/views"
+  run "cp -rf ~/Code/spark/views/passwords app/views"
+  run "cp -rf ~/Code/spark/views/sessions app/views"
+  run "cp -rf ~/Code/spark/views/users app/views"
+  ## Copy environment configs that work with Clearance
+  run "cp -f ~/Code/spark/config/environments/development.rb config/environments"
+  run "cp -f ~/Code/spark/config/environments/production.rb config/environments"
+  run "cp -f ~/Code/spark/config/environments/test.rb config/environments"
 
-  # Set up tests
-
-  # Set up pundit
-
-  # Add Rubocop
+  # Install Pundit
 
   # Set up a blog
 
   # Create a settings scaffold
   ## in the views, if nil it goes to Spark defaults, if present, then pulls from the database settings. This would be for something like reply-to email
 
-  # TO DO
-  # - Add questions to configure things like admin email address, domain name, etc. These can be used to
-  # - What would you like to call your blog ? (blog, news, updates, announcements?)
+  # Set up tests
+  run "cp -f ~/Code/spark/Guardfile ."
+  run "cp -f ~/Code/spark/test/test_helper.rb test"
+  run "cp -f ~/Code/spark/test/application_system_test_case.rb test"
 
-  # - Copy Test config files
+  # Copy initial tests
+  run "cp -f ~/Code/spark/test/controllers/static_pages_controller_test.rb test/controllers"
+  run "cp -f ~/Code/spark/test/controllers/users_controller_test.rb test/controllers"
+  # run "cp -rf ~/Code/spark/test/fixtures/action_text test/fixtures"
+  # run "cp ~/Code/spark/test/fixtures/files/example-featured-image.png test/fixtures/files"
+  # run "cp ~/Code/spark/test/fixtures/blog_posts.yml test/fixtures"
+  run "cp ~/Code/spark/test/fixtures/users.yml test/fixtures"
+  run "cp ~/Code/spark/test/mailers/password_reset_mailer_test.rb test/mailers"
+  # run "cp ~/Code/spark/test/models/blog_post_test.rb test/models"
+  run "cp ~/Code/spark/test/models/user_test.rb test/models"
+  # run "cp ~/Code/spark/test/system/blog_posts_test.rb test/system"
+  run "cp ~/Code/spark/test/system/friendly_urls_test.rb test/system"
+  run "cp ~/Code/spark/test/system/static_pages_test.rb test/system"
+  run "cp ~/Code/spark/test/system/user_password_reset_test.rb test/system"
+  run "cp ~/Code/spark/test/system/user_sign_in_test.rb test/system"
+  run "cp ~/Code/spark/test/system/user_sign_out_test.rb test/system"
+  run "cp ~/Code/spark/test/system/user_sign_up_test.rb test/system"
+
+  # Copy Tests for Pundit
 
   # Update the routes file
   run "cp -f ~/Code/spark/config/routes.rb config"
 
+  # Add a Procfile for Heroku
+  run "cp -f ~/Code/spark/Procfile ."
+
   # Commit everything else
   run "git add -A"
   run "git commit -m 'Finish initial Rails setup with Spark'"
+
+  # Need to add warnings to the homepage about mailer config, host config, etc.
 
   # Fire it up
   say

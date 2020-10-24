@@ -1,0 +1,15 @@
+<%= form_for :session, url: session_path do |form| %>
+  <fieldset>
+    <%= form.label :email %>
+    <%= form.text_field :email, type: "email" %>
+  </fieldset>
+
+  <fieldset>
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+  </fieldset>
+
+  <fieldset>
+    <%= form.submit %>
+  </fieldset>
+<% end %>

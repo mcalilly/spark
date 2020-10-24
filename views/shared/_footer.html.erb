@@ -6,4 +6,12 @@
 	<p class="copyright">
 		&copy; <%= Time.zone.now.year %>
 	</p>
+
+	<% if signed_in? %>
+    <section class="login-links">
+      <p>
+        Signed in as <%= current_user.email %>. <%= link_to "Sign out", sign_out_path, method: :delete %>
+      </p>
+    </section>
+  <% end %>
 </footer>
