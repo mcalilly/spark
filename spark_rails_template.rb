@@ -50,8 +50,10 @@ after_bundle do
 
   # Install Clearance
   rails_command "generate clearance:install"
-  generate(:migration, "AddRoleToUsers", "role:integer")
   rails_command "db:migrate"
+  generate :migration, "add_role_to_users", "role:integer"
+  rails_command "db:migrate"
+
   run "cp -f ~/Code/spark/config/initializers/clearance.rb config/initializers"
   ## Copy a user model with validations
   run "cp -f ~/Code/spark/app/models/user.rb app/models"
@@ -99,6 +101,9 @@ after_bundle do
 
   # Update the routes file
   run "cp -f ~/Code/spark/config/routes.rb config"
+
+  # Seed the db
+  run "cp -f ~/Code/spark/db/seeds.rb db"
 
   # Add a Procfile for Heroku
   run "cp -f ~/Code/spark/Procfile ."
