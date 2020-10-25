@@ -1,0 +1,16 @@
+<article class="max-w-md md:max-w-xl">
+  <time class="text-sm font-semibold uppercase tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-teal-700 via-pink-700 to-teal-800">
+    <%= @post.created_at.strftime("%B %Y") %>
+  </time>
+
+  <h1 class="mt-2 text-2xl tracking-tight leading-none font-extrabold text-gray-900 sm:text-5xl">
+    <%= @post.title.titleize %>
+  </h1>
+
+  <section class="mt-8 text-lg md:text-xl text-gray-800 leading-snug tracking-wide">
+    <%= @post.body %>
+  </section>
+</article>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>

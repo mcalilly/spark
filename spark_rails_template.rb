@@ -27,26 +27,26 @@ after_bundle do
   run "mkdir app/javascript/stylesheets/components"
 
   ## add stylesheets/application.scss based on template
-  run "cp ~/Code/spark/javascript/stylesheets/application.scss app/javascript/stylesheets"
-  run "cp ~/Code/spark/javascript/stylesheets/components/shared.scss app/javascript/stylesheets/components"
-  run "cp ~/Code/spark/javascript/stylesheets/tailwind.config.js app/javascript/stylesheets"
+  run "cp ~/Code/spark/app/javascript/stylesheets/application.scss app/javascript/stylesheets"
+  run "cp ~/Code/spark/app/javascript/stylesheets/components/shared.scss app/javascript/stylesheets/components"
+  run "cp ~/Code/spark/app/javascript/stylesheets/tailwind.config.js app/javascript/stylesheets"
 
   ## Update Rails.root/postcss.config.js to match the template
   run "cp -f ~/Code/spark/postcss.config.js ."
 
   ## Update the javscript/packs/application.js based on the template
-  run "cp ~/Code/spark/javascript/packs/application.js app/javascript/packs"
+  run "cp ~/Code/spark/app/javascript/packs/application.js app/javascript/packs"
 
   # Set up basic layouts
-  run "cp -rf ~/Code/spark/views/shared app/views/shared"
-  run "cp -f ~/Code/spark/views/layouts/application.html.erb app/views/layouts"
+  run "cp -rf ~/Code/spark/app/views/shared app/views/shared"
+  run "cp -f ~/Code/spark/app/views/layouts/application.html.erb app/views/layouts"
 
   # Add page titles
-  run "cp -rf ~/Code/spark/helpers/application_helper.rb app/helpers"
+  run "cp -rf ~/Code/spark/app/helpers/application_helper.rb app/helpers"
 
   # Create a static pages controller
   rails_command "generate controller StaticPages home --no-stylesheets"
-  run "cp -f ~/Code/spark/views/static_pages/home.html.erb app/views/static_pages"
+  run "cp -f ~/Code/spark/app/views/static_pages/home.html.erb app/views/static_pages"
 
   # Install Clearance
   rails_command "generate clearance:install"
@@ -58,18 +58,14 @@ after_bundle do
   ## Copy a user model with validations
   run "cp -f ~/Code/spark/app/models/user.rb app/models"
   ## Copy custom Clearance views
-  run "cp -rf ~/Code/spark/views/clearance_mailer app/views"
-  run "cp -rf ~/Code/spark/views/passwords app/views"
-  run "cp -rf ~/Code/spark/views/sessions app/views"
-  run "cp -rf ~/Code/spark/views/users app/views"
+  run "cp -rf ~/Code/spark/app/views/clearance_mailer app/views"
+  run "cp -rf ~/Code/spark/app/views/passwords app/views"
+  run "cp -rf ~/Code/spark/app/views/sessions app/views"
+  run "cp -rf ~/Code/spark/app/views/users app/views"
   ## Copy environment configs that work with Clearance
   run "cp -f ~/Code/spark/config/environments/development.rb config/environments"
   run "cp -f ~/Code/spark/config/environments/production.rb config/environments"
   run "cp -f ~/Code/spark/config/environments/test.rb config/environments"
-
-  # Install Pundit
-
-  # Set up a blog
 
   # Create a settings scaffold
   ## in the views, if nil it goes to Spark defaults, if present, then pulls from the database settings. This would be for something like reply-to email
@@ -97,7 +93,20 @@ after_bundle do
   run "cp ~/Code/spark/test/system/user_sign_out_test.rb test/system"
   run "cp ~/Code/spark/test/system/user_sign_up_test.rb test/system"
 
-  # Copy Tests for Pundit
+  # Set up a blog
+  rails_command "generate scaffold post title:string body:text --no-stylesheets --no-test-framework"
+  rails_command "db:migrate"
+  run "cp -f ~/Code/spark/test/controllers/posts_controller_test.rb test/controllers"
+  rails_command "action_text:install"
+  run "cp -f ~/Code/spark/app/models/post.rb app/models"
+  run "cp -rf ~/Code/spark/app/views/posts app/views"
+  run "rm -f app/assets/stylesheets/application.css"
+  run "cp -rf ~/Code/spark/app/assets/stylesheets app/assets"
+  run "cp -f ~/Code/spark/test/fixtures/posts.yml test/fixtures"
+  run "cp -f ~/Code/spark/test/models/post_test.rb test/models"
+  run "cp -f ~/Code/spark/test/system/posts_test.rb test/system"
+
+  # Install Pundit
 
   # Update the routes file
   run "cp -f ~/Code/spark/config/routes.rb config"
@@ -107,6 +116,8 @@ after_bundle do
 
   # Add a Procfile for Heroku
   run "cp -f ~/Code/spark/Procfile ."
+
+  rails_command "db:migrate"
 
   # Commit everything else
   run "git add -A"
