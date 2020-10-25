@@ -3,9 +3,11 @@
 	<%= render "shared/header" %>
 
 	<body>
+		<%= render "shared/nav" %>
+
 		<%= render "shared/flash" %>
 
-		<main>
+		<main class="max-w-3xl mx-auto mt-16">
 			<%= yield %>
 		</main>
 

@@ -1,11 +1,13 @@
-<footer>
-	<p class="credits">
-		Look, It's a New Spark Website!
-	</p>
+<footer class="mt-16">
+	<section class="max-w-3xl mx-auto">
+		<p class="credits">
+			Look, It's a New Spark Website!
+		</p>
 
-	<p class="copyright">
-		&copy; <%= Time.zone.now.year %>
-	</p>
+		<p class="copyright">
+			&copy; <%= Time.zone.now.year %>
+		</p>
+	</section>
 
 	<% if signed_in? %>
     <section class="login-links">
@@ -13,9 +15,9 @@
         Signed in as <%= current_user.email %>. <%= link_to "Sign out", sign_out_path, method: :delete %>
 
 				<% if current_user.admin? %>
-					<span>User role: Admin</span>
+					<span>Usder role: Admin</span>
 				<% else %>
-					<span>User role: Guest</span> 
+					<span>User role: Guest</span>
 				<% end %>
       </p>
     </section>

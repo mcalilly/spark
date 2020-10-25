@@ -4,7 +4,7 @@ class UserSignUpTest < ApplicationSystemTestCase
   test "Sign up page and form should work to create a new user" do
     visit sign_up_path
     assert_current_path sign_up_path
-    assert_selector "h2", text: "Sign Up"
+    assert_selector "h1", text: "Sign Up"
   end
 
   test "Invalid sign up information" do
