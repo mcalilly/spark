@@ -1,6 +1,7 @@
 # Set up your gems
 ## app-wide
 gem "clearance"
+gem "pundit"
 
 ## groups
 gem_group :test do
@@ -9,6 +10,8 @@ gem_group :test do
   gem "guard-minitest"
   gem "launchy"
 end
+
+run "bundle install"
 
 # Create the database
 rails_command "db:create"
@@ -46,6 +49,7 @@ after_bundle do
 
   # Create a static pages controller
   rails_command "generate controller StaticPages home --no-stylesheets"
+  run "cp -f ~/Code/spark/app/controllers/static_pages_controller.rb app/controllers"
   run "cp -f ~/Code/spark/app/views/static_pages/home.html.erb app/views/static_pages"
 
   # Install Clearance
@@ -106,7 +110,11 @@ after_bundle do
   run "cp -f ~/Code/spark/test/models/post_test.rb test/models"
   run "cp -f ~/Code/spark/test/system/posts_test.rb test/system"
 
-  # Install Pundit
+  # Set up Pundit
+  run "cp -f ~/Code/spark/app/controllers/application_controller.rb app/controllers"
+  run "cp -f ~/Code/spark/app/controllers/posts_controller.rb app/controllers"
+  run "cp -rf ~/Code/spark/app/policies app"
+  run "cp -f ~/Code/spark/config/locales/en.yml config/locales"
 
   # Update the routes file
   run "cp -f ~/Code/spark/config/routes.rb config"
