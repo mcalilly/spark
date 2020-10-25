@@ -1,15 +1,17 @@
 <% provide(:title, "Sign up") %>
 
 <section>
-    <h1>Sign Up</h1>
+  <h1 class="mt-2 text-2xl tracking-tight leading-none font-extrabold text-gray-900 sm:text-5xl">
+    Sign up
+  </h1>
 
-    <%= form_for @user do |form| %>
-      <%= render partial: "/users/form", object: form %>
+  <%= form_for @user do |form| %>
+    <%= render partial: "/users/form", object: form %>
 
-      <%= form.submit %>
-    <% end %>
+    <%= form.submit %>
+  <% end %>
 
-    <p>
-      Already a user? <%= link_to "Sign in", sign_in_path %>
-    </p>
+  <p>
+    Already a user? <%= link_to "Sign in", sign_in_path %>
+  </p>
 </section>
