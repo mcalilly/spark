@@ -117,7 +117,9 @@ after_bundle do
   # Add a Procfile for Heroku
   run "cp -f ~/Code/spark/Procfile ."
 
+  # Seed the db
   rails_command "db:migrate"
+  rails_command "db:seed"
 
   # Commit everything else
   run "git add -A"
