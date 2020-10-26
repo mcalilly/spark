@@ -42,7 +42,7 @@ after_bundle do
 
   # Set up basic layouts
   run "cp -rf ~/Code/spark/app/views/shared app/views/shared"
-  run "cp -f ~/Code/spark/app/views/layouts/application.html.erb app/views/layouts"
+  run "cp -f ~/Code/spark/app/views/layouts/public.html.erb app/views/layouts"
   run "cp -f ~/Code/spark/app/assets/images/logo.svg app/assets/images"
   run "cp -f ~/Code/spark/app/assets/images/favicon.svg app/assets/images"
 
@@ -86,12 +86,9 @@ after_bundle do
   run "cp -f ~/Code/spark/test/controllers/users_controller_test.rb test/controllers"
   # run "cp -rf ~/Code/spark/test/fixtures/action_text test/fixtures"
   # run "cp ~/Code/spark/test/fixtures/files/example-featured-image.png test/fixtures/files"
-  # run "cp ~/Code/spark/test/fixtures/blog_posts.yml test/fixtures"
   run "cp ~/Code/spark/test/fixtures/users.yml test/fixtures"
   run "cp ~/Code/spark/test/mailers/password_reset_mailer_test.rb test/mailers"
-  # run "cp ~/Code/spark/test/models/blog_post_test.rb test/models"
   run "cp ~/Code/spark/test/models/user_test.rb test/models"
-  # run "cp ~/Code/spark/test/system/blog_posts_test.rb test/system"
   run "cp ~/Code/spark/test/system/friendly_urls_test.rb test/system"
   run "cp ~/Code/spark/test/system/static_pages_test.rb test/system"
   run "cp ~/Code/spark/test/system/user_password_reset_test.rb test/system"
@@ -117,6 +114,11 @@ after_bundle do
   run "cp -f ~/Code/spark/app/controllers/posts_controller.rb app/controllers"
   run "cp -rf ~/Code/spark/app/policies app"
   run "cp -f ~/Code/spark/config/locales/en.yml config/locales"
+
+  # Set up admin layout
+  run "cp -f ~/Code/spark/app/views/layouts/admin.html.erb app/views/layouts"
+  run "cp -rf ~/Code/spark/app/views/shared/admin app/views/shared"
+  run "cp -f ~/Code/spark/test/system/admin_layout_test.rb test/system"
 
   # Update the routes file
   run "cp -f ~/Code/spark/config/routes.rb config"
