@@ -43,6 +43,8 @@ after_bundle do
   # Set up basic layouts
   run "cp -rf ~/Code/spark/app/views/shared app/views/shared"
   run "cp -f ~/Code/spark/app/views/layouts/application.html.erb app/views/layouts"
+  run "cp -f ~/Code/spark/app/assets/images/logo.svg app/assets/images"
+  run "cp -f ~/Code/spark/app/assets/images/favicon.svg app/assets/images"
 
   # Add page titles
   run "cp -rf ~/Code/spark/app/helpers/application_helper.rb app/helpers"
