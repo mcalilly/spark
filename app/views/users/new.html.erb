@@ -5,13 +5,9 @@
     Sign up
   </h1>
 
-  <%= form_for @user do |form| %>
-    <%= render partial: "/users/form", object: form %>
+  <%= render partial: "/users/form" %>
 
-    <%= form.submit %>
-  <% end %>
-
-  <p>
+  <p class="mt-8">
     Already a user? <%= link_to "Sign in", sign_in_path %>
   </p>
 </section>
