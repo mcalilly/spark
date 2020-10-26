@@ -30,4 +30,5 @@ If you'd like to see some of the options on the omakase menu change, please show
 
 Let's bring back the weird, wild web.
 
-- [Lee McAlilly](https://mcalilly.com)
+Best,
+[Lee McAlilly](https://mcalilly.com)
