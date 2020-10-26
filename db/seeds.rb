@@ -10,13 +10,13 @@
 User.create!(
   email: "kermit@example.com",
   password: "staygreen",
-  role: "admin"
+  role: "guest"
 )
 
 User.create!(
   email: "elvis@example.com",
   password: "bacon",
-  role: "guest"
+  role: "admin"
 )
 
 # Blog posts

@@ -3,8 +3,8 @@ require "application_system_test_case"
 class PostsTest < ApplicationSystemTestCase
   setup do
     @post = posts(:welcome)
-    @admin = users(:kermit)
-    @non_admin = users(:elvis)
+    @admin = users(:elvis)
+    @non_admin = users(:kermit)
   end
 
   test "visiting the index should be accessible to all" do

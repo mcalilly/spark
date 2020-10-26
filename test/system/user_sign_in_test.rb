@@ -2,7 +2,7 @@ require 'application_system_test_case'
 
 class UserSignInTest < ApplicationSystemTestCase
   def setup
-    @user = users(:elvis)
+    @user = users(:kermit)
   end
 
   test "Sign in page should have the right content" do

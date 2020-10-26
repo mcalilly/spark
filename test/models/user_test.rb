@@ -2,8 +2,8 @@ require "application_system_test_case"
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    @signed_up_user = users(:kermit)
-    @non_admin = users(:elvis)
+    @signed_up_user = users(:elvis)
+    @non_admin = users(:kermit)
     @potential_user = User.new(
                            email: "user@example.com",
                            password: "foobar"
@@ -60,7 +60,7 @@ end
     @potential_user.password = " " * 6
     assert_not @potential_user.valid?
   end
-  
+
   test "New users should not be admins" do
     assert @signed_up_user.admin?
     assert_not @non_admin.admin?

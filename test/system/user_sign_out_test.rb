@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class UserSignOutTest < ApplicationSystemTestCase
   def setup
-    @user = users(:elvis)
+    @user = users(:kermit)
   end
 
   test "Users can sign out after they sign in to the site" do

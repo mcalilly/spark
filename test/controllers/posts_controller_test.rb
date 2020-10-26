@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @admin = users(:kermit)
+    @admin = users(:elvis)
     @post = posts(:welcome)
   end
 
