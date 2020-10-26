@@ -24,7 +24,7 @@ class UserSignInTest < ApplicationSystemTestCase
   test "Sign in page should work" do
     visit sign_in_path
     fill_in("Email", with: @user.email)
-    fill_in("Password", with: "bacon")
+    fill_in("Password", with: "staygreen")
     click_button "Sign in"
     assert_current_path root_path
     within("footer") do

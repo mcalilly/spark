@@ -8,7 +8,7 @@ class UserSignOutTest < ApplicationSystemTestCase
   test "Users can sign out after they sign in to the site" do
     visit sign_in_path
     fill_in("Email", with: @user.email)
-    fill_in("Password", with: "bacon")
+    fill_in("Password", with: "staygreen")
     click_button "Sign in"
     assert_current_path root_path
     assert_no_link "Sign in"

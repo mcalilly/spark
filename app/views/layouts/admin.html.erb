@@ -3,18 +3,16 @@
 	<%= render "shared/header" %>
 
 	<body>
-		<%= render "shared/nav" %>
-
 		<%= render "shared/flash" %>
 
-		<main class="max-w-2xl px-4 sm:px-0 mx-auto mt-16">
-			<h1 class="mt-2 text-2xl tracking-tight leading-none font-extrabold text-gray-900 sm:text-5xl">
-		    <%= yield :h1 %>
-		  </h1>
-			<%= yield %>
-		</main>
+		<div x-data="{ offCanvasMenuOpen: false }">
+			<div class="h-screen flex overflow-hidden bg-white">
+			  <%= render "shared/admin/sidebar_mobile" %>
 
-		<%= render "shared/footer" %>
+			  <%= render "shared/admin/sidebar_desktop" %>
 
+			  <%= render "shared/admin/main" %>
+			</div>
+		</div>
 	</body>
 </html>
