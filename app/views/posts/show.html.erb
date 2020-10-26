@@ -1,3 +1,12 @@
+<% if signed_in? && current_user.admin? %>
+  <% content_for :h1 do %>
+    <%= @post.title.titleize %>
+  <% end %>
+
+  <%= link_to 'Edit', edit_post_path(@post) %> |
+  <%= link_to 'Back', posts_path %>
+<% end %>
+
 <article class="max-w-md md:max-w-xl">
   <time class="text-sm font-semibold uppercase tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-teal-700 via-pink-700 to-teal-800">
     <%= @post.created_at.strftime("%B %Y") %>
@@ -11,6 +20,3 @@
     <%= @post.body %>
   </section>
 </article>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
