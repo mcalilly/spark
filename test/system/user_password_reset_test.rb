@@ -11,7 +11,7 @@ class UserPasswordResetTest < ApplicationSystemTestCase
     click_link "forgot password?"
     assert_current_path new_password_path
     fill_in "Email address", with: @user.email
-    click_button "Reset password"
+    click_button "Request password reset"
     assert_selector "h1", text: "Your password reset email is on the way!"
     assert_equal 1, ActionMailer::Base.deliveries.size
   end
