@@ -73,41 +73,17 @@ after_bundle do
   ## Copy environment configs that work with Clearance
   run "cp -f ../templates/config/environments/development.rb config/environments"
   run "cp -f ../templates/config/environments/production.rb config/environments"
-  run "cp -f ../templates/config/environments/test.rb config/environments"
-
-  # Set up initial tests
-  run "cp -f ../templates/Guardfile ."
-  run "cp -f ../templates/test/test_helper.rb test"
-  run "cp -f ../templates/test/application_system_test_case.rb test"
-
-  # Copy initial tests
-  run "cp -f ../templates/test/controllers/static_pages_controller_test.rb test/controllers"
-  run "cp -f ../templates/test/controllers/users_controller_test.rb test/controllers"
-  # run "cp -rf ../templates/test/fixtures/action_text test/fixtures"
-  # run "cp ../templates/test/fixtures/files/example-featured-image.png test/fixtures/files"
-  run "cp ../templates/test/fixtures/users.yml test/fixtures"
-  run "cp ../templates/test/mailers/password_reset_mailer_test.rb test/mailers"
-  run "cp ../templates/test/models/user_test.rb test/models"
-  run "cp ../templates/test/system/friendly_urls_test.rb test/system"
-  run "cp ../templates/test/system/static_pages_test.rb test/system"
-  run "cp ../templates/test/system/user_password_reset_test.rb test/system"
-  run "cp ../templates/test/system/user_sign_in_test.rb test/system"
-  run "cp ../templates/test/system/user_sign_out_test.rb test/system"
-  run "cp ../templates/test/system/user_sign_up_test.rb test/system"
 
   # Set up a blog
   rails_command "generate scaffold post title:string body:text --no-stylesheets --no-test-framework"
   rails_command "db:migrate"
-  run "cp -f ../templates/test/controllers/posts_controller_test.rb test/controllers"
   rails_command "action_text:install"
   run "cp -f ../templates/app/models/post.rb app/models"
   run "cp -f ../templates/app/controllers/posts_controller.rb app/controllers"
   run "cp -rf ../templates/app/views/posts app/views"
   run "rm -f app/assets/stylesheets/application.css"
   run "cp -rf ../templates/app/assets/stylesheets app/assets"
-  run "cp -f ../templates/test/fixtures/posts.yml test/fixtures"
-  run "cp -f ../templates/test/models/post_test.rb test/models"
-  run "cp -f ../templates/test/system/posts_test.rb test/system"
+
 
   # Create a settings scaffold
   rails_command "generate scaffold setting site_name:string site_description:text email:string tracking_codes:text twitter_handle:string facebook_handle:string instagram_handle:string street:string city:string state:string zip:string --no-stylesheets --no-test-framework"
@@ -115,10 +91,6 @@ after_bundle do
   run "cp -f ../templates/app/models/setting.rb app/models"
   run "cp -f ../templates/app/controllers/settings_controller.rb app/controllers"
   run "cp -rf ../templates/app/views/settings app/views"
-  run "cp -f ../templates/test/models/setting_test.rb test/models"
-  run "cp -f ../templates/test/controllers/settings_controller_test.rb test/controllers"
-  run "cp -f ../templates/test/system/settings_test.rb test/system"
-  run "cp -f ../templates/test/fixtures/settings.yml test/fixtures"
 
   # Set up Pundit
   run "cp -f ../templates/app/controllers/application_controller.rb app/controllers"
@@ -128,12 +100,12 @@ after_bundle do
   # Set up admin layout
   run "cp -f ../templates/app/views/layouts/admin.html.erb app/views/layouts"
   run "cp -rf ../templates/app/views/shared/admin app/views/shared"
-  run "cp -f ../templates/test/system/admin_layout_test.rb test/system"
 
   # Update the routes file
   run "cp -f ../templates/config/routes.rb config"
 
   # Copy the tests
+  run "cp -f ../templates/Guardfile ."
   run "cp -rf ../templates/test ."
 
   # Seed the db
