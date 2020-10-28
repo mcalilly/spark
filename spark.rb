@@ -1,0 +1,160 @@
+# Set up your gems
+## app-wide
+gem "clearance"
+gem "pundit"
+
+## groups
+gem_group :test do
+  gem "minitest-reporters"
+  gem "guard"
+  gem "guard-minitest"
+  gem "launchy"
+end
+
+run "bundle install"
+
+# Create the database
+rails_command "db:create"
+
+after_bundle do
+  # Set up Stimulus
+  rails_command "webpacker:install:stimulus"
+
+  # Set up TailwindCSS
+  run "yarn add tailwindcss@latest"
+  run "yarn add @tailwindcss/ui"
+  run "yarn add alpinejs"
+
+  ## add javascript/stylesheets folders
+  run "mkdir app/javascript/stylesheets"
+  run "mkdir app/javascript/stylesheets/components"
+
+  run "pwd"
+
+  ## add stylesheets/application.scss based on template
+  run "cp ../templates/app/javascript/stylesheets/application.scss app/javascript/stylesheets"
+  run "cp ../templates/app/javascript/stylesheets/components/shared.scss app/javascript/stylesheets/components"
+  run "cp ../templates/app/javascript/stylesheets/tailwind.config.js app/javascript/stylesheets"
+
+  ## Update Rails.root/postcss.config.js to match the template
+  run "cp -f ../templates/postcss.config.js ."
+
+  ## Update the javscript/packs/application.js based on the template
+  run "cp ../templates/app/javascript/packs/application.js app/javascript/packs"
+
+  # Set up basic layouts
+  run "cp -rf ../templates/app/views/shared app/views/shared"
+  run "cp -f ../templates/app/views/layouts/public.html.erb app/views/layouts"
+  run "cp -f ../templates/app/assets/images/logo.svg app/assets/images"
+  run "cp -f ../templates/app/assets/images/favicon.svg app/assets/images"
+
+  # Add page titles
+  run "cp -rf ../templates/app/helpers/application_helper.rb app/helpers"
+
+  # Create a static pages controller
+  rails_command "generate controller StaticPages home --no-stylesheets"
+  run "cp -f ../templates/app/controllers/static_pages_controller.rb app/controllers"
+  run "cp -f ../templates/app/views/static_pages/home.html.erb app/views/static_pages"
+
+  # Install Clearance
+  rails_command "generate clearance:install"
+  rails_command "db:migrate"
+  generate :migration, "add_role_to_users", "role:integer"
+  rails_command "db:migrate"
+
+  run "cp -f ../templates/config/initializers/clearance.rb config/initializers"
+  ## Copy a user model with validations
+  run "cp -f ../templates/app/models/user.rb app/models"
+  ## Copy custom Clearance views
+  run "cp -rf ../templates/app/views/clearance_mailer app/views"
+  run "cp -rf ../templates/app/views/passwords app/views"
+  run "cp -rf ../templates/app/views/sessions app/views"
+  run "cp -rf ../templates/app/views/users app/views"
+  ## Copy environment configs that work with Clearance
+  run "cp -f ../templates/config/environments/development.rb config/environments"
+  run "cp -f ../templates/config/environments/production.rb config/environments"
+  run "cp -f ../templates/config/environments/test.rb config/environments"
+
+  # Set up initial tests
+  run "cp -f ../templates/Guardfile ."
+  run "cp -f ../templates/test/test_helper.rb test"
+  run "cp -f ../templates/test/application_system_test_case.rb test"
+
+  # Copy initial tests
+  run "cp -f ../templates/test/controllers/static_pages_controller_test.rb test/controllers"
+  run "cp -f ../templates/test/controllers/users_controller_test.rb test/controllers"
+  # run "cp -rf ../templates/test/fixtures/action_text test/fixtures"
+  # run "cp ../templates/test/fixtures/files/example-featured-image.png test/fixtures/files"
+  run "cp ../templates/test/fixtures/users.yml test/fixtures"
+  run "cp ../templates/test/mailers/password_reset_mailer_test.rb test/mailers"
+  run "cp ../templates/test/models/user_test.rb test/models"
+  run "cp ../templates/test/system/friendly_urls_test.rb test/system"
+  run "cp ../templates/test/system/static_pages_test.rb test/system"
+  run "cp ../templates/test/system/user_password_reset_test.rb test/system"
+  run "cp ../templates/test/system/user_sign_in_test.rb test/system"
+  run "cp ../templates/test/system/user_sign_out_test.rb test/system"
+  run "cp ../templates/test/system/user_sign_up_test.rb test/system"
+
+  # Set up a blog
+  rails_command "generate scaffold post title:string body:text --no-stylesheets --no-test-framework"
+  rails_command "db:migrate"
+  run "cp -f ../templates/test/controllers/posts_controller_test.rb test/controllers"
+  rails_command "action_text:install"
+  run "cp -f ../templates/app/models/post.rb app/models"
+  run "cp -f ../templates/app/controllers/posts_controller.rb app/controllers"
+  run "cp -rf ../templates/app/views/posts app/views"
+  run "rm -f app/assets/stylesheets/application.css"
+  run "cp -rf ../templates/app/assets/stylesheets app/assets"
+  run "cp -f ../templates/test/fixtures/posts.yml test/fixtures"
+  run "cp -f ../templates/test/models/post_test.rb test/models"
+  run "cp -f ../templates/test/system/posts_test.rb test/system"
+
+  # Create a settings scaffold
+  rails_command "generate scaffold setting site_name:string site_description:text email:string tracking_codes:text twitter_handle:string facebook_handle:string instagram_handle:string street:string city:string state:string zip:string --no-stylesheets --no-test-framework"
+  rails_command "db:migrate"
+  run "cp -f ../templates/app/models/setting.rb app/models"
+  run "cp -f ../templates/app/controllers/settings_controller.rb app/controllers"
+  run "cp -rf ../templates/app/views/settings app/views"
+  run "cp -f ../templates/test/models/setting_test.rb test/models"
+  run "cp -f ../templates/test/controllers/settings_controller_test.rb test/controllers"
+  run "cp -f ../templates/test/system/settings_test.rb test/system"
+  run "cp -f ../templates/test/fixtures/settings.yml test/fixtures"
+
+  # Set up Pundit
+  run "cp -f ../templates/app/controllers/application_controller.rb app/controllers"
+  run "cp -rf ../templates/app/policies app"
+  run "cp -f ../templates/config/locales/en.yml config/locales"
+
+  # Set up admin layout
+  run "cp -f ../templates/app/views/layouts/admin.html.erb app/views/layouts"
+  run "cp -rf ../templates/app/views/shared/admin app/views/shared"
+  run "cp -f ../templates/test/system/admin_layout_test.rb test/system"
+
+  # Update the routes file
+  run "cp -f ../templates/config/routes.rb config"
+
+  # Copy the tests
+  run "cp -rf ../templates/test ."
+
+  # Seed the db
+  run "cp -f ../templates/db/seeds.rb db"
+
+  # Add a Procfile for Heroku
+  run "cp -f ../templates/Procfile ."
+
+  # Seed the db
+  rails_command "db:migrate"
+  rails_command "db:seed"
+
+  # Commit everything else
+  run "git add -A"
+  run "git commit -m 'Finish initial Rails setup with Spark'"
+
+  # Need to add warnings to the homepage about mailer config, host config, etc.
+
+  # Fire it up
+  say
+  say "You've successfully Spark-ed a new rails app!", :green
+  say
+  say "This Spark template was created to use Ruby 2.7.1, Rails 6.0.3.4, and Postgres, so if you have any trouble, make sure that you have all those installed and they are listed along with the 'pg' gem in your gemfile.", :blue
+end
