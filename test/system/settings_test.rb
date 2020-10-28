@@ -13,27 +13,25 @@ class SettingsTest < ApplicationSystemTestCase
   end
 
   test "viewing settings show should be accessible to admins" do
-    visit settings_url(as: @admin)
-    click_on "Show", match: :first
-    assert_current_path setting_path(@setting)
-    assert_selector "h1", text: "Settings"
+    visit settings_path(@setting, as: @admin)
+    assert_selector "h1", text: "Your Current Settings"
+    assert_selector "a", text: "Update Settings"
   end
 
-  test "non-admins should not be able to create, edit, or delete" do
+  test "non-admins should not be able to view, create, edit, or delete" do
     visit new_setting_url(as: @non_admin)
     within(".flash") do
       assert_text "You cannot perform this action."
     end
 
-    visit settings_url(as: @non_admin)
-    click_on "Edit", match: :first
+    visit edit_setting_url(@setting, as: @non_admin)
     within(".flash") do
       assert_text "You cannot perform this action."
     end
 
-    visit settings_url(as: @non_admin)
-    click_on "Show", match: :first
-    assert_selector "a", text: "Delete", count: 0
+    visit setting_url(@setting, as: @non_admin)
+    assert_no_selector "a", text: "Delete"
+    assert_no_selector "a", text: "Destroy"
   end
 
   test "creating a Setting" do
@@ -57,7 +55,7 @@ class SettingsTest < ApplicationSystemTestCase
 
   test "updating an Setting" do
     visit settings_url(as: @admin)
-    click_on "Edit", match: :first
+    click_on "Update Settings", match: :first
     fill_in "Email", with: "yet_another_site_name@example.com"
     click_button "Update Setting"
 
@@ -66,14 +64,9 @@ class SettingsTest < ApplicationSystemTestCase
     end
   end
 
-  test "destroying Settings" do
+  test "no one should see a link to destroy Settings" do
     visit settings_url(as: @admin)
-    page.accept_confirm do
-      click_on "Destroy", match: :first
-    end
-
-    within(".flash") do
-      assert_text "Setting was successfully destroyed"
-    end
+    assert_no_selector "a", text: "Delete"
+    assert_no_selector "a", text: "Destroy"
   end
 end

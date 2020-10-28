@@ -131,6 +131,9 @@ after_bundle do
   # Update the routes file
   run "cp -f ~/Code/spark/config/routes.rb config"
 
+  # Copy the tests
+  run "cp -rf ~/Code/spark/test ."
+
   # Seed the db
   run "cp -f ~/Code/spark/db/seeds.rb db"
 

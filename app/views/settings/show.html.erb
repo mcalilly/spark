@@ -1,9 +1,9 @@
 <% if signed_in? && current_user.admin? %>
   <% content_for :h1 do %>
-    Settings
+    Your Current Settings
   <% end %>
 
-  <%= link_to 'Edit', edit_setting_path(@setting) %>
+  <%= link_to 'Update Settings', edit_setting_path(@setting) %>
 <% end %>
 
 <p>

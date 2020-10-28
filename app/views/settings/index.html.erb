@@ -1,45 +1,60 @@
-<% content_for :h1 do %>
-  Settings
-<% end %>
-
-<h1>Settings</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Site name</th>
-      <th>Site description</th>
-      <th>Email</th>
-      <th>Tracking codes</th>
-      <th>Twitter handle</th>
-      <th>Facebook handle</th>
-      <th>Instagram handle</th>
-      <th>Street</th>
-      <th>City</th>
-      <th>State</th>
-      <th>Zip</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @settings.each do |setting| %>
-      <tr>
-        <td><%= setting.site_name %></td>
-        <td><%= setting.site_description %></td>
-        <td><%= setting.email %></td>
-        <td><%= setting.tracking_codes %></td>
-        <td><%= setting.twitter_handle %></td>
-        <td><%= setting.facebook_handle %></td>
-        <td><%= setting.instagram_handle %></td>
-        <td><%= setting.street %></td>
-        <td><%= setting.city %></td>
-        <td><%= setting.state %></td>
-        <td><%= setting.zip %></td>
-        <td><%= link_to 'Show', setting %></td>
-        <td><%= link_to 'Edit', edit_setting_path(setting) %></td>
-        <td><%= link_to 'Destroy', setting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<% if signed_in? && current_user.admin? %>
+  <% if @settings.present? %>
+    <% content_for :h1 do %>
+      Your Current Settings
     <% end %>
-  </tbody>
-</table>
+
+    You need to update your default settings for the site. (For instance, your default page titles, contact email, etc. will be Spark CMS settings until you update this.)
+    <table>
+      <thead>
+        <tr>
+          <th>Site name</th>
+          <th>Site description</th>
+          <th>Email</th>
+          <th>Tracking codes</th>
+          <th>Twitter handle</th>
+          <th>Facebook handle</th>
+          <th>Instagram handle</th>
+          <th>Street</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Zip</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @settings.limit(1).each do |setting| %>
+          <tr>
+            <td><%= setting.site_name %></td>
+            <td><%= setting.site_description %></td>
+            <td><%= setting.email %></td>
+            <td><%= setting.tracking_codes %></td>
+            <td><%= setting.twitter_handle %></td>
+            <td><%= setting.facebook_handle %></td>
+            <td><%= setting.instagram_handle %></td>
+            <td><%= setting.street %></td>
+            <td><%= setting.city %></td>
+            <td><%= setting.state %></td>
+            <td><%= setting.zip %></td>
+            <td><%= link_to 'Update Settings', edit_setting_path(setting) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  <% else %>
+
+    <% content_for :h1 do %>
+      Add Your Default Settings
+    <% end %>
+
+    <p>
+      You need to add your default settings for the site. (Your default page titles, contact email, etc. will be Spark CMS settings until you update your settings.)
+    </p>
+
+    <p>
+      <%= link_to "Add Settings", new_setting_path %>
+    </p>
+  <% end %>
+<% end %>
