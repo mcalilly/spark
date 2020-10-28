@@ -9,7 +9,7 @@ class PostTest < ActiveSupport::TestCase
     assert @post.valid?
   end
 
-  test "post should be present" do
+  test "post title should be present" do
     @post.title = '   '
     assert_not @post.valid?
   end

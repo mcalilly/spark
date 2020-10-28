@@ -5,8 +5,23 @@ class SettingTest < ActiveSupport::TestCase
     @setting = settings(:spark_defaults)
   end
 
-  test 'should be valid' do
+  test "should be valid" do
     assert @setting.valid?
+  end
+
+  test "site email should be present" do
+    @setting.email = '   '
+    assert_not @setting.valid?
+  end
+
+  test "site name should be present" do
+    @setting.site_name = '   '
+    assert_not @setting.valid?
+  end
+
+  test "site description should be present" do
+    @setting.site_description = '   '
+    assert_not @setting.valid?
   end
 
 end

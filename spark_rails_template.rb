@@ -99,6 +99,7 @@ after_bundle do
   run "cp -f ~/Code/spark/test/controllers/posts_controller_test.rb test/controllers"
   rails_command "action_text:install"
   run "cp -f ~/Code/spark/app/models/post.rb app/models"
+  run "cp -f ~/Code/spark/app/controllers/posts_controller.rb app/controllers"
   run "cp -rf ~/Code/spark/app/views/posts app/views"
   run "rm -f app/assets/stylesheets/application.css"
   run "cp -rf ~/Code/spark/app/assets/stylesheets app/assets"
@@ -109,13 +110,16 @@ after_bundle do
   # Create a settings scaffold
   rails_command "generate scaffold setting site_name:string site_description:text email:string tracking_codes:text twitter_handle:string facebook_handle:string instagram_handle:string street:string city:string state:string zip:string --no-stylesheets --no-test-framework"
   rails_command "db:migrate"
+  run "cp -f ~/Code/spark/app/models/setting.rb app/models"
+  run "cp -f ~/Code/spark/app/controllers/settings_controller.rb app/controllers"
   run "cp -rf ~/Code/spark/app/views/settings app/views"
   run "cp -f ~/Code/spark/test/models/setting_test.rb test/models"
+  run "cp -f ~/Code/spark/test/controllers/settings_controller_test.rb test/controllers"
+  run "cp -f ~/Code/spark/test/system/settings_test.rb test/system"
   run "cp -f ~/Code/spark/test/fixtures/settings.yml test/fixtures"
 
   # Set up Pundit
   run "cp -f ~/Code/spark/app/controllers/application_controller.rb app/controllers"
-  run "cp -f ~/Code/spark/app/controllers/posts_controller.rb app/controllers"
   run "cp -rf ~/Code/spark/app/policies app"
   run "cp -f ~/Code/spark/config/locales/en.yml config/locales"
 
