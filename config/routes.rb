@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   # Homepage
   root "static_pages#home"
 
+  # Site Settings
+  resources :settings
+
   # Blog
   resources :posts
 

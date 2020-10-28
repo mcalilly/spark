@@ -1,0 +1,12 @@
+spark_defaults:
+  email: hi@sparkcms.com
+  site_name: Spark CMS
+  site_description: A wonderful new CMS built for Rails
+  tracking_codes: <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-135294126-1"></script><script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-000000001-2');</script>
+  twitter_handle: ssparkcmss
+  facebook_handle: sparkcms
+  instagram_handle: spark_cms
+  street: 1600 Pennsylvania Avenue NW
+  city: Washington
+  state: DC
+  zip: 20500

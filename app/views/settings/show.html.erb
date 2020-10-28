@@ -1,0 +1,62 @@
+<% if signed_in? && current_user.admin? %>
+  <% content_for :h1 do %>
+    Settings
+  <% end %>
+
+  <%= link_to 'Edit', edit_setting_path(@setting) %>
+<% end %>
+
+<p>
+  <strong>Site name:</strong>
+  <%= @setting.site_name %>
+</p>
+
+<p>
+  <strong>Site description:</strong>
+  <%= @setting.site_description %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @setting.email %>
+</p>
+
+<p>
+  <strong>Tracking codes:</strong>
+  <%= @setting.tracking_codes %>
+</p>
+
+<p>
+  <strong>Twitter handle:</strong>
+  <%= @setting.twitter_handle %>
+</p>
+
+<p>
+  <strong>Facebook handle:</strong>
+  <%= @setting.facebook_handle %>
+</p>
+
+<p>
+  <strong>Instagram handle:</strong>
+  <%= @setting.instagram_handle %>
+</p>
+
+<p>
+  <strong>Street:</strong>
+  <%= @setting.street %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @setting.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @setting.state %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @setting.zip %>
+</p>

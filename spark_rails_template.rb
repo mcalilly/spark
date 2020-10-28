@@ -73,10 +73,7 @@ after_bundle do
   run "cp -f ~/Code/spark/config/environments/production.rb config/environments"
   run "cp -f ~/Code/spark/config/environments/test.rb config/environments"
 
-  # Create a settings scaffold
-  ## in the views, if nil it goes to Spark defaults, if present, then pulls from the database settings. This would be for something like reply-to email
-
-  # Set up tests
+  # Set up initial tests
   run "cp -f ~/Code/spark/Guardfile ."
   run "cp -f ~/Code/spark/test/test_helper.rb test"
   run "cp -f ~/Code/spark/test/application_system_test_case.rb test"
@@ -108,6 +105,13 @@ after_bundle do
   run "cp -f ~/Code/spark/test/fixtures/posts.yml test/fixtures"
   run "cp -f ~/Code/spark/test/models/post_test.rb test/models"
   run "cp -f ~/Code/spark/test/system/posts_test.rb test/system"
+
+  # Create a settings scaffold
+  rails_command "generate scaffold setting site_name:string site_description:text email:string tracking_codes:text twitter_handle:string facebook_handle:string instagram_handle:string street:string city:string state:string zip:string --no-stylesheets --no-test-framework"
+  rails_command "db:migrate"
+  run "cp -rf ~/Code/spark/app/views/settings app/views"
+  run "cp -f ~/Code/spark/test/models/setting_test.rb test/models"
+  run "cp -f ~/Code/spark/test/fixtures/settings.yml test/fixtures"
 
   # Set up Pundit
   run "cp -f ~/Code/spark/app/controllers/application_controller.rb app/controllers"

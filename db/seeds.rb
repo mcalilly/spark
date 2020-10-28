@@ -19,6 +19,21 @@ User.create!(
   role: "admin"
 )
 
+# Site Settings
+Setting.create!(
+  email: "hi@designwithspark.com",
+  site_name: "Spark CMS",
+  site_description: "A wonderful new CMS built for Rails.",
+  tracking_codes: "Replace this with any tracking codes you'd like to use. Google Analytics, etc.",
+  twitter_handle: "ssparkcmss",
+  facebook_handle: "sparkcms",
+  instagram_handle: "spark_cms",
+  street: "1600 Pennsylvania Avenue NW",
+  city: "Washington",
+  state: "DC",
+  zip: "20500"
+)
+
 # Blog posts
 Post.create!(
   title: "Welcome to a New Site Designed With Spark",

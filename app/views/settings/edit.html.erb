@@ -1,0 +1,13 @@
+<% if signed_in? && current_user.admin? %>
+  <% content_for :h1 do %>
+    Edit Settings
+  <% end %>
+
+  <%= link_to 'Show', @setting %>
+
+  <%= link_to 'Edit', edit_setting_path(@setting) %>
+
+
+  <%= render 'form', setting: @setting %>
+
+<% end %>
