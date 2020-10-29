@@ -1,5 +1,6 @@
 # Set up your gems
 ## app-wide
+gem "pg"
 gem "clearance"
 gem "pundit"
 
@@ -28,8 +29,6 @@ after_bundle do
   ## add javascript/stylesheets folders
   run "mkdir app/javascript/stylesheets"
   run "mkdir app/javascript/stylesheets/components"
-
-  run "pwd"
 
   ## add stylesheets/application.scss based on template
   run "cp ../templates/app/javascript/stylesheets/application.scss app/javascript/stylesheets"
@@ -129,5 +128,5 @@ after_bundle do
   say
   say "You've successfully Spark-ed a new rails app!", :green
   say
-  say "This Spark template was created to use Ruby 2.7.1, Rails 6.0.3.4, and Postgres, so if you have any trouble, make sure that you have all those installed and they are listed along with the 'pg' gem in your gemfile.", :blue
+  say "This Spark template was created to use Ruby 2.7.1, Rails 6.0.3.4, and Postgres, so if you have any trouble, make sure that you have all those installed and compatible with the versions of gems declared in your gemfile", :blue
 end
