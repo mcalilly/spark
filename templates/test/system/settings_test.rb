@@ -30,6 +30,12 @@ class SettingsTest < ApplicationSystemTestCase
     end
 
     visit setting_url(@setting, as: @non_admin)
+    assert_no_selector "h1", text: "Your Current Settings"
+    assert_no_selector "a", text: "Delete"
+    assert_no_selector "a", text: "Destroy"
+
+    visit settings_url(as: @non_admin)
+    assert_no_selector "h1", text: "Your Current Settings"
     assert_no_selector "a", text: "Delete"
     assert_no_selector "a", text: "Destroy"
   end

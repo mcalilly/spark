@@ -2,4 +2,4 @@
 #   the Spark template when running `rails new`
 
 --database=postgresql
---template=~/Code/spark/spark_rails_template.rb
+--template=~/Code/spark/spark.rb

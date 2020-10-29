@@ -1,11 +1,11 @@
 class SettingPolicy < ApplicationPolicy
 
   def index?
-    true
+    user.present? && user.admin?
   end
 
   def show?
-    true
+    index?
   end
 
   def create?
