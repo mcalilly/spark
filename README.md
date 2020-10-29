@@ -1,6 +1,16 @@
 # Spark - A CMS built on Rails
 Spark is a content management system ("CMS") that's just a big-ass script (aka [Rails Application Template](https://guides.rubyonrails.org/rails_application_templates.html)) that automates all of the stuff you need on most websites. It's inspired by the the Wordpress "famous 5 minute install."
 
+## How to Get Started
+1. Download Spark: `git clone https://github.com/mcalilly/spark.git`
+2. Change into the spark directory you just downloaded: `cd spark`
+3. Create a new Spark Rails from inside the `/spark` directory: `rails new your_app_name --database=postgresql --template=spark.rb`. Alternatively, you could simply run `rails new your_app_name` if you add a `.railsrc` dot file to your home directory similar to [this](https://github.com/mcalilly/spark/blob/master/example-railsrc).
+4. Move your new app from the spark directory to wherever you keep your code. It will be something like this: `mv your_app_name ~/Code`
+5. Now, navigate back into your new app directory. Something like this: `cd ~/Code/your_app_name`
+6. Start the server in a new terminal window at localhost:3000: `rails s`
+7. Make sure the tests are passing and run them as you go with Guard in another terminal window: `bundle exec guard` (Hit `enter / return` to run them all at once.)
+8. [Let us know](https://github.com/mcalilly/spark/issues) if you find bugs, or better yet, fork this thing and help us make it better!
+
 ## Background
 While working on a recent project I had to copy/paste a bunch of configuration to use Prismic CMS in my Rails app, which prompted me to start looking into Rails Application Templates. It dawned on me that running Rails App Template script that generates that most basic sites need—like a blog—is essentially how the Wordpress install works.
 
