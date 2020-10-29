@@ -5,23 +5,23 @@
 <section class="mt-8 text-lg md:text-xl text-gray-800 leading-snug tracking-wide">
 	<p>If you see this page at the root path that is a good indication that your Spark install went smoothly.</p>
 
-	<p class="mt-4">Also, you're reading a sans font and <span class="text-indigo-700">this text is in indigo</span>, that means that TailwindCSS is configured properly.</p>
+	<p class="mt-4">Also, you're reading a sans font and <span class="text-teal-600">this text is teal</span>, that means that TailwindCSS is configured properly. Alpine JS  used with Tailwind should also work. You can test this by sizing your browser down to a mobile width and making sure the hamburger menu works.</p>
 </section>
 
 
 <section class="mt-8 text-lg md:text-xl text-gray-800 leading-snug tracking-wide">
-	<h2 class="text-xl">
+	<h2 class="text-xl text-teal-600">
     A few reminders:
   </h2>
 
 	<ul class="mt-4 list-disc list-inside">
     <li>
-      We took the liberty to set you up with some default content. You can login as an admin to edit with this user (that was generated when the Spark template ran <span class="text-teal-600">rails db:seed</span>. You can go ahead and login as an admin and kick the tires with <span class="text-teal-600">elvis@example.com / bacon</span>.
+      We took the liberty to set you up with some default content. You can login with the admin user that was generated when the Spark template ran <span class="text-teal-600">rails db:seed</span>: <span class="text-teal-600">elvis@example.com / bacon</span>.
     </li>
-    <li>
-      Make sure to update <%= link_to "your settings", settings_path %> after deploying to production. Settings like your email and site name are what will be used as default page title and contact email. If you forget to update these it will display Spark info.
+    <li class="mt-2">
+      Make sure to update <%= link_to "your settings", settings_path, class: "text-indigo-600" %> after deploying to production. Settings like your email and site name are what will be used as default page title and contact email. If you forget to update these it will display Spark info.
     </li>
-    <li>
+    <li class="mt-2">
       You can run all the tests out of the box with Guard using <span class="text-teal-600">bundle exec guard</span>.
     </li>
   </ul>
