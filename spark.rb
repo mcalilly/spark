@@ -3,6 +3,7 @@
 gem "pg"
 gem "clearance"
 gem "pundit"
+gem "friendly_id"
 
 ## groups
 gem_group :test do
@@ -78,6 +79,15 @@ after_bundle do
   rails_command "generate scaffold post title:string body:text --no-stylesheets --no-test-framework"
   rails_command "db:migrate"
   rails_command "action_text:install"
+  run "cp -f ../templates/app/models/post.rb app/models"
+  run "cp -f ../templates/app/controllers/posts_controller.rb app/controllers"
+  run "cp -rf ../templates/app/views/posts app/views"
+  run "rm -f app/assets/stylesheets/application.css"
+  run "cp -rf ../templates/app/assets/stylesheets app/assets"
+  ## Add friendly urls to the blog
+  generate :migration, "add_slug_to_posts", "slug:uniq"
+  rails_command "generate friendly_id"
+  rails_command "db:migrate"
   run "cp -f ../templates/app/models/post.rb app/models"
   run "cp -f ../templates/app/controllers/posts_controller.rb app/controllers"
   run "cp -rf ../templates/app/views/posts app/views"
