@@ -40,7 +40,7 @@ class PostsTest < ApplicationSystemTestCase
   test "creating an Post" do
     visit posts_url(as: @admin)
     click_on "New Post"
-    fill_in "Title", with: @post.title
+    fill_in "Title", with: "Another Unique Title"
     find(:css, ".trix-content").set("This is the body of the post.")
     click_button "Create Post"
     within(".flash") do

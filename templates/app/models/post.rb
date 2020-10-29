@@ -3,7 +3,7 @@ class Post < ApplicationRecord
 
   # title
   friendly_id :title, use: :slugged
-  validates :title, presence: true
+  validates :title, presence: true, uniqueness: { case_sensitive: false }
 
   # body
   has_rich_text :body

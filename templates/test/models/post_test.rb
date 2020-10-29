@@ -13,4 +13,11 @@ class PostTest < ActiveSupport::TestCase
     @post.title = '   '
     assert_not @post.valid?
   end
+
+  test "post title should be unique" do
+    duplicate_title = @post.dup
+    duplicate_title.title = @post.title.upcase
+    @post.save
+    assert_not duplicate_title.valid?
+  end
 end
