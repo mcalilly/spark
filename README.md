@@ -1,5 +1,5 @@
 # Spark - A CMS built on Rails
-Spark is a content management system ("CMS") that's just a big-ass script (aka [Rails Application Template](https://guides.rubyonrails.org/rails_application_templates.html)) that automates all of the stuff you need on most websites. It's inspired by the the Wordpress "famous 5 minute install."
+Spark is a content management system ("CMS") that's just a big-ass script (aka [Rails Application Template](https://guides.rubyonrails.org/rails_application_templates.html)) that automates all of the stuff you need on most websites. It's inspired by the the Wordpress "famous 5 minute install." Most likely we'll eventually extract out a lot of this functionality into gems that the rails app template uses, but for now, it's just a big-ass script.
 
 ## How to Get Started
 1. Download Spark:
