@@ -71,6 +71,7 @@ after_bundle do
   run "cp -rf ../templates/app/views/sessions app/views"
   run "cp -rf ../templates/app/views/users app/views"
   ## Copy environment configs that work with Clearance
+  run "cp -f ../templates/config/environments/test.rb config/environments"
   run "cp -f ../templates/config/environments/development.rb config/environments"
   run "cp -f ../templates/config/environments/production.rb config/environments"
 
