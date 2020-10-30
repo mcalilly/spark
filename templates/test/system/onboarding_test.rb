@@ -10,7 +10,7 @@ class OnboardingTest < ApplicationSystemTestCase
     # when setting up a new site, admins should only see a 'New Settings' button when there are no settings in the database (this would happen if they forget to run initial db/seeds on production)
     s = Setting.last
     s.delete
-    visit settings_url(as: @admin)
+    visit settings_path(as: @admin)
     assert_selector "h1", text: "Settings"
     click_on "Add Settings"
     assert_current_path new_setting_path

@@ -9,7 +9,7 @@ class AdminLayoutTest < ApplicationSystemTestCase
   end
 
   test "non-admins should not see the admin layout" do
-    visit posts_url(as: @non_admin)
+    visit posts_path(as: @non_admin)
     assert_selector ".sidebar-desktop", count: 0
   end
 

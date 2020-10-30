@@ -8,7 +8,7 @@ class SettingsTest < ApplicationSystemTestCase
   end
 
   test "visiting the index should be accessible to admins" do
-    visit settings_url(as: @admin)
+    visit settings_path(as: @admin)
     assert_selector "h1", text: "Settings"
   end
 
@@ -19,29 +19,29 @@ class SettingsTest < ApplicationSystemTestCase
   end
 
   test "non-admins should not be able to view, create, edit, or delete" do
-    visit new_setting_url(as: @non_admin)
+    visit new_setting_path(as: @non_admin)
     within(".flash") do
       assert_text "You cannot perform this action."
     end
 
-    visit edit_setting_url(@setting, as: @non_admin)
+    visit edit_setting_path(@setting, as: @non_admin)
     within(".flash") do
       assert_text "You cannot perform this action."
     end
 
-    visit setting_url(@setting, as: @non_admin)
+    visit setting_path(@setting, as: @non_admin)
     assert_no_selector "h1", text: "Your Current Settings"
     assert_no_selector "a", text: "Delete"
     assert_no_selector "a", text: "Destroy"
 
-    visit settings_url(as: @non_admin)
+    visit settings_path(as: @non_admin)
     assert_no_selector "h1", text: "Your Current Settings"
     assert_no_selector "a", text: "Delete"
     assert_no_selector "a", text: "Destroy"
   end
 
   test "creating a Setting" do
-    visit new_setting_url(as: @admin)
+    visit new_setting_path(as: @admin)
     fill_in "Email", with: @setting.email
     fill_in "Site name", with: @setting.site_name
     fill_in "Site description", with: @setting.site_description
@@ -60,7 +60,7 @@ class SettingsTest < ApplicationSystemTestCase
   end
 
   test "updating an Setting" do
-    visit settings_url(as: @admin)
+    visit settings_path(as: @admin)
     click_on "Update Settings", match: :first
     fill_in "Email", with: "yet_another_site_name@example.com"
     click_button "Update Setting"
@@ -71,7 +71,7 @@ class SettingsTest < ApplicationSystemTestCase
   end
 
   test "no one should see a link to destroy Settings" do
-    visit settings_url(as: @admin)
+    visit settings_path(as: @admin)
     assert_no_selector "a", text: "Delete"
     assert_no_selector "a", text: "Destroy"
   end
