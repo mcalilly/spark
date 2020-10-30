@@ -11,32 +11,90 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+  <form>
+    <section class="mt-8">
+      <div>
+        <div>
+          <h3 class="text-lg leading-6 font-medium text-gray-900">
+            Content
+          </h3>
+          <p class="mt-1 text-sm leading-5 text-gray-500">
+            Title and body of your post are required fields.
+          </p>
+        </div>
 
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.rich_text_area :body %>
-  </div>
+        <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+          <fieldset class="sm:col-span-4">
+            <%= form.label :title, class: "block text-sm font-medium leading-5 text-gray-700" %>
+            <div class="mt-1 rounded-md shadow-sm">
+              <%= form.text_field :title, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            </div>
+          </fieldset>
 
-  <hr>
+          <div class="sm:col-span-6">
+            <%= form.label :body, class: "block text-sm font-medium leading-5 text-gray-700" %>
+            <div class="mt-1 rounded-md shadow-sm">
+              <%= form.rich_text_area :body, class: "form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 border-t border-gray-200 pt-8">
+        <div>
+          <h3 class="text-lg leading-6 font-medium text-gray-900">
+            Extras
+          </h3>
+          <p class="mt-1 text-sm leading-5 text-gray-500">
+            Metadata and other options. If you leave these blank they just won't appear on your site. The featured photo will appear as the preview image on the <%= link_to "all posts page", posts_path, class: "text-indigo-600" %>.
+          </p>
+        </div>
 
-  <h2>
-    Optional Odds &amp; Ends
-  </h2>
+        <div class="sm:col-span-6 mt-8">
+          <label for="photo" class="block text-sm leading-5 font-medium text-gray-700">
+            Featured Photo
+          </label>
+          <div class="mt-2 flex items-center">
+            <span class="h-12 w-12 overflow-hidden">
+              <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
+                <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <span class="ml-5 rounded-md shadow-sm">
+              <button type="button" class="py-2 px-3 border border-gray-300 rounded-md text-sm leading-4 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out">
+                Upload a file
+              </button>
+            </span>
+          </div>
+          <p class="mt-1 ml-2 text-xs text-gray-500">
+            PNG, JPG, GIF
+          </p>
+        </div>
 
-  <div class="field">
-    <%= form.file_field :featured_image, direct_upload: true %>
-  </div>
+        <div class="sm:col-span-6 mt-8">
+          <label for="about" class="block text-sm font-medium leading-5 text-gray-700">
+            Description
+          </label>
+          <div class="mt-1 rounded-md shadow-sm">
+            <textarea id="about" rows="3" class="form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"></textarea>
+          </div>
+          <p class="mt-2 text-sm text-gray-500">This will appear as the excerpt on the <%= link_to "all posts page", posts_path, class: "text-indigo-600" %> as well as the meta description suggested to search engines. 160 characters is the recommended length for search engines.</p>
+        </div>
+      </div>
+    </section>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <fieldset class="form-actions">
+      <div class="mt-8 border-t border-gray-200 pt-5">
+        <div class="flex justify-end">
+          <span class="inline-flex rounded-md shadow-sm">
+            <%= link_to posts_path, class: "py-2 px-4 border border-gray-300 rounded-md text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out" do %>
+              Cancel
+            <% end %>
+          </span>
+          <span class="ml-3 inline-flex rounded-md shadow-sm">
+            <%= form.submit "Submit", class: "inline-flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out" %>
+          </span>
+        </div>
+      </div>
+    </fieldset>
+  </form>
 <% end %>

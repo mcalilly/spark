@@ -36,3 +36,14 @@
 input[type=file][data-direct-upload-url][disabled] {
   display: none;
 }
+
+/* Trix editor */
+
+form {
+  .trix-content {
+    a {
+      @apply text-indigo-600;
+      @apply underline;
+    }
+  }
+}

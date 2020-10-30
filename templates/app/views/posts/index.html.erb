@@ -1,29 +1,35 @@
-<% content_for :h1 do %>
-  Posts
+<% if signed_in? && current_user.admin? %>
+
+  <% content_for :h1 do %>
+    Blog
+  <% end %>
+
+  <hr>
+    <span class="inline-flex rounded-md shadow-sm mt-4">
+      <%= link_to 'New Post', new_post_path, class: "inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150" %>
+    </span>
+  <hr class="mt-4">
+<% else %>
+
+  <% content_for :h1 do %>
+    Blog
+  <% end %>
+
 <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<section class="mt-8">
+  <ul>
     <% @posts.each do |post| %>
-      <tr>
-        <td>
-          <%= link_to post.title, post %>
-        </td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <li class="mt-8">
+        <%= link_to post do %>
+          <h2 class="text-xl font-semibold text-indigo-600 hover:text-indigo-900">
+            <%= post.title %>
+          </h2>
+          <p>
+            <%= post.description %>
+          </p>
+        <% end %>
+      </li>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Post', new_post_path %>
+  </ul>
+</section>
