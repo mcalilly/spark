@@ -20,6 +20,8 @@
     <%= image_tag @post.featured_image.variant(resize_to_fit: [400, 225]) %>
   <% end %>
 
+  <%= @post.description %>
+
   <section class="mt-8 text-lg md:text-xl text-gray-800 leading-snug tracking-wide">
     <%= @post.body %>
   </section>

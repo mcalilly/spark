@@ -43,6 +43,7 @@ class PostsTest < ApplicationSystemTestCase
     fill_in "Title", with: "Another Unique Title"
     find(:css, ".trix-content").set("This is the body of the post.")
     attach_file("post[featured_image]", "#{Rails.root.join("test/fixtures/files/example-featured-image.jpg")}")
+    fill_in "Description", with: "A new description for a new post."
     click_button "Create Post"
     sleep 0.5
 

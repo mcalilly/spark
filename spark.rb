@@ -99,6 +99,8 @@ after_bundle do
   rails_command "active_storage:install"
   rails_command "db:migrate"
   run "cp -rf ../templates/app/javascript/packs/components app/javascript/packs"
+  ## Add description to the blog
+  generate :migration, "add_description_to_posts", "description:text"
 
   # Create a settings scaffold
   rails_command "generate scaffold setting site_name:string site_description:text email:string tracking_codes:text twitter_handle:string facebook_handle:string instagram_handle:string street:string city:string state:string zip:string --no-stylesheets --no-test-framework"
