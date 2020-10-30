@@ -37,12 +37,15 @@ class PostsTest < ApplicationSystemTestCase
     assert_selector "a", text: "Delete", count: 0
   end
 
-  test "creating an Post" do
+  test "creating a Post" do
     visit posts_path(as: @admin)
     click_on "New Post"
     fill_in "Title", with: "Another Unique Title"
     find(:css, ".trix-content").set("This is the body of the post.")
+    attach_file("post[featured_image]", "#{Rails.root.join("test/fixtures/files/example-featured-image.jpg")}")
     click_button "Create Post"
+    sleep 0.5
+
     within(".flash") do
       assert_text "Post was successfully created"
     end
@@ -50,7 +53,7 @@ class PostsTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
-  test "updating an Post" do
+  test "updating a Post" do
     visit posts_path(as: @admin)
     click_on "Edit", match: :first
 
@@ -63,7 +66,7 @@ class PostsTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
-  test "destroying an Post" do
+  test "destroying a Post" do
     visit posts_path(as: @admin)
     page.accept_confirm do
       click_on "Destroy", match: :first

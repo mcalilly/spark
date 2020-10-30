@@ -7,4 +7,8 @@ class Post < ApplicationRecord
 
   # body
   has_rich_text :body
+
+  # featured image
+  has_one_attached :featured_image
+
 end

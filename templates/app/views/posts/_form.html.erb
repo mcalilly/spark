@@ -21,6 +21,10 @@
     <%= form.rich_text_area :body %>
   </div>
 
+  <div class="field">
+    <%= form.file_field :featured_image, direct_upload: true %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

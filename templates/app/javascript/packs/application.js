@@ -19,6 +19,5 @@ require("@rails/actiontext")
 // Stimulus
 import "controllers"
 
-// custom styles
-
-// custom js files
+// Custom JS files
+require("packs/components/direct_uploads")

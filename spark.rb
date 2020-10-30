@@ -4,6 +4,8 @@ gem "pg"
 gem "clearance"
 gem "pundit"
 gem "friendly_id"
+gem "aws-sdk-s3", require: false
+gem "image_processing"
 
 ## groups
 gem_group :test do
@@ -93,7 +95,10 @@ after_bundle do
   run "cp -rf ../templates/app/views/posts app/views"
   run "rm -f app/assets/stylesheets/application.css"
   run "cp -rf ../templates/app/assets/stylesheets app/assets"
-
+  ## Add featured image to the blog
+  rails_command "active_storage:install"
+  rails_command "db:migrate"
+  run "cp -rf ../templates/app/javascript/packs/components app/javascript/packs"
 
   # Create a settings scaffold
   rails_command "generate scaffold setting site_name:string site_description:text email:string tracking_codes:text twitter_handle:string facebook_handle:string instagram_handle:string street:string city:string state:string zip:string --no-stylesheets --no-test-framework"
