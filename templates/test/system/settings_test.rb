@@ -41,7 +41,12 @@ class SettingsTest < ApplicationSystemTestCase
   end
 
   test "creating a Setting" do
-    visit new_setting_path(as: @admin)
+    s = Setting.last
+    s.delete
+    visit settings_path(as: @admin)
+    assert_selector "h1", text: "Settings"
+    click_on "Add Settings"
+    assert_current_path new_setting_path
     fill_in "Email", with: @setting.email
     fill_in "Site name", with: @setting.site_name
     fill_in "Site description", with: @setting.site_description
@@ -53,7 +58,7 @@ class SettingsTest < ApplicationSystemTestCase
     fill_in "City", with: @setting.city
     fill_in "State", with: @setting.state
     fill_in "Zip", with: @setting.zip
-    click_button "Create Setting"
+    click_button "Save"
     within(".flash") do
       assert_text "Setting was successfully created"
     end
@@ -63,7 +68,7 @@ class SettingsTest < ApplicationSystemTestCase
     visit settings_path(as: @admin)
     click_on "Update Settings", match: :first
     fill_in "Email", with: "yet_another_site_name@example.com"
-    click_button "Update Setting"
+    click_button "Save"
 
     within(".flash") do
       assert_text "Setting was successfully updated"

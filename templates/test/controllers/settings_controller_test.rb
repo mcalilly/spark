@@ -12,6 +12,13 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
+    # It should redirect unless the settings are nil
+    get new_setting_path(as: @admin)
+    assert_redirected_to settings_url
+    # Show new only when there are no settings at all
+    assert_difference("Setting.count", -1) do
+      delete setting_path(@setting, as: @admin)
+    end
     get new_setting_path(as: @admin)
     assert_response :success
   end

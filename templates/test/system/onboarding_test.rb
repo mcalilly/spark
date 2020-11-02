@@ -25,7 +25,7 @@ class OnboardingTest < ApplicationSystemTestCase
     fill_in "City", with: @setting.city
     fill_in "State", with: @setting.state
     fill_in "Zip", with: @setting.zip
-    click_button "Create Setting"
+    click_button "Save"
     within(".flash") do
       assert_text "Setting was successfully created"
     end

@@ -14,6 +14,9 @@ class SettingsController < ApplicationController
   def new
     @setting = Setting.new
     authorize @setting
+    if Setting.count > 0
+      redirect_to settings_path
+    end
   end
 
   def edit
@@ -56,7 +59,7 @@ class SettingsController < ApplicationController
 
   private
     def set_setting
-      @setting = Setting.find(params[:id])
+      @setting = Setting.last
       authorize @setting
     end
 
