@@ -1,102 +1,43 @@
 <% if signed_in? && current_user.admin? %>
-  <section>
-    <% content_for :h1 do %>
-      Settings
-    <% end %>
-
-    <% content_for :page_actions do %>
-      <% if @setting.present? %>
-        <span class="shadow-sm rounded-md">
-          <%= link_to "Update Settings", edit_setting_path(Setting.last), class: "inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out" %>
-        </span>
+  <% content_for :h1 do %>
+    Post Preview
+  <% end %>
+  <% content_for :page_actions do %>
+    <span class="shadow-sm rounded-md">
+      <%= link_to edit_post_path(@post), class: "inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150" do %>
+        Edit Post
       <% end %>
-    <% end %>
-
-    <% if @setting.present? %>
-      <div>
-        <div class="mt-5">
-          <dl>
-            <div class="sm:grid sm:grid-cols-3 sm:gap-4">
-              <dt class="text-sm leading-5 font-medium text-gray-500">
-                Site name
-              </dt>
-              <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                <%= @setting.site_name %>
-              </dd>
-            </div>
-            <div class="mt-8 sm:grid sm:mt-5 sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-              <dt class="text-sm leading-5 font-medium text-gray-500">
-                Site description
-              </dt>
-              <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                <%= @setting.site_description %>
-              </dd>
-            </div>
-            <div class="mt-8 sm:grid sm:mt-5 sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-              <dt class="text-sm leading-5 font-medium text-gray-500">
-                Email address
-              </dt>
-              <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                <%= @setting.email %>
-              </dd>
-            </div>
-            <div class="mt-8 sm:grid sm:mt-5 sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-              <dt class="text-sm leading-5 font-medium text-gray-500">
-                Facebook handle
-              </dt>
-              <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                <%= @setting.facebook_handle %>
-              </dd>
-            </div>
-            <div class="mt-8 sm:grid sm:mt-5 sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-              <dt class="text-sm leading-5 font-medium text-gray-500">
-                Twitter handle
-              </dt>
-              <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                <%= @setting.twitter_handle %>
-              </dd>
-            </div>
-
-            <div class="mt-8 sm:grid sm:mt-5 sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-              <dt class="text-sm leading-5 font-medium text-gray-500">
-                Instagram handle
-              </dt>
-              <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                <%= @setting.instagram_handle %>
-              </dd>
-            </div>
-
-            <div class="mt-8 sm:grid sm:mt-5 sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-              <dt class="text-sm leading-5 font-medium text-gray-500">
-                Address
-              </dt>
-              <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                <%= @setting.street %><br />
-                <%= @setting.city %>, <%= @setting.state %> <%= @setting.zip %>
-              </dd>
-            </div>
-
-            <div class="mt-8 sm:grid sm:mt-5 sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-              <dt class="text-sm leading-5 font-medium text-gray-500">
-                Tracking codes
-              </dt>
-              <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                <%= @setting.tracking_codes %>
-              </dd>
-            </div>
-          </dl>
-        </div>
-      </div>
-
-    <% else %>
-
-      <p>
-        You need to add your default settings for the site. (Your default page titles, contact email, etc. will be Spark CMS settings until you update your settings.)
-      </p>
-
-      <p>
-        <%= link_to "Add Settings", new_setting_path %>
-      </p>
-    <% end %>
-  </section>
+    </span>
+    <span class="shadow-sm rounded-md">
+      <%= link_to @post, class: "inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-50 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo active:bg-indigo-200 transition ease-in-out duration-150", method: :delete, data: { confirm: "Are you sure?" } do %>
+        Delete
+      <% end %>
+    </span>
+  <% end %>
 <% end %>
+
+<article class="max-w-md md:max-w-xl mx-auto">
+  <time class="text-sm font-semibold uppercase tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-indigo-700 via-indigo-500 to-indigo-800">
+    <%= @post.created_at.strftime("%B %e, %Y") %>
+  </time>
+
+  <h1 class="mt-2 text-2xl tracking-tight leading-none font-extrabold text-gray-900 sm:text-5xl">
+    <%= @post.title.titleize %>
+  </h1>
+
+  <% if @post.featured_image.attached? %>
+    <div class="featured-image mx-auto mt-4">
+      <%= image_tag @post.featured_image.variant(resize_to_fit: [576, 324]) %>
+    </div>
+  <% end %>
+
+  <% if @post.description %>
+    <p class="text-xl text-gray-500 leading-8 mt-4">
+      <%= @post.description %>
+    </p>
+  <% end %>
+
+  <section class="mx-auto mt-4 prose prose-lg text-gray-500">
+    <%= @post.body %>
+  </section>
+</article>
