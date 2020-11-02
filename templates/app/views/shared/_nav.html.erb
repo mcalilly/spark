@@ -8,8 +8,12 @@
     </div>
 
     <nav class="main-nav hidden md:flex items-center">
-      <%= link_to "Home", root_path, class: "mx-6" %>
-      <%= link_to "Blog", posts_path, class: "mx-6" %>
+      <%= link_to root_path, class: "mx-6 #{'underline' if current_page?(root_path)}" do %>
+        Home
+      <% end %>
+      <%= link_to posts_path, class: "mx-6 #{'underline' if current_page?(posts_path)}" do %>
+        Blog
+      <% end %>
     </nav>
 
     <nav class="utility-nav hidden md:flex items-center space-x-8">
