@@ -14,7 +14,7 @@ class SettingsTest < ApplicationSystemTestCase
 
   test "viewing settings show should be accessible to admins" do
     visit settings_path(@setting, as: @admin)
-    assert_selector "h1", text: "Your Current Settings"
+    assert_selector "h1", text: "Settings"
     assert_selector "a", text: "Update Settings"
   end
 
