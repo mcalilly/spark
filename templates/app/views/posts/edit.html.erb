@@ -2,14 +2,12 @@
   Editing Post
 <% end %>
 
-<hr>
-  <p class="mt-4">
-    <%= link_to posts_path, class: "mx-4 text-indigo-600" do %>
-      &#8592; All posts
+<% content_for :page_actions do %>
+  <span class="shadow-sm rounded-md">
+    <%= link_to posts_path, class: "inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150" do %>
+      All Posts
     <% end %>
-
-    <%= link_to "Preview Post", post_path(@post), class: "inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-50 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo active:bg-indigo-200 transition ease-in-out duration-150" %>
-  </p>
-<hr class="my-4">
+  </span>
+<% end %>
 
 <%= render 'form', post: @post %>
