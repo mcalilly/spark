@@ -25,6 +25,7 @@ after_bundle do
   rails_command "webpacker:install:stimulus"
 
   # Set up TailwindCSS
+  run "yarn install"
   run "yarn add tailwindcss@latest"
   run "yarn add @tailwindcss/ui"
   run "yarn add alpinejs"

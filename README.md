@@ -14,7 +14,7 @@ Spark is a "content management system" that's really just a big-ass script that 
 
 `rails new your_app_name --database=postgresql --template=spark.rb`.
 
-Alternatively, you could simply run `rails new your_app_name` if you add a `.railsrc` dot file to your home directory similar to [this](https://github.com/mcalilly/spark/blob/master/example-railsrc).
+If you'd like to use Spark on most new Rails projects, you can set up a `.railsrc` file in your home direction and simply run `rails new your_app_name`. Your `.railsrc` dot file to your home directory should look similar to [this](https://github.com/mcalilly/spark/blob/master/example-railsrc). (Note: if you use a `.railsrc` file you can always create a new rails app without it using the `--no-rc` flag. More info on `rails new` flags [here](https://gist.github.com/eliotsykes/ace0222174804372b51a).)
 
 4. Move your new app from the spark directory to wherever you keep your code. It will be something like this:
 
