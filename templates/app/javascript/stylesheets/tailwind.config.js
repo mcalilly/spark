@@ -6,10 +6,10 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
 	important: true,
 	plugins: [
-		require('@tailwindcss/ui')({
-		 layout: 'sidebar',
-		})
-	],
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/aspect-ratio'),
+  ],
 
 	experimental: {
 	 experimental: 'all'

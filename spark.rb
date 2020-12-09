@@ -1,3 +1,6 @@
+# Use the correct version of Ruby
+run "cp ../templates/.ruby-version ."
+
 # Set up your gems
 ## app-wide
 gem "pg"
@@ -17,18 +20,26 @@ end
 
 run "bundle install"
 
-# Create the database
-rails_command "db:create"
-
 after_bundle do
+  # Create the database
+  rails_command "db:drop"
+  rails_command "db:create"
+
   # Set up Stimulus
+  rails_command "webpacker:install"
   rails_command "webpacker:install:stimulus"
 
   # Set up TailwindCSS
   run "yarn install"
+  run "yarn add postcss@latest"
   run "yarn add tailwindcss@latest"
-  run "yarn add @tailwindcss/ui"
+  run "yarn add @tailwindcss/forms"
+  run "yarn add @tailwindcss/typography"
+  run "yarn add @tailwindcss/aspect-ratio"
   run "yarn add alpinejs"
+
+  ## Update Rails.root/postcss.config.js to match the template
+  run "cp -rf ../templates/postcss.config.js ."
 
   ## add javascript/stylesheets folders
   run "mkdir app/javascript/stylesheets"
@@ -38,9 +49,6 @@ after_bundle do
   run "cp ../templates/app/javascript/stylesheets/application.scss app/javascript/stylesheets"
   run "cp ../templates/app/javascript/stylesheets/components/shared.scss app/javascript/stylesheets/components"
   run "cp ../templates/app/javascript/stylesheets/tailwind.config.js app/javascript/stylesheets"
-
-  ## Update Rails.root/postcss.config.js to match the template
-  run "cp -f ../templates/postcss.config.js ."
 
   ## Update the javscript/packs/application.js based on the template
   run "cp ../templates/app/javascript/packs/application.js app/javascript/packs"
