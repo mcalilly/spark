@@ -1,9 +1,8 @@
 # Use the correct version of Ruby
-run "cp ../templates/.ruby-version ."
+run "cp -f ../templates/.ruby-version ."
 
 # Set up your gems
 ## app-wide
-gem "pg"
 gem "clearance"
 gem "pundit"
 gem "friendly_id"
@@ -26,7 +25,6 @@ after_bundle do
   rails_command "db:create"
 
   # Set up Stimulus
-  rails_command "webpacker:install"
   rails_command "webpacker:install:stimulus"
 
   # Set up TailwindCSS
@@ -154,5 +152,5 @@ after_bundle do
   say
   say "You've successfully Spark-ed a new rails app!", :green
   say
-  say "This Spark template was created to use Ruby 2.7.1, Rails 6.0.3.4, and Postgres, so if you have any trouble, make sure that you have all those installed and compatible with the versions of gems declared in your gemfile", :blue
+  say "This Spark template was created to use Ruby 2.7.2, Rails 6.0.3.4, and Postgres, so if you have any trouble, make sure that you have all those installed and compatible with the versions of gems declared in your gemfile", :blue
 end
