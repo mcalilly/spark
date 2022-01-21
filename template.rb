@@ -145,14 +145,14 @@ after_bundle do
     end
   end
 
+  rails_command "test:all"
+
   say
-  say "Spark app successfully created!", :blue
+  say "Spark app successfully created! Your tests should be green ; )", :blue
   say
   say "Now just run `mv ./#{original_app_name} ../ && cd ../#{original_app_name} && rails s`"
   say "  # Update config/database.yml with your database credentials"
   say
-
-  rails_command "test:all"
 end
 
 ## TO DO
