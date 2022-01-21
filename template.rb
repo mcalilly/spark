@@ -63,6 +63,8 @@ end
 def add_authentication
   generate "devise:install"
   generate "devise:views"
+
+  generate :devise, "User", "role:integer"
   # inject turbo failure app into the view
 end
 
