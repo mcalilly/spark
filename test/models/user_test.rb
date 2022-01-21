@@ -6,7 +6,8 @@ class UserTest < ActiveSupport::TestCase
     @non_admin = users(:guest)
     @potential_user = User.new(
                            email: "new_user@example.com",
-                           password: "foobar"
+                           password: "foobar",
+                           role: "admin"
                           )
 end
 

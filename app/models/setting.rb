@@ -12,17 +12,10 @@ class Setting < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email,
               presence: true,
-              length: {
-                maximum: 255,
-                message: "must be less than 255 characters"
-              },
               format: {
                 with: VALID_EMAIL_REGEX,
                 message: "format is invalid"
-              },
-              uniqueness: {
-                case_sensitive: false,
-                message: "is already taken"
+              }
   private
 
     def check_for_only_one_record
