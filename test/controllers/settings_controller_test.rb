@@ -25,7 +25,7 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create settings" do
     assert_difference('Setting.count') do
-      post settings_url(as: @admin), params: { setting: { site_title: @setting.site_title, site_tagline: @setting.site_tagline, site_description: @setting.site_description, email: @setting.email, phone: @setting.phone, address_line_one: @setting.address_line_one, address_line_two: @setting.address_line_two, city: @setting.city, state_or_province: @setting.state_or_province, postal_code: @setting.postal_code, country, @setting.country } }
+      post settings_url(as: @admin), params: { setting: { site_title: @setting.site_title, site_tagline: @setting.site_tagline, site_description: @setting.site_description, email: @setting.email, phone: @setting.phone, address_line_one: @setting.address_line_one, address_line_two: @setting.address_line_two, city: @setting.city, state_or_province: @setting.state_or_province, postal_code: @setting.postal_code, country: @setting.country } }
     end
 
     assert_redirected_to setting_url(Setting.last)
