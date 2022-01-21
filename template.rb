@@ -93,11 +93,12 @@ def add_static_pages
 end
 
 def add_settings
-  generate "scaffold Setting title:string tagline:string description:text email:string phone:string address_line_one:string address_line_two:string city:string state:string instagram_handle:string twitter_handle:string facebook_handle:string"
+  generate "scaffold Setting site_title:string site_tagline:string site_description:text email:string phone:string address_line_one:string address_line_two:string city:string state_or_province:string postal_code:string instagram_handle:string twitter_handle:string facebook_handle:string"
 end
 
 def copy_templates
   directory "test", force: true
+  directory "db", force: true
 
   # initial layout views / partials with tailwind classes
   # tailwind default setup
@@ -105,6 +106,7 @@ def copy_templates
 end
 
 def setup_the_db
+  rails_command "db:drop"
   rails_command "db:create"
   rails_command "db:migrate"
   rails_command "db:seed"
