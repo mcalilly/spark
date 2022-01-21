@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<%= render "shared/header" %>
+
+	<body>
+		<div x-data="{ offCanvasMenuOpen: false }">
+			<div class="h-screen flex overflow-hidden bg-white">
+			  <%= render "shared/admin/sidebar_mobile" %>
+
+			  <%= render "shared/admin/sidebar_desktop" %>
+
+			  <%= render "shared/admin/main" %>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,7 @@
+<% if signed_in? && current_user.admin? %>
+  <% content_for :h1 do %>
+    New Settings
+  <% end %>
+
+  <%= render 'form', setting: @setting %>
+<% end %>

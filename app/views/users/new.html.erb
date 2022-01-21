@@ -1,0 +1,13 @@
+<% provide(:title, "Sign up") %>
+
+<section class="max-w-sm mx-auto">
+  <h1 class="mt-2 text-2xl tracking-tight leading-none font-extrabold text-gray-900 sm:text-5xl">
+    Sign up
+  </h1>
+
+  <%= render partial: "/users/form" %>
+
+  <p class="mt-8">
+    Already a user? <%= link_to "Sign in", sign_in_path %>
+  </p>
+</section>

@@ -1,0 +1,181 @@
+<%= form_with(model: setting, local: true) do |form| %>
+  <% if setting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(setting.errors.count, "error") %> prohibited this setting from being saved:</h2>
+
+      <ul>
+        <% setting.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <form>
+    <section class="mt-8 sm:mt-5">
+      <div>
+        <h3 class="text-lg leading-6 font-medium text-gray-900">
+          Metadata
+        </h3>
+        <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
+          This is the default info used on the site for things like the page title and default reply-to email address.
+        </p>
+      </div>
+      <div class="mt-6 sm:mt-5">
+        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <%= form.label :site_name, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+              <%= form.text_field :site_name, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            </div>
+            <p class="sm:max-w-xs mt-2 text-sm text-gray-500">Used for things such as the page title when a page-specific page one is not provided.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <%= form.label :site_description, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="sm:max-w-xs flex rounded-md shadow-sm">
+            <%= form.text_area :site_description, class: "form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+          </div>
+          <p class="sm:max-w-xs mt-2 text-sm text-gray-500">Used for things such as the meta description when a page-specific page one is not provided.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-8 border-t border-gray-200 pt-8 sm:mt-5 sm:pt-10">
+      <div>
+        <h3 class="text-lg leading-6 font-medium text-gray-900">
+          Contact Information
+        </h3>
+      </div>
+
+      <div class="mt-6 sm:mt-5">
+        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <%= form.label :email, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+              <%= form.text_field :email, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-8 border-t border-gray-200 pt-8 sm:mt-5 sm:pt-10">
+      <div>
+        <h3 class="text-lg leading-6 font-medium text-gray-900">
+          Social Media
+        </h3>
+      </div>
+
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <%= form.label :facebook_handle, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+            <%= form.text_field :facebook_handle, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <label for="last_name" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+          Twitter handle
+        </label>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+            <input id="last_name" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <%= form.label :instagram_handle, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+            <%= form.text_field :instagram_handle, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-8 border-t border-gray-200 pt-8 sm:mt-5 sm:pt-10">
+      <div>
+        <h3 class="text-lg leading-6 font-medium text-gray-900">
+          Address
+        </h3>
+      </div>
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <%= form.label :street, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+            <%= form.text_field :street, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <%= form.label :city, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"  %>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+            <%= form.text_field :city, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <%= form.label :state, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"  %>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+            <%= form.text_field :state, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <%= form.label :zip, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+            <%= form.text_field :zip, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-8 border-t border-gray-200 pt-8 sm:mt-5 sm:pt-10">
+      <div>
+        <h3 class="text-lg leading-6 font-medium text-gray-900">
+          Technical Bits
+        </h3>
+      </div>
+
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <%= form.label :tracking_codes, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="sm:max-w-xs flex rounded-md shadow-sm">
+            <%= form.text_area :tracking_codes, class: "form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+          </div>
+          <p class="sm:max-w-xs mt-2 text-sm text-gray-500">Paste any tracking codes you'd like inserted into the site here. (Google Analytics, Facebook pixel, Hubspot, etc.)</p>
+        </div>
+      </div>
+    </section>
+
+    <fieldset class="form-actions mb-2">
+      <div class="mt-8 border-t border-gray-200 pt-5">
+        <div class="flex justify-end">
+          <span class="inline-flex rounded-md shadow-sm">
+            <%= link_to settings_path, class: "py-2 px-4 border border-gray-300 rounded-md text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out" do %>
+              Cancel
+            <% end %>
+          </span>
+          <span class="ml-3 inline-flex rounded-md shadow-sm">
+            <%= form.submit "Save", class: "inline-flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out" %>
+          </span>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+<% end %>

@@ -1,0 +1,14 @@
+<!-- Static sidebar for desktop -->
+<div class="sidebar-desktop hidden md:flex md:flex-shrink-0">
+  <div class="flex flex-col w-64">
+    <!-- Sidebar component, swap this element with another sidebar if you like -->
+    <div class="flex flex-col h-0 flex-1 border-r border-gray-200 bg-white">
+      <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
+        <%= render "shared/admin/sidebar_logo" %>
+        <%= render "shared/admin/sidebar_menu" %>
+      </div>
+
+      <%= render "shared/admin/sidebar_logout" %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<% if object.errors.any? %>
+  <section class="errors">
+    <button>&times;</button>
+    <p><strong>The form contains
+      <%= pluralize(object.errors.count, "error") %>.</strong></p>
+    <ul>
+       <% object.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+       <% end %>
+    </ul>
+  </section>
+<% end %>

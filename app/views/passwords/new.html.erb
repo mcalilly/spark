@@ -1,0 +1,23 @@
+<% provide(:title, "Password reset") %>
+
+<section class="max-w-lg mx-auto">
+  <h1 class="mt-2 text-2xl tracking-tight leading-none font-extrabold text-gray-900 sm:text-5xl">
+    Reset your password
+  </h1>
+
+  <p class="mt-8 text-lg md:text-xl text-gray-800 leading-snug tracking-wide">
+    To be emailed a link to reset your password, please enter your email address.
+  </p>
+  <%= form_for :password, url: passwords_path, html: { class: "mt-8 max-w-sm" } do |form| %>
+    <fieldset>
+      <%= form.label :email, class: "block text-sm font-medium leading-5 text-gray-700" %>
+      <div class="mt-1 relative rounded-md shadow-sm">
+        <%= form.text_field :email, type: "email", class: "form-input block w-full sm:text-sm sm:leading-5", placeholder: "ringo@thebeatles.com" %>
+      </div>
+    </fieldset>
+
+    <fieldset class="inline-flex rounded-md shadow-sm mt-4">
+      <%= button_tag "Request password reset", type: "submit", class: "inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150" %>
+    </fieldset>
+  <% end %>
+</section>

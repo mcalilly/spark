@@ -89,7 +89,7 @@ def add_action_text
 end
 
 def add_static_pages
-  generate :controller, "static_pages home about contact"
+  # generate :controller, "static_pages home about contact"
 end
 
 def add_settings

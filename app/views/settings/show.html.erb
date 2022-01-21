@@ -1,0 +1,102 @@
+<% if signed_in? && current_user.admin? %>
+  <section>
+    <% content_for :h1 do %>
+      Settings
+    <% end %>
+
+    <% content_for :page_actions do %>
+      <% if @setting.present? %>
+        <span class="shadow-sm rounded-md">
+          <%= link_to "Update Settings", edit_setting_path(Setting.last), class: "inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out" %>
+        </span>
+      <% end %>
+    <% end %>
+
+    <% if @setting.present? %>
+      <div>
+        <div class="mt-5">
+          <dl>
+            <div class="sm:grid sm:grid-cols-3 sm:gap-4">
+              <dt class="text-sm leading-5 font-medium text-gray-500">
+                Site name
+              </dt>
+              <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+                <%= @setting.site_name %>
+              </dd>
+            </div>
+            <div class="mt-8 sm:grid sm:mt-5 sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+              <dt class="text-sm leading-5 font-medium text-gray-500">
+                Site description
+              </dt>
+              <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+                <%= @setting.site_description %>
+              </dd>
+            </div>
+            <div class="mt-8 sm:grid sm:mt-5 sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+              <dt class="text-sm leading-5 font-medium text-gray-500">
+                Email address
+              </dt>
+              <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+                <%= @setting.email %>
+              </dd>
+            </div>
+            <div class="mt-8 sm:grid sm:mt-5 sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+              <dt class="text-sm leading-5 font-medium text-gray-500">
+                Facebook handle
+              </dt>
+              <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+                <%= @setting.facebook_handle %>
+              </dd>
+            </div>
+            <div class="mt-8 sm:grid sm:mt-5 sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+              <dt class="text-sm leading-5 font-medium text-gray-500">
+                Twitter handle
+              </dt>
+              <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+                <%= @setting.twitter_handle %>
+              </dd>
+            </div>
+
+            <div class="mt-8 sm:grid sm:mt-5 sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+              <dt class="text-sm leading-5 font-medium text-gray-500">
+                Instagram handle
+              </dt>
+              <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+                <%= @setting.instagram_handle %>
+              </dd>
+            </div>
+
+            <div class="mt-8 sm:grid sm:mt-5 sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+              <dt class="text-sm leading-5 font-medium text-gray-500">
+                Address
+              </dt>
+              <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+                <%= @setting.street %><br />
+                <%= @setting.city %>, <%= @setting.state %> <%= @setting.zip %>
+              </dd>
+            </div>
+
+            <div class="mt-8 sm:grid sm:mt-5 sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+              <dt class="text-sm leading-5 font-medium text-gray-500">
+                Tracking codes
+              </dt>
+              <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+                <%= @setting.tracking_codes %>
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+    <% else %>
+
+      <p>
+        You need to add your default settings for the site. (Your default page titles, contact email, etc. will be Spark CMS settings until you update your settings.)
+      </p>
+
+      <p>
+        <%= link_to "Add Settings", new_setting_path %>
+      </p>
+    <% end %>
+  </section>
+<% end %>
