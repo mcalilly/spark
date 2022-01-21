@@ -63,10 +63,12 @@ end
 def add_authentication
   generate "devise:install"
   generate "devise:views"
+  # inject turbo failure app into the view
 end
 
 def add_authorization
   generate "pundit:install"
+  # create default admin / guest enum role
 end
 
 def add_css
@@ -75,6 +77,7 @@ end
 
 def add_javascript
   # importmap-rails
+  # confirm stimulus is working & turbo with test controllers that print to console.log
 end
 
 def add_active_storage
@@ -93,8 +96,8 @@ def add_settings
   # scaffold for settings singleton
 end
 
-def add_tests
-  # to do
+def copy_templates
+  directory "test", force: true
 end
 
 def setup_the_db
@@ -104,7 +107,6 @@ def setup_the_db
 end
 
 # Main setup
-template "ruby-version.tt", ".ruby-version", force: true
 add_template_repository_to_source_path
 add_gems
 
@@ -119,6 +121,8 @@ after_bundle do
   add_static_pages
   add_settings
   add_tests
+
+  copy_templates
 
   setup_the_db
 
