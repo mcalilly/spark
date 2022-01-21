@@ -93,11 +93,15 @@ def add_static_pages
 end
 
 def add_settings
-  # scaffold for settings singleton
+  generate "scaffold Setting title:string tagline:string description:text email:string phone:string address_line_one:string address_line_two:string city:string state:string instagram_handle:string twitter_handle:string facebook_handle:string"
 end
 
 def copy_templates
   directory "test", force: true
+
+  # initial layout views / partials with tailwind classes
+  # tailwind default setup
+  # model with validation for setting singleton
 end
 
 def setup_the_db
