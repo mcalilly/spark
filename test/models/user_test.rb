@@ -2,7 +2,8 @@ require "application_system_test_case"
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    @signed_up_user = users(:admin)
+    @admin = users(:admin)
+    @signed_up_user = users(:bob)
     @non_admin = users(:guest)
     @potential_user = User.new(
                            email: "new_user@example.com",
@@ -21,7 +22,7 @@ end
   end
 
   test "Email should not be too long" do
-    @potential_user.email = "a" * 244 + "@example.com"
+    @potential_user.email = "a" * 256 + "@example.com"
     assert_not @potential_user.valid?
   end
 
