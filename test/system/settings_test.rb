@@ -81,3 +81,4 @@ class SettingsTest < ApplicationSystemTestCase
 #     assert_no_selector "a", text: "Destroy"
 #   end
 # end
+end
