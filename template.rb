@@ -126,9 +126,10 @@ def add_settings
 end
 
 def copy_templates
-  directory "test", force: true
-  directory "db", force: true
   directory "app", force: true
+  directory "config", force: true
+  directory "db", force: true
+  directory "test", force: true
 
   # initial layout views / partials with tailwind classes
   # tailwind default setup
