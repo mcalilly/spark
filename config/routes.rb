@@ -14,4 +14,7 @@ Rails.application.routes.draw do
   get "/about", to: "static_pages#about", as: "about"
   get "/contact-us", to: "static_pages#contact", as: "contact"
 
+  # Settings
+  resources :settings
+
 end

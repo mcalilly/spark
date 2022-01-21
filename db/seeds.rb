@@ -14,7 +14,7 @@ User.create!(
 )
 
 User.create!(
-  email: "elvis@example.com",
+  email: "admin@example.com",
   password: "password",
   role: "admin"
 )
