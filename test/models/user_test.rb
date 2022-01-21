@@ -64,7 +64,7 @@ end
   end
 
   test "New users should not be admins" do
-    assert @signed_up_user.admin?
+    assert @admin.admin?
     assert_not @non_admin.admin?
     assert @non_admin.guest?
   end
