@@ -12,6 +12,6 @@ Rails.application.routes.draw do
 
   # Static Pages
   get "/about", to: "static_pages#about", as: "about"
-  get "/contact-us", to: "static_pages#contact_us", as: "contact"
+  get "/contact-us", to: "static_pages#contact", as: "contact"
 
 end
