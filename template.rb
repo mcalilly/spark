@@ -1,12 +1,23 @@
 require "fileutils"
 require "shellwords"
 
-# Copied from: https://github.com/excid3/jumpstart/blob/master/template.rb
-# rails new your_app -m path/to/this/spark.rb
-# also your ~/.railsrc should have --database=postgresql
+def add_template_repository_to_source_path
+  if __FILE__ =~ %r{\Ahttps?://}
+    require "tmpdir"
+    source_paths.unshift(tempdir = Dir.mktmpdir("spark-"))
+    at_exit { FileUtils.remove_entry(tempdir) }
+    git clone: [
+      "--quiet",
+      "https://github.com/mcalilly/spark.git",
+      tempdir
+    ].map(&:shellescape).join(" ")
 
-def set_source_paths
-  source_paths.unshift(File.dirname(__FILE__))
+    if (branch = __FILE__[%r{spark/(.+)/template.rb}, 1])
+      Dir.chdir(tempdir) { git checkout: branch }
+    end
+  else
+    source_paths.unshift(File.dirname(__FILE__))
+  end
 end
 
 def rails_version
@@ -93,7 +104,8 @@ def setup_the_db
 end
 
 # Main setup
-set_source_paths
+template "ruby-version.tt", ".ruby-version", force: true
+add_template_repository_to_source_path
 add_gems
 
 after_bundle do

@@ -4,13 +4,14 @@ Like the Wordpress famous 5-minute install, but for Rails. With Rails 7 and tool
 
 By modeling content directly in a database with trusty old Rails, you
 
-The goal of this script is to automate all of the repetitive stuff needed to set up a new brochure-style site such as authentication and an admin namespace, and then create generators for .
+The goal of this script is to automate all of the repetitive stuff needed to set up a new brochure-style site such as authentication and an admin namespace, and then create generators for common features like a blog.
 
-With most websites, 80% of what you need can be automated with a Rails generator and then re-used as needed on any new project (things like a blog, static pages, etc.)
-
-Starting with Spark can be just as easy as installing any CMS, but with added flexibility and power of Rails.
+Starting with Spark can be just as easy as installing any CMS, but with added flexibility and power of Rails. For most websites, 80% of what you need can be automated with a Rails generator and then re-used as needed on any new project (things like a blog, static pages, etc.) This gives you the convenience of using a CMS with the flexibility of a custom rails app.
 
 
-## How to Use
+## Creating a new app
+Create from github:
+* `rails new your_app -d postgresql -m https://raw.githubusercontent.com/mcalilly/spark/main/template.rb --css tailwind`
 
-* `rails new your_app -m spark.rb`
+Or if you've downloaded this repo locally:
+* `rails new your_app -d postgresql -m template.rb --css tailwind`
