@@ -101,6 +101,7 @@ end
 def copy_templates
   directory "test", force: true
   directory "db", force: true
+  directory "app", force: true
 
   # initial layout views / partials with tailwind classes
   # tailwind default setup
