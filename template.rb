@@ -144,9 +144,7 @@ after_bundle do
   say
   say "Spark app successfully created!", :blue
   say
-  say "To get started with your new app:", :green
-  say "  mv #{original_app_name} ../ && cd ../#{original_app_name} then run `rails s`"
-  say
+  say "Now just run `mv ./#{original_app_name} ../ && cd ../#{original_app_name} && rails s`"
   say "  # Update config/database.yml with your database credentials"
   say
 end
