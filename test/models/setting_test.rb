@@ -10,8 +10,9 @@ class SettingTest < ActiveSupport::TestCase
   end
 
   test "it should only allow one setting instance in the database" do
-    duplicate_settings = Setting.create(site_title: "Another Site", site_tagline: "Another tagline", site_description: "Another description", email: "test@example.com", facebook_handle: "test", twitter_handle: "test", instagram_handle: "test")
-    refute duplicate_settings.valid?
+    assert_no_difference 'Setting.count' do
+      Setting.create(site_title: "Another Site", site_tagline: "Another tagline", site_description: "Another description", email: "test@example.com", facebook_handle: "test", twitter_handle: "test", instagram_handle: "test")
+    end
   end
 
   test "site title should be present" do

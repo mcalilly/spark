@@ -64,8 +64,35 @@ def add_authentication
   generate "devise:install"
   generate "devise:views"
 
+  # Configure Devise to handle TURBO_STREAM requests like HTML requests
+  inject_into_file "config/initializers/devise.rb", "  config.navigational_formats = ['/', :html, :turbo_stream]", after: "Devise.setup do |config|\n"
+
+  inject_into_file 'config/initializers/devise.rb', after: "# frozen_string_literal: true\n" do <<~EOF
+    class TurboFailureApp < Devise::FailureApp
+      def respond
+        if request_format == :turbo_stream
+          redirect
+        else
+          super
+        end
+      end
+      def skip_format?
+        %w(html turbo_stream */*).include? request_format.to_s
+      end
+    end
+  EOF
+  end
+
+  inject_into_file 'config/initializers/devise.rb', after: "# ==> Warden configuration\n" do <<-EOF
+  config.warden do |manager|
+    manager.failure_app = TurboFailureApp
+  end
+  EOF
+  end
+
+  environment "config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }", env: 'development'
+
   generate :devise, "User", "role:integer"
-  # inject turbo failure app into the view
 end
 
 def add_authorization

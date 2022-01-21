@@ -4,14 +4,6 @@
       Settings
     <% end %>
 
-    <% content_for :page_actions do %>
-      <% if @settings.present? %>
-        <span class="shadow-sm rounded-md">
-          <%= link_to "Update Settings", edit_setting_path(Setting.last), class: "inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out" %>
-        </span>
-      <% end %>
-    <% end %>
-
     <% if @settings.present? %>
       <div>
         <div>
@@ -30,9 +22,19 @@
                   Site name
                 </dt>
                 <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                  <%= setting.site_name %>
+                  <%= setting.site_title %>
                 </dd>
               </div>
+
+              <div class="sm:grid sm:grid-cols-3 sm:gap-4">
+                <dt class="text-sm leading-5 font-medium text-gray-500">
+                  Site tagline
+                </dt>
+                <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+                  <%= setting.site_tagline %>
+                </dd>
+              </div>
+
               <div class="mt-8 sm:grid sm:mt-5 sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                 <dt class="text-sm leading-5 font-medium text-gray-500">
                   Site description
@@ -47,6 +49,15 @@
                 </dt>
                 <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
                   <%= setting.email %>
+                </dd>
+              </div>
+
+              <div class="mt-8 sm:grid sm:mt-5 sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                <dt class="text-sm leading-5 font-medium text-gray-500">
+                  Phone
+                </dt>
+                <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+                  <%= setting.phone %>
                 </dd>
               </div>
               <div class="mt-8 sm:grid sm:mt-5 sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
@@ -80,17 +91,10 @@
                   Address
                 </dt>
                 <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                  <%= setting.street %><br />
-                  <%= setting.city %>, <%= setting.state %> <%= setting.zip %>
-                </dd>
-              </div>
-
-              <div class="mt-8 sm:grid sm:mt-5 sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-                <dt class="text-sm leading-5 font-medium text-gray-500">
-                  Tracking codes
-                </dt>
-                <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                  <%= setting.tracking_codes %>
+                  <%= setting.address_line_one %><br />
+                  <%= setting.address_line_two %><br />
+                  <%= setting.city %>, <%= setting.state_or_province %> <%= setting.postal_code %><br>
+                  <%= setting.country %>
                 </dd>
               </div>
             <% end %>
