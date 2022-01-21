@@ -93,7 +93,7 @@ def add_static_pages
 end
 
 def add_settings
-  generate "scaffold Setting site_title:string site_tagline:string site_description:text email:string phone:string address_line_one:string address_line_two:string city:string state_or_province:string postal_code:string instagram_handle:string twitter_handle:string facebook_handle:string"
+  generate "scaffold Setting site_title:string site_tagline:string site_description:text email:string phone:string address_line_one:string address_line_two:string city:string state_or_province:string postal_code:string country:string instagram_handle:string twitter_handle:string facebook_handle:string"
 end
 
 def copy_templates
@@ -149,6 +149,8 @@ after_bundle do
   say "Now just run `mv ./#{original_app_name} ../ && cd ../#{original_app_name} && rails s`"
   say "  # Update config/database.yml with your database credentials"
   say
+
+  rails_command "test:all"
 end
 
 ## TO DO

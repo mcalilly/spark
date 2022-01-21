@@ -1,0 +1,15 @@
+spark_defaults:
+  site_title: Spark CMS
+  site_tagline: The simple CMS for rails
+  site_description: A wonderful new CMS built for Rails.
+  phone: 111-222-3333
+  email: hi@sparkcms.com
+  twitter_handle: ssparkcmss
+  facebook_handle: sparkcms
+  instagram_handle: spark_cms
+  address_line_one: 1600 Pennsylvania Avenue NW
+  address_line_two: Rear Entrance
+  city: Washington
+  state_or_province: DC
+  postal_code: 20500
+  country: United States
