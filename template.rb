@@ -124,7 +124,6 @@ after_bundle do
   add_action_text
   add_static_pages
   add_settings
-  add_tests
 
   copy_templates
 
