@@ -1,11 +1,9 @@
 admin:
   email: admin@example.com
-  role: 0 # guest
-  encrypted_password: <%= BCrypt::Password.create("staygreen", cost: 4) %>
-  remember_token: <%= Clearance::Token.new %>
+  role: 0 # admin
+  encrypted_password: <%= User.new.send(:password_digest, "password") %>
 
 guest:
   email: guest@example.com
-  role: 1 # admin
-  encrypted_password: <%= BCrypt::Password.create("bacon", cost: 4) %>
-  remember_token: <%= Clearance::Token.new %>
+  role: 1 # contributor
+  encrypted_password: <%= User.new.send(:password_digest, "password") %>
