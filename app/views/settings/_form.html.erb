@@ -1,9 +1,9 @@
 <%= form_with(model: setting) do |form| %>
   <% if setting.errors.any? %>
-    <div id="error_explanation" class="bg-red-300 px-4 py-2">
+    <div id="error_explanation" class="bg-red-100 px-4 py-2">
       <h2><%= pluralize(setting.errors.count, "error") %> prohibited this setting from being saved:</h2>
 
-      <ul>
+      <ul class="list-disc">
         <% setting.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
@@ -18,7 +18,7 @@
           Metadata
         </h3>
         <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
-          This is the default info used on the site for things like the page title and default reply-to email address.
+          This is the default info used on the site for things like the SEO page title and default site description.
         </p>
       </div>
       <div class="mt-6 sm:mt-5">
@@ -29,6 +29,18 @@
               <%= form.text_field :site_title, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
             </div>
             <p class="sm:max-w-xs mt-2 text-sm text-gray-500">Used for things such as the page title when a page-specific page one is not provided.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5">
+        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <%= form.label :site_tagline, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+              <%= form.text_field :site_tagline, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            </div>
+            <p class="sm:max-w-xs mt-2 text-sm text-gray-500">This is used in the default page title as well as other places it's natural to include it.</p>
           </div>
         </div>
       </div>
@@ -58,6 +70,17 @@
           <div class="mt-1 sm:mt-0 sm:col-span-2">
             <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
               <%= form.text_field :email, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5">
+        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <%= form.label :phone, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+              <%= form.text_field :phone, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
             </div>
           </div>
         </div>
@@ -117,6 +140,15 @@
       </div>
 
       <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <%= form.label :address_line_two, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+            <%= form.text_field :address_line_two, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
         <%= form.label :city, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"  %>
         <div class="mt-1 sm:mt-0 sm:col-span-2">
           <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
@@ -126,7 +158,7 @@
       </div>
 
       <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-        <%= form.label :state_or_province, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"  %>
+        <%= form.label :state_or_province, "State", class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"  %>
         <div class="mt-1 sm:mt-0 sm:col-span-2">
           <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
             <%= form.text_field :state_or_province, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
@@ -135,10 +167,19 @@
       </div>
 
       <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-        <%= form.label :postal_code, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+        <%= form.label :postal_code, "Zip code", class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
         <div class="mt-1 sm:mt-0 sm:col-span-2">
           <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
             <%= form.text_field :postal_code, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <%= form.label :country, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+            <%= form.text_field :country, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
           </div>
         </div>
       </div>
