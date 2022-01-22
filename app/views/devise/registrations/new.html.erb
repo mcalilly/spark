@@ -17,6 +17,7 @@
         <div class="mt-4">
           <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: { class: "space-y-6" } do |form| %>
             <%= render "devise/shared/error_messages", resource: resource %>
+    
             <fieldset class="space-y-1">
               <%= form.label :email, "Email address", class: "block text-sm font-medium text-gray-700" %>
               <div class="mt-1">
