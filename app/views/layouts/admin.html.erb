@@ -3,13 +3,13 @@
 	<%= render "layouts/shared/html_head" %>
 
 	<body>
-		<%= render "layouts/shared/header" %>
-		
 		<div x-data="{ offCanvasMenuOpen: false }">
 			<div class="h-screen flex overflow-hidden bg-white">
 			  <%= render "layouts/shared/admin/sidebar_mobile" %>
 
 			  <%= render "layouts/shared/admin/sidebar_desktop" %>
+
+				<%= render "layouts/shared/notices" %>
 
 			  <%= render "layouts/shared/admin/main" %>
 			</div>

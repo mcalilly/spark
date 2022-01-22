@@ -6,7 +6,7 @@ class Setting < ApplicationRecord
   validates :instagram_handle, presence: true
   validates :facebook_handle, presence: true
   validates :twitter_handle, presence: true
-  validate  :only_one_record_allowed
+  validate  :only_one_record_allowed, on: :create
 
   # Extra email validations (The other validations for passwords, email presence, that we test for are handled by Devise)
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -19,8 +19,8 @@ class Setting < ApplicationRecord
   private
 
     def only_one_record_allowed
-      if Setting.all.count >= 1
-        errors[:base] << "You can only have one group of settings."
+      if Setting.count >= 1
+        errors.add(:setting, "You can only have one group of settings.")
       end
     end
 end
