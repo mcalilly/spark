@@ -54,7 +54,7 @@ module ApplicationHelper
   end
 
   def facebook_handle
-    facebook_handle = Setting.last.twitter_handle
+    facebook_handle = Setting.last.facebook_handle
   end
 
   def twitter_handle
