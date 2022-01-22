@@ -32,7 +32,7 @@ class SettingsController < ApplicationController
       if @setting.save
         format.html { redirect_to @setting, notice: 'Setting was successfully created.' }
       else
-        format.html { render :new }
+        format.html { render :new, status: :unprocessable_entity }
       end
     end
   end
@@ -42,7 +42,7 @@ class SettingsController < ApplicationController
       if @setting.update(setting_params)
         format.html { redirect_to @setting, notice: 'Setting was successfully updated.' }
       else
-        format.html { render :edit }
+         format.html { render :edit, status: :unprocessable_entity }
       end
     end
   end
