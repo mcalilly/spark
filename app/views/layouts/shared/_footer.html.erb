@@ -6,7 +6,7 @@
 
 		<p class="copyright text-xs">
 			<%= link_to "https://github.com/mcalilly/spark/blob/master/MIT-LICENSE" do %>
-				&copy; <%= Time.zone.now.year %>.  <%= site_title %>.
+				&copy; <%= Time.zone.now.year %>. <%= site_title %>.
 			<% end %>
 		</p>
 	</section>
@@ -15,6 +15,7 @@
     <section class="login-links max-w-5xl px-4 mx-auto mt-8">
       <p>
         Signed in as <%= current_user.email %>. <%= link_to "Log out", log_out_path, method: :delete %>
+
 				<% if current_user.admin? %>
 					<span>User role: Admin</span>
 				<% else %>
@@ -23,4 +24,6 @@
       </p>
     </section>
   <% end %>
+
+	<%= render "layouts/shared/social_links"
 </footer>

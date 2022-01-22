@@ -10,7 +10,7 @@ class MainNavTest < ApplicationSystemTestCase
 
   test "Public nav should have a working links to static pages" do
     visit root_path
-    within "nav.main-nav" do
+    within "nav" do
       click_link "About"
       assert_current_path "/about"
       click_link "Contact"

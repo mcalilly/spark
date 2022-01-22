@@ -3,27 +3,29 @@
 
 <!-- HTML Metadata-->
 <title><%= full_title(yield(:title)) %></title>
-<meta name="author" content="<%= I18n.t('settings.site_author') %>">
+<meta name="author" content="Lee McAlilly">
 <meta name="description" content="<%= meta_description(yield(:page_meta_description)) %>">
-<% if meta_keywords(yield(:page_meta_keywords)) %>
+<% if meta_image(yield(:page_meta_keywords)) %>
 	<meta name="keywords" content="<%= meta_keywords(yield(:page_meta_keywords)) %>">
 <% end %>
-<link rel="canonical" href="<%= I18n.t('settings.site_url') %>" />
+<link rel="canonical" href="https://designwithspark.com" />
+
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
 <!-- FB Open Graph Metadata -->
-<meta property="og:url" content="<%= I18n.t('settings.site_url') %>" />
+<meta property="og:url" content="https://designwithspark.com" />
 <meta property="og:title" content="<%= full_title(yield(:title)) %>" />
 <meta property="og:description" content="<%= meta_description(yield(:page_meta_description)) %>" />
 <meta property="og:type" content="article" />
 <% if meta_image(yield(:page_meta_image)) %>
 	<meta property="og:image" content="<%= meta_image(yield(:page_meta_image)) %>" />
+ %>" />
 <% end %>
 
 <!-- Twitter Metadata-->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="<%= I18n.t('settings.twitter_handle') %>">
-<meta name="twitter:creator" content="<%= I18n.t('settings.site_author_twitter_handle') %>">
+<meta name="twitter:site" content="@ssparkdesignn">
+<meta name="twitter:creator" content="@leemcalilly">
 <meta name="twitter:title" content="<%= full_title(yield(:title)) %>" />
 <meta name="twitter:description" content="<%= meta_description(yield(:page_meta_description)) %>" />
 <% if meta_image(yield(:page_meta_image)) %>
