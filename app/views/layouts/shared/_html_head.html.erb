@@ -1,5 +1,5 @@
 <head>
-  <%= render "shared/metadata" %>
+  <%= render "layouts/shared/metadata" %>
 
   <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
@@ -11,9 +11,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
   <!-- /end Google fonts -->
 
-  <%= render "shared/favicon" %>
+  <%= render "layouts/shared/favicon" %>
 
   <% if Rails.env.production? %>
-		<%= render "shared/google_analytics" %>
+		<%= render "layouts/shared/google_analytics" %>
 	<% end %>
 </head>

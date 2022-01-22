@@ -1,15 +1,15 @@
 <head>
-	<%= render "shared/metadata" %>
+	<%= render "layouts/shared/metadata" %>
 
-	<%= render "shared/fonts" %>
+	<%= render "layouts/shared/fonts" %>
 
-	<%= render "shared/favicon" %>
+	<%= render "layouts/shared/favicon" %>
 
 	<%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 	<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 	<%= javascript_importmap_tags %>
 
 	<% if Rails.env.production? %>
-		<%= render "shared/google_analytics" %>
+		<%= render "layouts/shared/google_analytics" %>
 	<% end %>
 </head>

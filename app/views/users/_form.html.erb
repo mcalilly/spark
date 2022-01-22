@@ -1,5 +1,5 @@
 <%= form_for  @user, html: { class: "mt-8" } do |form| %>
-  <%= render "shared/error_messages", object: form.object %>
+  <%= render "layouts/shared/error_messages", object: form.object %>
 
   <fieldset>
     <%= form.label :email, class: "block text-sm font-medium leading-5 text-gray-700" %>
