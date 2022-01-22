@@ -14,7 +14,7 @@
 	<% if signed_in? %>
     <section class="login-links max-w-5xl px-4 mx-auto mt-8">
       <p>
-        Signed in as <%= current_user.email %>. <%= link_to "Sign out", sign_out_path, method: :delete %>
+        Signed in as <%= current_user.email %>. <%= link_to "Log out", log_out_path, method: :delete %>
 				<% if current_user.admin? %>
 					<span>User role: Admin</span>
 				<% else %>

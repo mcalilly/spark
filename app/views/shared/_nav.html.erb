@@ -21,7 +21,7 @@
 
     <nav class="utility-nav hidden md:flex items-center space-x-8">
       <% if signed_in? %>
-        <%= link_to "Sign out", sign_out_path, method: :delete, class: "whitespace-no-wrap text-base leading-6 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900" %>
+        <%= link_to "Sign out", log_out_path, method: :delete, class: "whitespace-no-wrap text-base leading-6 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900" %>
       <% else %>
         <%= link_to "Sign in", sign_in_path, class: "whitespace-no-wrap text-base leading-6 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900" %>
 
