@@ -4,5 +4,7 @@
   If I'm green then Tailwind is set up correctly.
 </h1>
 <p>
-  <%= site_email %>
+  <%= link_to "mailto:#{site_email}" do %>
+    <%= site_email %>
+  <% end %>
 </p>
