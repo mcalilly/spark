@@ -48,7 +48,7 @@ class SettingsTest < ApplicationSystemTestCase
 #     click_on "Add Settings"
 #     assert_current_path new_setting_path
 #     fill_in "Email", with: @setting.email
-#     fill_in "Site name", with: @setting.site_name
+#     fill_in "Site name", with: @setting.site_title
 #     fill_in "Site description", with: @setting.site_description
 #     fill_in "Tracking codes", with: @setting.tracking_codes
 #     fill_in "Twitter handle", with: @setting.twitter_handle
@@ -67,7 +67,7 @@ class SettingsTest < ApplicationSystemTestCase
 #   test "updating an Setting" do
 #     visit settings_path(as: @admin)
 #     click_on "Update Settings", match: :first
-#     fill_in "Email", with: "yet_another_site_name@example.com"
+#     fill_in "Email", with: "yet_another_site_title@example.com"
 #     click_button "Save"
 #
 #     within(".flash") do

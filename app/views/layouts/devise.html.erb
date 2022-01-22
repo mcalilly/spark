@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 
-  <%= render "shared/head" %>
+  <%= render "layouts/shared/head" %>
 
   <body x-data="{ isMobileNavOpen: false }">
-    <%= render "shared/header" %>
+    <%= render "layouts/shared/header" %>
 
-    <%= render "shared/notices" %>
+    <%= render "layouts/shared/notices" %>
 
     <main>
       <%= yield %>
     </main>
 
-    <%= render "shared/footer" %>
+    <%= render "layouts/shared/footer" %>
   </body>
 
 </html>

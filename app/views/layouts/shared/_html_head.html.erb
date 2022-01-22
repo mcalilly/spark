@@ -1,0 +1,19 @@
+<head>
+  <%= render "shared/metadata" %>
+
+  <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <!-- /end Google fonts -->
+
+  <%= render "shared/favicon" %>
+
+  <% if Rails.env.production? %>
+		<%= render "shared/google_analytics" %>
+	<% end %>
+</head>

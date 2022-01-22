@@ -1,0 +1,50 @@
+<header class="relative bg-white shadow z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
+      <div class="branding flex justify-start lg:w-0 lg:flex-1">
+        <%= link_to root_path do %>
+          <%= image_tag "logo.svg", class: "h-8 w-auto sm:h-10", alt: "#{Setting.last.site_title} logo" %>
+        <% end %>
+      </div>
+      <div class="-mr-2 -my-2 md:hidden">
+        <button
+          @click="isMobileNavOpen = true"
+          x-state:on="Item active"
+          x-state:off="Item inactive"
+          type="button"
+          class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false">
+          <span class="sr-only">Open menu</span>
+          <!-- Heroicon name: outline/menu -->
+          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+
+      <nav class="hidden md:flex space-x-10">
+        <%= link_to quotes_path, class: "text-base font-medium hover:text-gray-900 #{current_page?('/quotes') ? 'text-gray-900' : 'text-gray-500'}" do %>
+          Quotes
+        <% end %>
+
+        <%= link_to newsletter_path, class: "text-base font-medium hover:text-gray-900 #{current_page?('/newsletter') ? 'text-gray-900' : 'text-gray-500'}" do %>
+          Newsletter
+        <% end %>
+
+        <%= link_to about_path, class: "text-base font-medium hover:text-gray-900 #{current_page?('/about') ? 'text-gray-900' : 'text-gray-500'}" do %>
+          About
+        <% end %>
+      </nav>
+
+      <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+        <% if ENV["SEARCH"] == "enabled" %>
+          <div>
+            <label for="search" class="sr-only">Search</label>
+            <input type="search" name="search" id="search" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Search...">
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <%= render "shared/mobile_nav" %>
+</header>

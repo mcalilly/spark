@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
-	<%= render "shared/header" %>
+	<%= render "layouts/shared/html_head" %>
 
 	<body>
-		<%= render "shared/nav" %>
+		<%= render "layouts/shared/header" %>
 
-		<%= render "shared/flash" %>
+		<%= render "layouts/shared/nav" %>
+
+		<%= render "layouts/shared/flash" %>
 
 		<main class="container mx-auto mt-28 px-5 flex">
 			<h1 class="mt-2 text-2xl tracking-tight leading-none font-extrabold text-gray-900 sm:text-5xl">
@@ -14,7 +16,7 @@
 			<%= yield %>
 		</main>
 
-		<%= render "shared/footer" %>
+		<%= render "layouts/shared/footer" %>
 
 	</body>
 </html>

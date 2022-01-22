@@ -6,7 +6,7 @@ class FooterTest < ApplicationSystemTestCase
   test "should include a copyright" do
     visit root_path
     within("footer") do
-     assert_selector "p", text: "© #{Time.zone.now.year}. #{Setting.last.site_name}."
+     assert_selector "p", text: "© #{Time.zone.now.year}. #{Setting.last.site_title}."
     end
   end
 

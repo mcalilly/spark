@@ -37,8 +37,8 @@ module ApplicationHelper
     end
   end
 
-  def site_name
-    site_name = Setting.last.site_name
+  def site_title
+    site_title = Setting.last.site_title
   end
 
 end
