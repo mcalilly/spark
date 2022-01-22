@@ -3,7 +3,7 @@ require "application_system_test_case"
 class UserSignUpTest < ApplicationSystemTestCase
   test "Sign up page should work" do
     visit sign_up_path
-    assert_selector "h1", text: "Join today"
+    assert_selector "h1", text: "Sign up"
   end
 
   test "Invalid sign up information" do

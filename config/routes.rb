@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   devise_for :users
   devise_scope :user do
     get "/sign-in", to: "devise/sessions#new", as: "sign_in"
-    get "/join", to: "devise/registrations#new", as: "sign_up"
+    get "/sign-up", to: "devise/registrations#new", as: "sign_up"
     get "/logout", to: "devise/sessions#destroy", as: "log_out"
   end
 

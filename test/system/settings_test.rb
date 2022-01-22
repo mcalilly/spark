@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class SettingsTest < ApplicationSystemTestCase
   setup do
-    @setting = settings(:spark_defaults)
+    @current_settings = settings(:spark_defaults)
     # @admin = users(:admin)
     # @non_admin = users(:kermit)
   end
