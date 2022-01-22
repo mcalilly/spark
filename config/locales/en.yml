@@ -1,0 +1,18 @@
+en:
+  pundit:
+    setting_policy:
+      index?: "You don't have permission to update settings."
+      show?: "You don't have permission to update settings."
+      create?: "You don't have permission to update settings."
+      new?: "You don't have permission to update settings."
+      update?: "You don't have permission to update settings."
+      edit?: "You don't have permission to update settings."
+      destroy?: "You don't have permission to update settings."
+  settings:
+      create:
+        success: "Your new settings were successfully created."
+      delete:
+        success: "These settings have been deleted."
+      update:
+        success: "Your settings were updated."
+      only_one_record_allowed: "s: You can't make a new group of settings, only update the ones you already  have."
