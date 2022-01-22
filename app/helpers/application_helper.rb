@@ -41,8 +41,16 @@ module ApplicationHelper
     site_title = Setting.last.site_title
   end
 
+  def site_tagline
+    site_tagline = Setting.last.site_tagline
+  end
+
+  def site_description
+    site_description = Setting.last.site_description
+  end
+
   def site_email
-    site_email = Setting.last.site_email
+    site_email = Setting.last.email
   end
 
 end
