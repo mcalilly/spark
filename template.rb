@@ -179,8 +179,9 @@ after_bundle do
   say
   say "Spark app successfully created! Your tests should be green if everything was installed properly ; )", :blue
   say
-  say "Now just run `mv ./#{original_app_name} ../ && cd ../#{original_app_name} && rails s`"
-  say "  # Update config/database.yml with your database credentials"
+  say "Don't forget to move your new app to the correct directory on your local machine. Example: `mv ./#{original_app_name} ../ && cd ../#{original_app_name} && rails s`", :blue
+  say
+  say "# Update config/database.yml with your database credentials", :blue
   say
 end
 
