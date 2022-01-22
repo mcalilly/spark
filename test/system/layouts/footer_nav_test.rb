@@ -13,9 +13,9 @@ class FooterTest < ApplicationSystemTestCase
   test "should include social links" do
     visit root_path
     within("footer .social-links") do
-      assert_selector(:link, text: "Facebook", href: "https://facebook.com/ssparkcmss")
-      assert_selector(:link, text: "Twitter", href: "https://twitter.com/sparkcms")
-      assert_selector(:link, text: "Twitter", href: "https://twitter.com/spark_cms")
+      assert_selector(:link, text: "Facebook", href: "https://facebook.com/sparkcms")
+      assert_selector(:link, text: "Twitter", href: "https://twitter.com/ssparkcmss")
+      assert_selector(:link, text: "Instagram", href: "https://instagram.com/spark_cms")
     end
   end
 
