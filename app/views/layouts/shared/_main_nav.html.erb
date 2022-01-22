@@ -1,0 +1,13 @@
+<nav class="hidden md:flex space-x-10">
+  <%= link_to root_path, class: "text-base font-medium hover:text-gray-900 #{current_page?('/') ? 'text-gray-900' : 'text-gray-500'}" do %>
+    Home
+  <% end %>
+
+  <%= link_to about_path, class: "text-base font-medium hover:text-gray-900 #{current_page?('/about') ? 'text-gray-900' : 'text-gray-500'}" do %>
+    About
+  <% end %>
+
+  <%= link_to contact_path, class: "text-base font-medium hover:text-gray-900 #{current_page?('/contact-us') ? 'text-gray-900' : 'text-gray-500'}" do %>
+    Contact
+  <% end %>
+</nav>

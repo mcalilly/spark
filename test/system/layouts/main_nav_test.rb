@@ -15,7 +15,7 @@ class MainNavTest < ApplicationSystemTestCase
       assert_current_path "/about"
       click_link "Contact"
       assert_current_path "/contact-us"
-      click_link Setting.last.site_title
+      click_link "Home"
       assert_current_path "/"
     end
   end

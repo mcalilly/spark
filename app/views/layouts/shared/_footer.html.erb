@@ -11,6 +11,8 @@
 		</p>
 	</section>
 
+	<%= render "layouts/shared/social_links" %>
+
 	<% if current_user %>
     <section class="login-links max-w-5xl px-4 mx-auto mt-8">
       <p>
@@ -24,6 +26,4 @@
       </p>
     </section>
   <% end %>
-
-	<%= render "layouts/shared/social_links" %>
 </footer>

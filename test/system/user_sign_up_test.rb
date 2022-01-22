@@ -25,7 +25,7 @@ class UserSignUpTest < ApplicationSystemTestCase
     end
     assert_current_path root_path
     within "footer" do
-      assert_selector "a", text: "Log Out"
+      assert_selector "a", text: "Log out"
     end
   end
 
