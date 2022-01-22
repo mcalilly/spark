@@ -20,7 +20,7 @@ class Setting < ApplicationRecord
 
     def only_one_record_allowed
       if Setting.count >= 1
-        errors.add(:setting, "You can only have one group of settings.")
+        errors.add(:base, "s: You can't make a new group of settings, only update the ones you already  have.")
       end
     end
 end

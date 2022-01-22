@@ -1,6 +1,6 @@
 <%= form_with(model: setting) do |form| %>
   <% if setting.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="bg-red-300 px-4 py-2">
       <h2><%= pluralize(setting.errors.count, "error") %> prohibited this setting from being saved:</h2>
 
       <ul>
