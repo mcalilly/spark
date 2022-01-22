@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   include Pundit
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+  layout :determine_layout
+
   private
     def determine_layout
       if user_signed_in? && controller_name != "static_pages"

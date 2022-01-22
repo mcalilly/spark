@@ -177,7 +177,7 @@ after_bundle do
   rails_command "test:all"
 
   say
-  say "Spark app successfully created! Your tests should be green if everything was installed properly ; )", :blue
+  say "Spark app successfully created! Your tests should be green if everything was installed properly ; )", :green
   say
   say "Don't forget to move your new app to the correct directory on your local machine. Example: `mv ./#{original_app_name} ../ && cd ../#{original_app_name} && rails s`", :blue
   say
