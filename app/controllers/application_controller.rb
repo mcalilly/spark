@@ -7,9 +7,7 @@ class ApplicationController < ActionController::Base
   private
     def determine_layout
       if user_signed_in? && controller_name != "static_pages"
-        "application"
-      elsif controller_name == "static_pages" && action_name == "home"
-        "home"
+        "admin"
       elsif controller_name == "sessions" || controller_name == "users" || controller_name == "registrations" || controller_name == "passwords"
         "devise"
       else
