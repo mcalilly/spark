@@ -37,33 +37,31 @@ module ApplicationHelper
     end
   end
 
-  @settings = Setting.last
-
   def site_title
-    site_title = @settings.site_title
+    site_title = Setting.last.site_title
   end
 
   def site_tagline
-    site_tagline = @settings.site_tagline
+    site_tagline = Setting.last.site_tagline
   end
 
   def site_description
-    site_description = @settings.site_description
+    site_description = Setting.last.site_description
   end
 
   def site_email
-    site_email = @settings.email
+    site_email = Setting.last.email
   end
 
   def facebook_handle
-    facebook_handle = @settings.twitter_handle
+    facebook_handle = Setting.last.twitter_handle
   end
 
   def twitter_handle
-    twitter_handle = @settings.twitter_handle
+    twitter_handle = Setting.last.twitter_handle
   end
 
   def instagram_handle
-    instagram_handle = @settings.instagram_handle
+    instagram_handle = Setting.last.instagram_handle
   end
 end
