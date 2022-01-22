@@ -1,4 +1,4 @@
-<% if signed_in? && current_user.admin? %>
+<% if current_user && current_user.admin? %>
   <% content_for :h1 do %>
     Edit Settings
   <% end %>

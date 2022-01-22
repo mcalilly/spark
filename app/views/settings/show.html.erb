@@ -1,4 +1,4 @@
-<% if signed_in? && current_user.admin? %>
+<% if current_user && current_user.admin? %>
   <section>
     <% content_for :h1 do %>
       Settings

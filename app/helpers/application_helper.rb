@@ -41,4 +41,8 @@ module ApplicationHelper
     site_title = Setting.last.site_title
   end
 
+  def site_email
+    site_email = Setting.last.site_email
+  end
+
 end
