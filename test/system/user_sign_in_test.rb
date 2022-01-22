@@ -2,7 +2,7 @@ require 'application_system_test_case'
 
 class UserSignInTest < ApplicationSystemTestCase
   def setup
-    @user = users(:contributor)
+    @user = users(:guest)
   end
 
   test "Route for Sign in page should have the right content" do
