@@ -107,8 +107,8 @@ def add_authentication
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: "email-smtp.us-east-2.amazonaws.com",
-    user_name: "#{Rails.application.credentials.dig(:aws, :smtp_user_name)}",
-    password: "#{Rails.application.credentials.dig(:aws, :smtp_password)}",
+    user_name: "UPDATE THIS WITH Rails.application.credentials.dig(:aws, :smtp_user_name)",
+    password: "UPDATE THIS WITH Rails.application.credentials.dig(:aws, :smtp_password)",
     port: 587,
     authentication: :plain,
     enable_starttls_auto: true
