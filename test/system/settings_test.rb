@@ -25,13 +25,13 @@ class SettingsTest < ApplicationSystemTestCase
     assert_text "Sign in to your account"
     sign_in @non_admin
     visit new_setting_path
-    assert_text "You cannot perform this action."
+    assert_text "You don't have permission to update settings."
 
     visit edit_setting_path
     assert_text "You must login"
     sign_in @non_admin
     visit edit_setting_path(@current_settings)
-    assert_text "You cannot perform this action."
+    assert_text "You don't have permission to update settings."
 
     visit setting_path(@current_settings)
     assert_text "Sign in to your account"
@@ -79,7 +79,7 @@ class SettingsTest < ApplicationSystemTestCase
   test "updating an Setting" do
     sign_in @admin
     visit edit_setting_path(@current_settings)
-    fill_in "Email", with: "yet_another_email@example.com"
+    fill_in "Site title", with: "An Updated Site Title"
     click_button "Save"
     assert_text "Your settings were updated."
   end
