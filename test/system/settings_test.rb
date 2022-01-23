@@ -25,17 +25,13 @@ class SettingsTest < ApplicationSystemTestCase
     assert_text "You must login"
     sign_in @non_admin
     visit new_setting_path
-    within(".flash") do
-      assert_text "You cannot perform this action."
-    end
+    assert_text "You cannot perform this action."
 
     visit edit_setting_path
     assert_text "You must login"
     sign_in @non_admin
     visit edit_setting_path(@current_settings)
-    within(".flash") do
-      assert_text "You cannot perform this action."
-    end
+    assert_text "You cannot perform this action."
 
     visit setting_path(@current_settings)
     assert_text "You must login"
@@ -77,9 +73,7 @@ class SettingsTest < ApplicationSystemTestCase
     fill_in "Zip code", with: "11211"
     fill_in "Country", with: "United States"
     click_button "Save"
-    within(".flash") do
-      assert_text "Setting was successfully created"
-    end
+    assert_text "Setting was successfully created"
   end
 
   test "updating an Setting" do
@@ -88,10 +82,7 @@ class SettingsTest < ApplicationSystemTestCase
     click_on "Update Settings", match: :first
     fill_in "Email", with: "yet_another_email@example.com"
     click_button "Save"
-
-    within(".flash") do
-      assert_text "Setting was successfully updated"
-    end
+    assert_text "Setting was successfully updated"
   end
 
   test "no one should see a link to destroy Settings" do
