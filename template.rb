@@ -55,11 +55,6 @@ end
 def set_application_name
   # Never add stylesheets when running rails scaffold
   environment "config.generators  { |g| g.scaffold_stylesheet false }"
-  # Add Application Name to Config
-  environment "config.application_name = Rails.application.class.module_parent_name"
-
-  something('hello') { g.stylesheets false }
-
   # Announce the user where they can change the application name in the future.
   puts "You can change application name inside: ./config/application.rb"
 end
@@ -124,6 +119,15 @@ def add_action_text
   # to do
 end
 
+def add_generator_configs
+  inject_into_file 'config/application.rb', after: "# Configuration for the application, engines, and railties goes here.\n" do <<-EOF
+  config.generators do |g|
+    g.scaffold_stylesheet false
+  end
+  EOF
+  end
+end
+
 def add_static_pages
   generate :controller, "static_pages home about contact"
 end
@@ -162,6 +166,7 @@ after_bundle do
   add_javascript
   add_active_storage
   add_action_text
+  add_generator_configs
   add_static_pages
   add_settings
 
