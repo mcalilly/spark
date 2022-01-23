@@ -121,9 +121,10 @@ end
 
 def add_generator_configs
   inject_into_file 'config/application.rb', after: "# Configuration for the application, engines, and railties goes here.\n" do <<-EOF
-  config.generators do |g|
-    g.scaffold_stylesheet false
-  end
+    # Customize the rails generators
+    config.generators do |g|
+      g.scaffold_stylesheet false
+    end
   EOF
   end
 end
