@@ -58,10 +58,6 @@ def set_application_name
   # Add Application Name to Config
   environment "config.application_name = Rails.application.class.module_parent_name"
 
-  config.generators do |g|
-    g.stylesheets false
-  end
-
   something('hello') { g.stylesheets false }
 
   # Announce the user where they can change the application name in the future.
