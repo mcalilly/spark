@@ -67,6 +67,9 @@ def add_authentication
   # Configure Devise to handle TURBO_STREAM requests like HTML requests
   inject_into_file "config/initializers/devise.rb", "  config.navigational_formats = ['/', :html, :turbo_stream]", after: "Devise.setup do |config|\n"
 
+  # Use this until devise works with Hotwire
+  inject_into_file "config/initializers/devise.rb", "config.parent_controller = 'TurboDeviseController'", after: "# Configure the parent class to the devise controllers.\n"
+
   inject_into_file 'config/initializers/devise.rb', after: "# frozen_string_literal: true\n" do <<~EOF
     class TurboFailureApp < Devise::FailureApp
       def respond
