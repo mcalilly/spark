@@ -73,7 +73,7 @@ class SettingsTest < ApplicationSystemTestCase
     fill_in "Zip code", with: "11211"
     fill_in "Country", with: "United States"
     click_button "Save"
-    assert_text "Setting was successfully created"
+    assert_text "Your new settings were successfully created."
   end
 
   test "updating an Setting" do
@@ -82,7 +82,7 @@ class SettingsTest < ApplicationSystemTestCase
     click_on "Update Settings", match: :first
     fill_in "Email", with: "yet_another_email@example.com"
     click_button "Save"
-    assert_text "Setting was successfully updated"
+    assert_text "Your settings were updated."
   end
 
   test "no one should see a link to destroy Settings" do
