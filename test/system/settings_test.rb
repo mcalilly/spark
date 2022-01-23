@@ -22,7 +22,7 @@ class SettingsTest < ApplicationSystemTestCase
 
   test "non-admins should not be able to view, create, edit, or delete" do
     visit new_setting_path
-    assert_text "You must login"
+    assert_text "Sign in to your account"
     sign_in @non_admin
     visit new_setting_path
     assert_text "You cannot perform this action."
@@ -34,7 +34,7 @@ class SettingsTest < ApplicationSystemTestCase
     assert_text "You cannot perform this action."
 
     visit setting_path(@current_settings)
-    assert_text "You must login"
+    assert_text "Sign in to your account"
     sign_in @non_admin
     visit setting_path(@current_settings)
     assert_no_selector "h1", text: "Settings"
@@ -42,7 +42,7 @@ class SettingsTest < ApplicationSystemTestCase
     assert_no_selector "a", text: "Destroy"
 
     visit settings_path
-    assert_text "You must login"
+    assert_text "Sign in to your account"
     sign_in @non_admin
     visit settings_path
     assert_no_selector "h1", text: "Settings"
@@ -63,9 +63,9 @@ class SettingsTest < ApplicationSystemTestCase
     fill_in "Site tagline", with: "A new tagline"
     fill_in "Email", with: "new@example.com"
     fill_in "Phone", with: "777-888-9999"
-    fill_in "Twitter handle", with: "new"
-    fill_in "Facebook handle", with: "new"
-    fill_in "Instagram handle", with: "new"
+    fill_in "Twitter handle", with: "new_twitter"
+    fill_in "Facebook handle", with: "new_facebook"
+    fill_in "Instagram handle", with: "new_instagram"
     fill_in "Address line one", with: "1234 Main Street"
     fill_in "Address line one", with: "Apt 7"
     fill_in "City", with: "Brooklyn"
@@ -78,8 +78,7 @@ class SettingsTest < ApplicationSystemTestCase
 
   test "updating an Setting" do
     sign_in @admin
-    visit settings_path
-    click_on "Update Settings", match: :first
+    visit edit_setting_path(@current_settings)
     fill_in "Email", with: "yet_another_email@example.com"
     click_button "Save"
     assert_text "Your settings were updated."
