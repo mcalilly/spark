@@ -21,29 +21,29 @@ class SettingsTest < ApplicationSystemTestCase
   end
 
   test "non-admins should not be able to view, create, edit, or delete" do
+    # first test the general public
     visit new_setting_path
     assert_text "Sign in to your account"
-    sign_in @non_admin
-    visit new_setting_path
-    assert_text "You don't have permission to update settings."
-
     visit edit_setting_path(@current_settings)
     assert_text "Sign in to your account"
-    sign_in @non_admin
-    visit edit_setting_path(@current_settings)
-    assert_text "You don't have permission to update settings."
-
     visit setting_path(@current_settings)
     assert_text "Sign in to your account"
+    visit settings_path
+    assert_text "Sign in to your account"
+
+    # Then test as a non admin    
     sign_in @non_admin
+    visit new_setting_path
+    assert_text "You don't have permission to update settings."
+
+    visit edit_setting_path(@current_settings)
+    assert_text "You don't have permission to update settings."
+
     visit setting_path(@current_settings)
     assert_no_selector "h1", text: "Settings"
     assert_no_selector "a", text: "Delete"
     assert_no_selector "a", text: "Destroy"
 
-    visit settings_path
-    assert_text "Sign in to your account"
-    sign_in @non_admin
     visit settings_path
     assert_no_selector "h1", text: "Settings"
     assert_no_selector "a", text: "Delete"
