@@ -136,6 +136,7 @@ def add_javascript
     console.log("Turbo is working on each visit!")
   })
   EOF
+  end
 
   # importmap-rails
   # confirm stimulus is working & turbo with test controllers that print to console.log
