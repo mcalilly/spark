@@ -53,11 +53,10 @@ def add_gems
 end
 
 def set_application_name
+  # Never add stylesheets when running rails scaffold
+  environment "config.generators  { |g| g.scaffold_stylesheet false }"
   # Add Application Name to Config
   environment "config.application_name = Rails.application.class.module_parent_name"
-  environment "config.generators do |g|\n
-                g.scaffold_stylesheet false\n
-              end"
 
   config.generators do |g|
     g.stylesheets false
