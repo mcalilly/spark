@@ -9,14 +9,14 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
     sign_in @admin
     get settings_url
-    assert_response :success
+    assert_redirected_to edit_setting_url(@current_settings)
   end
 
   test "should get new" do
     # It should redirect unless the settings are nil
     sign_in @admin
     get new_setting_url
-    assert_redirected_to edit_setting_url(@current_settings)
+    assert_redirected_to setting_url(@current_settings)
   end
 
   test "should not allow you to create new settings only edit the existing ones" do
@@ -46,7 +46,7 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
 
   test "should not allow settings to be deleted, only updated" do
     sign_in @admin
-    assert_difference("Setting.count", 0) do
+    assert_no_difference("Setting.count") do
       delete setting_url(@current_settings)
     end
   end

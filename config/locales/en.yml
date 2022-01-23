@@ -15,4 +15,5 @@ en:
         success: "These settings have been deleted."
       update:
         success: "Your settings were updated."
-      only_one_record_allowed: "s: You can't make a new group of settings, only update the ones you already  have."
+      only_one_record_allowed: "s: You can't make a new group of settings, only update the ones you already have."
+      keep_at_least_one_record: "s: You can't delete your settings, you must have at least one group of settings saved at all times."

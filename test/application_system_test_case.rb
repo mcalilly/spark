@@ -2,6 +2,7 @@ require "test_helper"
 
 Capybara.disable_animation = true
 Capybara.default_max_wait_time = 10
+Capybara.ignore_hidden_elements = false
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   driven_by :selenium, using: :headless_chrome, screen_size: [1400, 1400]

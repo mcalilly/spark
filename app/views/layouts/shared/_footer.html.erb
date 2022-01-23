@@ -14,7 +14,7 @@
 	<%= render "layouts/shared/social_links" %>
 
 	<% if current_user %>
-    <section class="login-links max-w-5xl px-4 mx-auto mt-8">
+    <div class="login-links max-w-5xl px-4 mx-auto mt-8">
       <p>
         Signed in as <%= current_user.email %>. <%= link_to "Log out", log_out_path, method: :delete %>
 
@@ -24,6 +24,6 @@
 					<span>User role: Guest</span>
 				<% end %>
       </p>
-    </section>
+    </div>
   <% end %>
 </footer>
