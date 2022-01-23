@@ -28,7 +28,7 @@ class SettingsTest < ApplicationSystemTestCase
     assert_text "You don't have permission to update settings."
 
     visit edit_setting_path(@current_settings)
-    assert_text "You must login"
+    assert_text "Sign in to your account"
     sign_in @non_admin
     visit edit_setting_path(@current_settings)
     assert_text "You don't have permission to update settings."
