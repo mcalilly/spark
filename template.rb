@@ -131,10 +131,12 @@ end
 def add_javascript
   # Confirm that Turb is wired up correctly
   inject_into_file 'app/javascript/controllers/application.js', after: "window.Stimulus   = application\n" do <<-EOF
+  \n
   // Delete this whenever. Just here to confirm that Turbo is working
   document.addEventListener("turbo:load", () => {
     console.log("Turbo is working on each visit!")
   })
+  \n
   EOF
   end
 

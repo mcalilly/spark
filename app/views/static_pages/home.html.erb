@@ -15,12 +15,13 @@
     </h2>
 
     <p>
-      Use this to confirm that Stimulus is wired up correctly. Delete it whenever.
+      Use this to confirm that Stimulus is wired up correctly. Whatever you enter in the text field shoudl show up in the console when you click the greet button if Stimulus is working properly. Delete this at your leisure.
     </p>
 
     <div data-controller="hello">
-      <input type="text">
-      <button>Greet</button>
+      <input data-hello-target="name" type="text">
+      <button data-action="click->hello#greet">Greet</button>
     </div>
+
   </div>
 </section>
