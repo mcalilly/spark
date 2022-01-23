@@ -44,9 +44,9 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to setting_url(@current_settings)
   end
 
-  test "should not allow settings to be deleted, only updated" do
+  test "destroy action should work if needed, though we're not showing this to the user" do
     sign_in @admin
-    assert_no_difference("Setting.count") do
+    assert_difference("Setting.count", -1) do
       delete setting_url(@current_settings)
     end
   end
