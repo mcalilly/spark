@@ -212,11 +212,13 @@ after_bundle do
   rails_command "test:all"
 
   say
-  say "Spark app successfully created! Your tests should be green if everything was installed properly ; )", :green
+  say "Your app was successfully Spark-ed up! Tests should be green if everything was installed properly ; )", :green
   say
-  say "### Next Steps ###"
+  say "### Next Steps ###", :blue
   say "1. Don't forget to move your new app to the correct directory on your local machine. Example: `mv ./#{original_app_name} ../ && cd ../#{original_app_name} && rails s`", :blue
+  say
   say "2. Update config/environments/production.rb with your mailer domain and set up your Amazon keys to send password reset emails in production", :blue
+  say
   say "3. Update config/database.yml with your database credentials", :blue
   say
 end
