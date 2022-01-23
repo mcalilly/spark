@@ -5,24 +5,18 @@
     </h1>
 
     <% if @setting.present? %>
-      <span class="shadow-sm rounded-md">
-        <%= link_to "Update Settings", edit_setting_path(Setting.last), class: "inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out" %>
-      </span>
-    <% end %>
-
-    <% if @setting.present? %>
       <div>
         <div class="mt-5">
           <dl>
             <div class="sm:grid sm:grid-cols-3 sm:gap-4">
               <dt class="text-sm leading-5 font-medium text-gray-500">
-                Site name
+                Site title
               </dt>
               <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
                 <%= @setting.site_title %>
               </dd>
             </div>
-            <div class="sm:grid sm:grid-cols-3 sm:gap-4">
+            <div class="mt-8 sm:grid sm:mt-5 sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
               <dt class="text-sm leading-5 font-medium text-gray-500">
                 Site tagline
               </dt>
@@ -44,6 +38,14 @@
               </dt>
               <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
                 <%= @setting.email %>
+              </dd>
+            </div>
+            <div class="mt-8 sm:grid sm:mt-5 sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+              <dt class="text-sm leading-5 font-medium text-gray-500">
+                Phone
+              </dt>
+              <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+                <%= @setting.phone %>
               </dd>
             </div>
             <div class="mt-8 sm:grid sm:mt-5 sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
@@ -85,8 +87,11 @@
             </div>
           </dl>
         </div>
-      </div>
 
+        <span class="shadow-sm rounded-md my-4">
+          <%= link_to "Update Settings", edit_setting_path(Setting.last), class: "inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out" %>
+        </span>
+      </div>
     <% else %>
 
       <p>

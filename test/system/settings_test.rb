@@ -18,7 +18,6 @@ class SettingsTest < ApplicationSystemTestCase
     sign_in @admin
     visit settings_path
     assert_selector "h1", text: "Settings"
-    assert_selector "a", text: "Update Settings"
   end
 
   test "non-admins should not be able to view, create, edit, or delete" do
@@ -74,8 +73,8 @@ class SettingsTest < ApplicationSystemTestCase
     fill_in "Address line one", with: "1234 Main Street"
     fill_in "Address line one", with: "Apt 7"
     fill_in "City", with: "Brooklyn"
-    fill_in "State or province", with: "NY"
-    fill_in "Postal code", with: "11211"
+    fill_in "State", with: "NY"
+    fill_in "Zip code", with: "11211"
     fill_in "Country", with: "United States"
     click_button "Save"
     within(".flash") do
