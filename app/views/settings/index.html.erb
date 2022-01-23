@@ -1,8 +1,8 @@
 <% if current_user && current_user.admin? %>
   <section>
-    <% content_for :h1 do %>
+    <h1>
       Settings
-    <% end %>
+    </h1>
 
     <% if @settings.present? %>
       <div>

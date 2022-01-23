@@ -1,15 +1,13 @@
 <% if current_user && current_user.admin? %>
   <section>
-    <% content_for :h1 do %>
+    <h1>
       Settings
-    <% end %>
+    </h1>
 
-    <% content_for :page_actions do %>
-      <% if @setting.present? %>
-        <span class="shadow-sm rounded-md">
-          <%= link_to "Update Settings", edit_setting_path(Setting.last), class: "inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out" %>
-        </span>
-      <% end %>
+    <% if @setting.present? %>
+      <span class="shadow-sm rounded-md">
+        <%= link_to "Update Settings", edit_setting_path(Setting.last), class: "inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out" %>
+      </span>
     <% end %>
 
     <% if @setting.present? %>

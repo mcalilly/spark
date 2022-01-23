@@ -1,7 +1,7 @@
 <% if current_user && current_user.admin? %>
-  <% content_for :h1 do %>
+  <h1>
     Edit Settings
-  <% end %>
+  </h1>
 
   <%= render 'form', setting: @setting %>
 <% end %>
