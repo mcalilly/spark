@@ -129,6 +129,14 @@ def add_css
 end
 
 def add_javascript
+  # Confirm that Turb is wired up correctly
+  inject_into_file 'app/javascript/controllers/application.js', after: "window.Stimulus   = application\n" do <<-EOF
+  // Delete this whenever. Just here to confirm that Turbo is working
+  document.addEventListener("turbo:load", () => {
+    console.log("Turbo is working on each visit!")
+  })
+  EOF
+
   # importmap-rails
   # confirm stimulus is working & turbo with test controllers that print to console.log
 end

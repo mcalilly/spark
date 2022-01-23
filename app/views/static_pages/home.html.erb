@@ -1,9 +1,26 @@
-<h1 class="text-green-600 text-3xl">
-  <%= site_title %>
-  <br>
-  If I'm green then Tailwind is set up correctly.
-</h1>
+<section class="prose">
+  <h1 class="text-green-600 text-3xl">
+    <%= site_title %>
+    <br>
+    If I'm green then Tailwind is set up correctly.
+  </h1>
 
-<p>
-  <%= site_description %>
-</p>
+  <p>
+    <%= site_description %>
+  </p>
+
+  <div class="py-16">
+    <h2>
+      Stimulus
+    </h2>
+
+    <p>
+      Use this to confirm that Stimulus is wired up correctly. Delete it whenever.
+    </p>
+
+    <div data-controller="hello">
+      <input type="text">
+      <button>Greet</button>
+    </div>
+  </div>
+</section>
