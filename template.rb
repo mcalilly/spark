@@ -203,7 +203,7 @@ after_bundle do
     git add: "."
     # git commit will fail if user.email is not configured
     begin
-      git commit: %( -m 'Initial commit' )
+      git commit: %( -m "Initial commit" )
     rescue StandardError => e
       puts e.message
     end
@@ -214,10 +214,10 @@ after_bundle do
   say
   say "Spark app successfully created! Your tests should be green if everything was installed properly ; )", :green
   say
-  say "Don't forget to move your new app to the correct directory on your local machine. Example: `mv ./#{original_app_name} ../ && cd ../#{original_app_name} && rails s`", :blue
-  say
-  say "# Update config/environments/production.rb with your mailer domain and set up your Amazon keys to send password reset emails in production"
-  say "# Update config/database.yml with your database credentials", :blue
+  say "### Next Steps ###"
+  say "1. Don't forget to move your new app to the correct directory on your local machine. Example: `mv ./#{original_app_name} ../ && cd ../#{original_app_name} && rails s`", :blue
+  say "2. Update config/environments/production.rb with your mailer domain and set up your Amazon keys to send password reset emails in production", :blue
+  say "3. Update config/database.yml with your database credentials", :blue
   say
 end
 
