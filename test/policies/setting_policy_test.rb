@@ -6,6 +6,7 @@ class SettingPolicyTest < PolicyTest
     @admin = users(:admin)
     @guest = users(:guest)
     @current_settings = settings(:spark_defaults)
+    @available_actions = [:index, :show, :create, :new, :update, :edit, :destroy]
   end
 
   test "admin user" do
@@ -21,7 +22,7 @@ class SettingPolicyTest < PolicyTest
   end
 
   test "guest user" do
-    assert permit(@guest, Setting.new, :new)
+    refute permit(@guest, Setting.new, :new)
     assert_permissions(@guest, @current_settings, @available_actions,
                        index: false,
                        show: false,

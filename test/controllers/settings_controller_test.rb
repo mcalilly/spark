@@ -16,7 +16,7 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
     # It should redirect unless the settings are nil
     sign_in @admin
     get new_setting_url
-    assert_redirected_to edit_settings_url(@current_settings)
+    assert_redirected_to edit_setting_url(@current_settings)
   end
 
   test "should not allow you to create new settings only edit the existing ones" do

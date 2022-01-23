@@ -7,11 +7,11 @@ class SettingPolicy < ApplicationPolicy
   end
 
   def index?
-    true
+    @current_user.admin?
   end
 
   def show?
-    true
+    @current_user.admin?
   end
 
   def create?
