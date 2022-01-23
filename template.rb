@@ -92,7 +92,29 @@ def add_authentication
   EOF
   end
 
+  # Set up devise password mailer in development
   environment "config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }", env: 'development'
+  # Set up devise password mailer in test
+  environment "config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }", env: 'test'
+
+  # Add initial production settings for Amazon Simple Email Service
+  inject_into_file 'config/initializers/devise.rb', after: "# config.action_mailer.raise_delivery_errors = false\n" do <<-EOF
+  # Use Amazon Simple Email Service for password resets
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_caching = false
+  config.action_mailer.default_url_options = { host: "https://example.com" }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: "email-smtp.us-east-2.amazonaws.com",
+    user_name: "#{Rails.application.credentials.dig(:aws, :smtp_user_name)}",
+    password: "#{Rails.application.credentials.dig(:aws, :smtp_password)}",
+    port: 587,
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
+  EOF
+  end
 
   generate :devise, "User", "role:integer"
 end
@@ -194,6 +216,7 @@ after_bundle do
   say
   say "Don't forget to move your new app to the correct directory on your local machine. Example: `mv ./#{original_app_name} ../ && cd ../#{original_app_name} && rails s`", :blue
   say
+  say "# Update config/environments/production.rb with your mailer domain and set up your Amazon keys to send password reset emails in production"
   say "# Update config/database.yml with your database credentials", :blue
   say
 end
