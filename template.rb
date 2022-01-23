@@ -98,7 +98,7 @@ def add_authentication
   environment "config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }", env: 'test'
 
   # Add initial production settings for Amazon Simple Email Service
-  inject_into_file 'config/initializers/devise.rb', after: "# config.action_mailer.raise_delivery_errors = false\n" do <<-EOF
+  inject_into_file 'config/environments/production.rb', after: "# config.action_mailer.raise_delivery_errors = false\n" do <<-EOF
   # Use Amazon Simple Email Service for password resets
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
