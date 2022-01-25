@@ -235,6 +235,7 @@ after_bundle do
 end
 
 ## TO DO
+# Add favicon default files (https://favicon.io/favicon-converter/)
 # Copy Stimulus files for toggling Tailwind UI menus
 # Set up admin namespace
 # Create heroku deploy environment for "production"
