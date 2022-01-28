@@ -231,7 +231,7 @@ after_bundle do
   rails_command "test:all"
 
   say
-  say "Your app was successfully Spark-ed up! It's using Ruby 3.0.3 and Rails 7. Tests should be green if everything was installed properly ; )", :green
+  say "Your app was successfully Spark-ed up! Tests should be green if everything was installed properly ; )", :green
   say
   say "### Next Steps ###", :blue
   say "1. Don't forget to move your new app to the correct directory on your local machine. Example: `mv ./#{original_app_name} ../ && cd ../#{original_app_name} && rails s`", :blue
