@@ -170,10 +170,16 @@ def add_settings
 end
 
 def copy_templates
+  # first remove files you want to copy so the user doesn't have to confirm with y/n in their terminal
+  remove_file ".ruby-version"
+
+  # copying directories will copy any files within these directories, recursively, that are different from what's already in the app you just created.
   directory "app", force: true
   directory "config", force: true
   directory "db", force: true
   directory "test", force: true
+
+  copy_file ".ruby-version"
 
   # initial layout views / partials with tailwind classes
   # tailwind default setup
@@ -222,14 +228,12 @@ after_bundle do
   rails_command "test:all"
 
   say
-  say "Your app was successfully Spark-ed up! Tests should be green if everything was installed properly ; )", :green
+  say "Your app was successfully Spark-ed up! It's using Ruby 3.0.3 and Rails 7. Tests should be green if everything was installed properly ; )", :green
   say
   say "### Next Steps ###", :blue
   say "1. Don't forget to move your new app to the correct directory on your local machine. Example: `mv ./#{original_app_name} ../ && cd ../#{original_app_name} && rails s`", :blue
   say
   say "2. Update config/environments/production.rb with your mailer domain and set up your Amazon keys to send password reset emails in production", :blue
-  say
-  say "3. Update config/database.yml with your database credentials", :blue
   say
 end
 
