@@ -8,9 +8,9 @@
 
 # Users
 User.create!(
-  email: "guest@example.com",
+  email: "member@example.com",
   password: "password",
-  role: "guest"
+  role: "member"
 )
 
 User.create!(

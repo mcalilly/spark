@@ -4,7 +4,7 @@ class UserTest < ActiveSupport::TestCase
   def setup
     @admin = users(:admin)
     @signed_up_user = users(:bob)
-    @non_admin = users(:guest)
+    @non_admin = users(:member)
     @potential_user = User.new(
                            email: "new_user@example.com",
                            password: "foobar",
@@ -66,7 +66,7 @@ end
   test "New users should not be admins" do
     assert @admin.admin?
     assert_not @non_admin.admin?
-    assert @non_admin.guest?
+    assert @non_admin.member?
   end
 
 end

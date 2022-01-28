@@ -3,7 +3,7 @@ require 'application_system_test_case'
 class UserPasswordResetTest < ApplicationSystemTestCase
   def setup
     ActionMailer::Base.deliveries.clear
-    @user = users(:guest)
+    @user = users(:member)
   end
 
   test "should allow you to request a password reset email" do

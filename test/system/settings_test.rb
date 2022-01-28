@@ -4,7 +4,7 @@ class SettingsTest < ApplicationSystemTestCase
   setup do
     @current_settings = settings(:spark_defaults)
     @admin = users(:admin)
-    @non_admin = users(:guest)
+    @non_admin = users(:member)
   end
 
   test "visiting the index should be accessible to admins and redirect to edit the current settings" do
@@ -31,7 +31,7 @@ class SettingsTest < ApplicationSystemTestCase
     visit settings_path
     assert_text "Sign in to your account"
 
-    # Then test as a non admin    
+    # Then test as a non admin
     sign_in @non_admin
     visit new_setting_path
     assert_text "You don't have permission to update settings."

@@ -21,19 +21,19 @@ class User < ApplicationRecord
             }
 
   # User roles
-  enum role: [:admin, :guest]
+  enum role: [:admin, :member]
   after_initialize :set_default_role, :if => :new_record?
 
   def admin?
    self.role == "admin"
   end
 
-  def guest?
-   self.role == "guest"
+  def member?
+   self.role == "member"
   end
 
   private
     def set_default_role
-      self.role ||= :guest
+      self.role ||= :member
     end
 end

@@ -120,7 +120,7 @@ end
 
 def add_authorization
   generate "pundit:install"
-  # create default admin / guest enum role
+  # create default admin / member enum role
 end
 
 def add_css
