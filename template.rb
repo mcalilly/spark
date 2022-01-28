@@ -36,7 +36,6 @@ def add_gems
   # remove sqlite
   gsub_file "Gemfile", /^gem\s+["']sqlite3["'].*$/,'gem "pg"'
 
-  gem "requestjs-rails"
   gem "image_processing"
   gem "devise"
   gem "pundit"
