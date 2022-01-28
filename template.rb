@@ -144,7 +144,7 @@ def add_javascript
 end
 
 def add_active_storage
-  # to do
+  rails_command "active_storage:install"
 end
 
 def add_action_text
