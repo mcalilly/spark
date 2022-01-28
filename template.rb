@@ -172,6 +172,10 @@ end
 def copy_templates
   # first remove files you want to copy so the user doesn't have to confirm with y/n in their terminal
   remove_file ".ruby-version"
+  remove_file "Procfile"
+
+  # Now copy any files from Spark that you removed
+  copy_file "Procfile"
 
   # copying directories will copy any files within these directories, recursively, that are different from what's already in the app you just created.
   directory "app", force: true
@@ -179,7 +183,6 @@ def copy_templates
   directory "db", force: true
   directory "test", force: true
 
-  copy_file ".ruby-version"
 
   # initial layout views / partials with tailwind classes
   # tailwind default setup
