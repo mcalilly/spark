@@ -36,7 +36,6 @@ def add_gems
   # remove sqlite
   gsub_file "Gemfile", /^gem\s+["']sqlite3["'].*$/,'gem "pg"'
 
-  gem "image_processing"
   gem "devise"
   gem "pundit"
 
@@ -148,7 +147,7 @@ def add_active_storage
 end
 
 def add_action_text
-  # to do
+  rails_command "action_text:install"
 end
 
 def add_generator_configs
