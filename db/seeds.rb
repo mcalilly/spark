@@ -23,7 +23,7 @@ User.create!(
 Setting.create!(
   site_title: "A New Spark Site",
   site_tagline: "The simple CMS for rails",
-  site_description: "A wonderful new CMS built for Rails.",
+  site_description: "It's like the Wordpress 5-minute install, but for Rails.",
   phone: "111-222-3333",
   email: "hi@designwithspark.com",
   twitter_handle: "ssparkcmss",
