@@ -4,7 +4,7 @@
       <div class="branding flex justify-start lg:w-0 lg:flex-1">
         <%= link_to root_path do %>
           <% if site_logo.attached? %>
-            <%= image_tag site_logo.variant(resize_to_fit: [100, 100]), class: "mt-2", alt: "featured image preview", loading: "lazy" %>
+            <%= image_tag site_logo.variant(resize_to_fit: [80, 80]), class: "mt-2", alt: "featured image preview", loading: "lazy" %>
           <% else %>
             <%= site_title %>
           <% end %>
