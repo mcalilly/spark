@@ -61,6 +61,7 @@ class SettingsTest < ApplicationSystemTestCase
     fill_in "Site title", with: "A new title"
     fill_in "Site description", with: "A new description"
     fill_in "Site tagline", with: "A new tagline"
+    attach_file("setting[logo]", "#{Rails.root.join("test/fixtures/files/example-logo.png")}")
     fill_in "Email", with: "new@example.com"
     fill_in "Phone", with: "777-888-9999"
     fill_in "Twitter handle", with: "new_twitter"

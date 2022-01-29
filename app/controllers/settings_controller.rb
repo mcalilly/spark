@@ -61,6 +61,6 @@ class SettingsController < ApplicationController
     end
 
     def setting_params
-      params.require(:setting).permit(:site_title, :site_tagline, :site_description, :email, :phone, :twitter_handle, :facebook_handle, :instagram_handle, :address_line_one, :address_line_two, :city, :state_or_province, :postal_code, :country)
+      params.require(:setting).permit(:site_title, :site_tagline, :site_description, :logo, :email, :phone, :twitter_handle, :facebook_handle, :instagram_handle, :address_line_one, :address_line_two, :city, :state_or_province, :postal_code, :country)
     end
 end

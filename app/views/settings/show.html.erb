@@ -32,6 +32,24 @@
                 <%= @setting.site_description %>
               </dd>
             </div>
+
+            <div class="mt-8 sm:grid sm:mt-5 sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+              <dt class="text-sm leading-5 font-medium text-gray-500">
+                Logo
+              </dt>
+
+              <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+                <% if @setting.logo.attached? %>
+                  <p class="block text-sm leading-5 font-medium text-gray-700">
+                    Logo:
+                  </p>
+                  <%= image_tag @setting.logo.variant(resize_to_fit: [200, 200]), class: "mt-2", alt: "featured image preview", loading: "lazy" %>
+                <% else %>
+                  No logo added
+                <% end %>
+              </dd>
+            </div>
+
             <div class="mt-8 sm:grid sm:mt-5 sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
               <dt class="text-sm leading-5 font-medium text-gray-500">
                 Email address
