@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get "/contact-us", to: "static_pages#contact", as: "contact"
 
   # Settings
-  resources :settings
+  namespace :admin do
+    resources :settings
+  end
 
 end

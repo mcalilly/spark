@@ -6,7 +6,7 @@
 
     <% if @settings.present? %>
       <p>
-        <%= link_to "Edit Settings", edit_setting_path(Setting.last) %>
+        <%= link_to "Edit Settings", edit_admin_setting_path(Setting.last) %>
       </p>
     <% else %>
 
@@ -15,7 +15,7 @@
       </p>
 
       <p>
-        <%= link_to "Add Settings", new_setting_path %>
+        <%= link_to "Add Settings", new_admin_setting_path %>
       </p>
     <% end %>
   </section>

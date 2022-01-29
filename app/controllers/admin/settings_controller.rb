@@ -1,4 +1,4 @@
-class SettingsController < ApplicationController
+class Admin::SettingsController < ApplicationController
   before_action :set_setting, only: [:show, :edit, :update, :destroy]
   after_action :verify_authorized
 
@@ -6,7 +6,7 @@ class SettingsController < ApplicationController
     @settings = Setting.all
     authorize @settings
     if Setting.count > 0
-      redirect_to edit_setting_path(Setting.last)
+      redirect_to edit_admin_setting_path(Setting.last)
     end
   end
 
@@ -17,7 +17,7 @@ class SettingsController < ApplicationController
     @setting = Setting.new
     authorize @setting
     if Setting.count > 0
-      redirect_to setting_path(Setting.last)
+      redirect_to admin_setting_path(Setting.last)
     end
   end
 
@@ -30,7 +30,7 @@ class SettingsController < ApplicationController
 
     respond_to do |format|
       if @setting.save
-        format.html { redirect_to @setting, notice: I18n.t("settings.create.success") }
+        format.html { redirect_to admin_setting_path(@setting), notice: I18n.t("settings.create.success") }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -40,7 +40,7 @@ class SettingsController < ApplicationController
   def update
     respond_to do |format|
       if @setting.update(setting_params)
-        format.html { redirect_to @setting, notice: I18n.t("settings.update.success") }
+        format.html { redirect_to admin_setting_path(@setting), notice: I18n.t("settings.update.success") }
       else
          format.html { render :edit, status: :unprocessable_entity }
       end
@@ -50,7 +50,7 @@ class SettingsController < ApplicationController
   def destroy
     @setting.destroy
     respond_to do |format|
-      format.html { redirect_to settings_url, notice: I18n.t("settings.delete.success") }
+      format.html { redirect_to admin_settings_path, notice: I18n.t("settings.delete.success") }
     end
   end
 

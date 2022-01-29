@@ -172,6 +172,10 @@ def copy_templates
   # first remove files you want to copy so the user doesn't have to confirm with y/n in their terminal
   remove_file ".ruby-version"
   remove_file "Procfile"
+  remove_file "app/controllers/settings_controller.rb"
+  remove_dir "app/views/settings"
+  remove_file "test/controllers/settings_controller_test.rb"
+  remove_file "test/system/settings_test.rb"
 
   # Now copy any files from Spark that you removed
   copy_file "Procfile"

@@ -6,6 +6,14 @@ class ApplicationController < ActionController::Base
 
   layout :determine_layout
 
+  def after_sign_in_path_for(resource)
+    if current_user.admin?
+      stored_location_for(resource) || admin_setting_path(Setting.last)
+    else
+      stored_location_for(resource) || root_path
+    end
+  end
+
   private
     def determine_layout
       if current_user && controller_name != "static_pages"

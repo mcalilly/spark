@@ -50,7 +50,7 @@ module ApplicationHelper
   end
 
   def site_logo
-    if Setting.last.logo.attached?
+    if Setting.last.logo
       site_logo = Setting.last.logo
     end
   end

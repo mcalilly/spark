@@ -1,5 +1,5 @@
 <footer class="text-center pb-8">
-	<section class="max-w-5xl px-4 mx-auto mt-16 mb-4">
+	<div class="max-w-5xl px-4 mx-auto mt-16 mb-4">
 		<p class="credits">
 			Look, It's a New Spark Website!
 		</p>
@@ -9,21 +9,26 @@
 				&copy; <%= Time.zone.now.year %>. <%= site_title %>.
 			<% end %>
 		</p>
-	</section>
+	</div>
 
-	<%= render "layouts/shared/social_links" %>
+
+	<div class="max-w-5xl px-4 mx-auto">
+		<%= render "layouts/shared/social_links" %>
+	</div>
 
 	<% if current_user %>
-    <div class="login-links max-w-5xl px-4 mx-auto mt-8">
-      <p>
-        Signed in as <%= current_user.email %>. <%= link_to "Log out", log_out_path, method: :delete %>
+		<div class="login-links text-xs max-w-5xl px-4 mx-auto mt-8 mb-4">
+			<p>
+			  Signed in as <%= current_user.email %>.
 
 				<% if current_user.admin? %>
 					<span>User role: Admin</span>
 				<% else %>
 					<span>User role: Member</span>
 				<% end %>
-      </p>
-    </div>
+				<br>
+				<%= link_to "Log out", log_out_path, method: :delete, class: "text-indigo-600" %>
+			</p>
+		</div>
   <% end %>
 </footer>
