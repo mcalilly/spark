@@ -3,7 +3,11 @@
     <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
       <div class="branding flex justify-start lg:w-0 lg:flex-1">
         <%= link_to root_path do %>
-          <%= image_tag "logo.svg", class: "h-8 w-auto sm:h-10", alt: "#{Setting.last.site_title} logo" %>
+          <% if site_logo.attached? %>
+            <%= image_tag site_logo.variant(resize_to_fit: [100, 100]), class: "mt-2", alt: "featured image preview", loading: "lazy" %>
+          <% else %>
+            <%= site_title %>
+          <% end %>
         <% end %>
       </div>
       <div class="-mr-2 -my-2 md:hidden">

@@ -37,6 +37,9 @@ Setting.create!(
   country: "United States"
 )
 
+Setting.last.logo.attach(io: File.open("#{Rails.root.join("test/fixtures/files/example-logo.png")}"), filename: "logo.png", content_type: "image/png")
+
+
 #
 # # Blog posts
 # Post.create!(

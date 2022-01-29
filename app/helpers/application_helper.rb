@@ -49,6 +49,12 @@ module ApplicationHelper
     site_description = Setting.last.site_description
   end
 
+  def site_logo
+    if Setting.last.logo.attached?
+      site_logo = Setting.last.logo
+    end
+  end
+
   def site_email
     site_email = Setting.last.email
   end

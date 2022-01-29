@@ -1,0 +1,4 @@
+default_logo:
+  name: logo
+  record: spark_defaults (Setting)
+  blob: example_logo_blob
