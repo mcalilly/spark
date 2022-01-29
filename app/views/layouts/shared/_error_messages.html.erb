@@ -1,12 +1,11 @@
 <% if object.errors.any? %>
-  <section class="errors">
-    <button>&times;</button>
+  <div id="error_explanation" class="bg-red-100 px-2 py-4">
     <p><strong>The form contains
-      <%= pluralize(object.errors.count, "error") %>.</strong></p>
-    <ul>
-       <% object.errors.full_messages.each do |msg| %>
+    <%= pluralize(object.errors.count, "error") %>.</strong></p>
+    <ul class="list-disc list-inside">
+      <% object.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
-       <% end %>
+      <% end %>
     </ul>
-  </section>
+  </div>
 <% end %>
