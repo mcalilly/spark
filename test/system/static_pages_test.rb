@@ -14,7 +14,7 @@ class StaticPagesTest < ApplicationSystemTestCase
 
   test "about page has the correct public content" do
     visit about_path
-    assert_selector "h1", text: Setting.last.site_title
+    assert_selector "h1", text: "About Us"
   end
 
   test "contact page has the correct public content" do
