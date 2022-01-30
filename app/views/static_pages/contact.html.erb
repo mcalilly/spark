@@ -1,10 +1,15 @@
-<h1 class="text-green-600 text-3xl">
-  Contact Us:
-  <br>
-  If I'm green then Tailwind is set up correctly.
-</h1>
-<p>
-  <%= link_to "mailto:#{site_email}" do %>
-    <%= site_email %>
-  <% end %>
-</p>
+<section class="prose">
+  <h1>
+    Contact Us
+  </h1>
+  <p>
+    Send us an email at
+    <%= link_to "mailto:#{site_email}" do %>
+      <%= site_email %>
+    <% end %>
+  </p>
+
+  <p>
+    Update this in static_pages#contact
+  </p>
+</section>

@@ -1,27 +1,27 @@
 <section class="prose">
-  <h1 class="text-green-600 text-3xl">
+  <h1>
     <%= site_title %>
-    <br>
-    If I'm green then Tailwind is set up correctly.
   </h1>
-
+  <h2 class="text-green-600">
+    If I'm green then Tailwind is set up correctly.
+  </h2>
   <p>
     <%= site_description %>
   </p>
 
-  <div class="py-6">
-    <h2>
-      Check Your Stimulus
-    </h2>
+
+  <div class="py-4">
+    <h3>
+      Check Your Stimulus & Turbo
+    </h3>
 
     <p>
-      Use this to confirm that Stimulus is wired up correctly. Whatever you enter in the text field shoudl show up in the console when you click the greet button if Stimulus is working properly. Delete this at your leisure.
+      Use the field below to confirm that Stimulus is wired up correctly. Whatever you enter in the text field should show up in the console when you click the greet button if Stimulus is working properly. If Turbo is working correctly you'll also see a message in your console that says, "Turbo is working on each visit!" Delete this at your leisure.
     </p>
 
     <div data-controller="hello">
       <input data-hello-target="name" type="text">
       <button data-action="click->hello#greet">Greet</button>
     </div>
-
   </div>
 </section>
