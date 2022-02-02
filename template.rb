@@ -242,6 +242,8 @@ after_bundle do
   say "2. Update config/environments/production.rb with your mailer domain and set up your Amazon keys to send password reset emails in production", :blue
   say
   say "3. Make sure you have libvips (brew install vips) or any of the other depedencies required for Active Storage that Rails does not install for you. More on that at https://edgeguides.rubyonrails.org/active_storage_overview.html#requirements", :blue
+  say
+  say "4. Update views/layouts/shared/metadata to use the domain for your new site. You might also want to add default meta image for twitter and facebook links", :blue
 end
 
 ## TO DO
