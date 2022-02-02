@@ -127,8 +127,13 @@ def add_css
 end
 
 def add_javascript
-  # Confirm that Turb is wired up correctly
+  # Confirm that Turbo is wired up correctly
   inject_into_file 'app/javascript/controllers/application.js', after: "window.Stimulus   = application\n" do <<-EOF
+  \n
+  // Use AlpineJS as a module
+  import Alpine from 'alpinejs'
+  window.Alpine = Alpine
+  Alpine.start()
   \n
   // Delete this whenever. Just here to confirm that Turbo is working
   document.addEventListener("turbo:load", () => {
@@ -138,8 +143,13 @@ def add_javascript
   EOF
   end
 
-  # importmap-rails
-  # confirm stimulus is working & turbo with test controllers that print to console.log
+  # Add  AlpineJS
+  inject_into_file 'config/importmap.rb', after: 'pin_all_from "app/javascript/controllers", under: "controllers"' do <<-EOF
+  \n
+  pin "alpinejs", to: "https://unpkg.com/alpinejs@3.8.1/dist/module.esm.js", preload: true
+  \n
+  EOF
+  end
 end
 
 def add_active_storage
@@ -185,11 +195,6 @@ def copy_templates
   directory "config", force: true
   directory "db", force: true
   directory "test", force: true
-
-
-  # initial layout views / partials with tailwind classes
-  # tailwind default setup
-  # model with validation for setting singleton
 end
 
 def setup_the_db
@@ -245,10 +250,3 @@ after_bundle do
   say
   say "4. Update views/layouts/shared/metadata to use the domain for your new site. You might also want to add default meta image for twitter and facebook links", :blue
 end
-
-## TO DO
-# Add favicon default files (https://favicon.io/favicon-converter/)
-# Copy Stimulus files for toggling Tailwind UI menus
-# Set up admin namespace
-# Create heroku deploy environment for "production"
-# Push to heroku and run rails db:seed on heroku / heroku restart etc.

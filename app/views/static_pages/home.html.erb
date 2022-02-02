@@ -29,4 +29,22 @@
       <button data-action="click->hello#greet">Greet</button>
     </div>
   </div>
+
+
+  <div class="py-4">
+    <h3>
+      Check your AlpineJS
+    </h3>
+    <p>
+      If AlpineJS is installed properly with importmap-rails, then this "expand" button should work.
+    </p>
+    <div x-data="{ open: false }">
+      <button @click="open = true">Expand</button>
+
+      <span x-show="open">
+       Content that appears once expanded...
+      </span>
+    </div>
+     <h4 x-data="{ message: 'I ❤️ Alpine' }" x-text="message"></h4>
+  </div>
 </section>
