@@ -7,10 +7,10 @@ class UserLogOutTest < ApplicationSystemTestCase
 
   test "Users can log out after they sign in to the site" do
     sign_in @user
-    visit root_path
-    click_on "Log out"
+    visit "/admin"
+    within ".sidebar-desktop" do
+      find_link("Log out", match: :first).click
+    end
     assert_current_path root_path
-    assert_text "Signed out successfully."
-    assert_selector "a", text: "Sign in"
   end
 end
