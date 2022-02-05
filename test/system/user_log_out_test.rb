@@ -9,7 +9,7 @@ class UserLogOutTest < ApplicationSystemTestCase
     sign_in @user
     visit "/admin"
     within ".sidebar-desktop" do
-      find_link("Log out", match: :first).click
+      click_on "Log out"
     end
     assert_current_path root_path
   end

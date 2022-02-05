@@ -28,7 +28,7 @@ class UserSignInTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Sign in"
   end
 
-  test "Valid sign in information" do
+  test "Valid sign in information as a regular member" do
     visit sign_in_path
     assert_current_path sign_in_path
     within "main" do
@@ -36,19 +36,16 @@ class UserSignInTest < ApplicationSystemTestCase
       fill_in("Password", with: "password")
       click_button "Sign in"
     end
-    within ".sidebar-desktop" do
-      click_on "Log out"
-    end
-    assert_current_path root_path
+    assert_text "Signed in successfully."
+  end
+
+  test "Valid sign in information as an admin" do
     visit "/admin"
     within "main" do
       fill_in("Email address", with: "admin@example.com")
       fill_in("Password", with: "password")
       click_button "Sign in"
     end
-    within ".sidebar-desktop" do
-      click_on "Log out"
-    end
-    assert_current_path root_path
+    assert_text "Signed in successfully."
   end
 end

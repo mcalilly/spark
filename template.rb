@@ -195,6 +195,7 @@ def copy_templates
   directory "config", force: true
   directory "db", force: true
   directory "test", force: true
+  directory "public", force: true
 end
 
 def setup_the_db

@@ -1,22 +1,22 @@
 <div class="flex-shrink-0 flex border-t border-gray-200 p-4">
-  <%= link_to log_out_path, method: :delete, class: "flex-shrink-0 w-full group block" do %>
-    <div class="flex items-center">
-      <div class="log-out">
-        <p class="text-sm leading-5 font-medium text-gray-700 group-hover:text-gray-900">
-          <%= current_user.email %>
-        </p>
-        <p class="text-xs leading-4 font-medium text-gray-500 group-hover:text-gray-700 transition ease-in-out duration-150">
-          Signed in as
-          <% if current_user.admin? %>
-            an Admin.
-          <% else %>
-            a Member.
-          <% end %>
-        </p>
-        <p class="text-sm mt-4 leading-4 font-medium text-indigo-600 group-hover:text-gray-700 transition ease-in-out duration-150">
+  <div class="flex items-center">
+    <div>
+      <p class="text-sm leading-5 font-medium text-gray-700 group-hover:text-gray-900">
+        <%= current_user.email %>
+      </p>
+      <p class="text-xs leading-4 font-medium text-gray-500 group-hover:text-gray-700 transition ease-in-out duration-150">
+        Signed in as
+        <% if current_user.admin? %>
+          an Admin.
+        <% else %>
+          a Member.
+        <% end %>
+      </p>
+      <p>
+        <%= link_to log_out_path, method: :delete, class: "text-sm mt-4 leading-4 font-medium text-indigo-600 group-hover:text-gray-700 transition ease-in-out duration-150" do %>
           Log out &rarr;
-        </p>
-      </div>
+        <% end %>
+      </p>
     </div>
-  <% end %>
+  </div>
 </div>
