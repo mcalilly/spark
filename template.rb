@@ -1,6 +1,8 @@
 require "fileutils"
 require "shellwords"
 
+# This template is based on https://github.com/excid3/jumpstart/blob/master/template.rb
+
 def add_template_repository_to_source_path
   if __FILE__ =~ %r{\Ahttps?://}
     require "tmpdir"
@@ -205,6 +207,36 @@ def setup_the_db
   rails_command "db:seed"
 end
 
+def format_gemfile
+  # copy a cleanly formatted gemfile
+  remove_file "Gemfile"
+  copy_file "Gemfile"
+  # double check that the new Gemfile didn't create an error
+  rails_command "bundle:install"
+  # run with clean bundle environment
+  run "bundle lock --add-platform x86_64-linux"
+end
+
+def configure_render_deployment
+  inject_into_file 'config/database.yml', after: "database: #{original_app_name}_production\n" do <<-EOF
+  url: <%= ENV['DATABASE_URL'] %>
+  EOF
+  end
+  gsub_file "config/puma.rb", '# workers ENV.fetch("WEB_CONCURRENCY") { 2 }', 'workers ENV.fetch("WEB_CONCURRENCY") { 4 }'
+  gsub_file "config/puma.rb", '# preload_app!', 'preload_app!'
+  gsub_file "config/environments/production.rb", 'config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?', 'config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present? || ENV["RENDER"].present?'
+
+  copy_file "bin/render-build.sh"
+  run "chmod a+x bin/render-build.sh"
+
+  copy_file "render.yaml"
+  gsub_file "render.yaml", '  - name: mysite', "  - name: #{original_app_name}_production"
+  gsub_file "render.yaml", '    databaseName: mysite', "    databaseName: #{original_app_name}_production"
+  gsub_file "render.yaml", '    user: mysite', "    user: #{original_app_name}_admin"
+  gsub_file "render.yaml", '    name: mysite', "    name: #{original_app_name}_production"
+  gsub_file "render.yaml", '          name: mysite', "          name: #{original_app_name}_production"
+end
+
 # Main setup
 add_template_repository_to_source_path
 add_gems
@@ -225,6 +257,14 @@ after_bundle do
 
   setup_the_db
 
+  format_gemfile
+
+  # Run tests
+  rails_command "test:all"
+
+  # Optional: configure Render
+  configure_render_deployment if yes?("Do you want to deploy to Render?")
+
   # Commit everything to git
   unless ENV["SKIP_GIT"]
     git :init
@@ -237,8 +277,6 @@ after_bundle do
     end
   end
 
-  rails_command "test:all"
-
   say
   say "Your app was successfully Spark-ed up! Tests should be green if everything was installed properly ; )", :green
   say
@@ -249,5 +287,18 @@ after_bundle do
   say
   say "3. Make sure you have libvips (brew install vips) or any of the other depedencies required for Active Storage that Rails does not install for you. More on that at https://edgeguides.rubyonrails.org/active_storage_overview.html#requirements", :blue
   say
-  say "4. Update views/layouts/shared/metadata to use the domain for your new site. You might also want to add default meta image for twitter and facebook links", :blue
+  say "4. Update views/layouts/shared/metadata to use the canonical domain for your new site. You might also want to add default meta image for twitter and facebook links", :blue
+  say
+  say
+  say "### Render Deployment Checklist ###", :cyan
+  say
+  say "* Make sure your app is deployed to Github and you've connected your Github account to Render while logged into the Render Dashboard", :cyan
+  say
+  say "* On the Render Dashboard, go to the Blueprint page and click the New Blueprint Instance button. Select your repository (after giving Render the permission to access it, if you haven’t already).", :cyan
+  say
+  say "* In the deploy window, set the value of the RAILS_MASTER_KEY to the contents of your config/master.key file. Then click Approve. Here's an example of how to get your RAILS_MASTER_KEY: run `EDITOR='atom --wait' rails credentials:edit` then navigate to config/master.key to copy it (make sure the master key is not checked into git). Note: this is note your Do not add the SECRET_KEY_BASE", :cyan
+  say
+  say "* You'll need to run `rails db:migrate` and `rails db:seed` from the shell inside your new Render webservice or you'll see a Rails error page", :cyan
+  say
+  say "* To set up a custom domain, refer to the Render docs here: https://render.com/docs/custom-domains. Here are the docs specically for Cloudflare DNS settings: https://render.com/docs/configure-cloudflare-dns", :cyan
 end
