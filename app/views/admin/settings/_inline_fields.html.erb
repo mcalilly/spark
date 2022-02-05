@@ -1,0 +1,10 @@
+<% frame_id = dom_id(form.object, "#{attribute}_turbo_frame") %>
+<%= turbo_frame_tag frame_id, class: "contents" do %>
+  <%= yield %>
+
+  <span class="block text-xs mt-2 text-indigo-600 hover:text-gray-700 transition ease-in-out duration-150">
+    <%= form.button "Save", class: "inline-action" %>
+    &nbsp;&bull;&nbsp;
+    <%= link_to "Cancel", admin_setting_path(form.object), class: "inline-action" %>
+  </span>
+<% end %>

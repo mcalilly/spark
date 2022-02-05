@@ -50,12 +50,13 @@ class SettingsTest < ApplicationSystemTestCase
     assert_no_selector "a", text: "Destroy"
   end
 
-  test "updating an Setting" do
+  test "updating an Setting should happen inline on the settings show page" do
     sign_in @admin
-    visit edit_admin_setting_path(@current_settings)
-    fill_in "Site title", with: "An Updated Site Title"
+    visit admin_setting_path(@current_settings)
+    find_link("Edit", match: :first).click
+    fill_in "setting[site_title]", with: "An Updated Site Title"
     click_button "Save"
-    assert_text "Your settings were updated."
+    assert_text "An Updated Site Title"
   end
 
   test "no one should see a link to destroy Settings" do

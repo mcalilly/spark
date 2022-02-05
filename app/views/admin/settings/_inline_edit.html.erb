@@ -1,0 +1,9 @@
+<% frame_id = dom_id(model, "#{attribute}_turbo_frame") %>
+<%= form_with model: [:admin, model], class: "contents", data: { turbo_frame: frame_id } do |form| %>
+  <%= turbo_frame_tag frame_id, class: "inline-edit" do %>
+    <%= yield %>
+    <span class="block text-xs mt-2 text-indigo-600 hover:text-gray-700 transition ease-in-out duration-150">
+      <%= link_to "Edit", edit_admin_setting_path(model) %>
+    </span>
+  <% end %>
+<% end %>

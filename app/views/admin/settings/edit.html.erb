@@ -3,5 +3,265 @@
     Edit Settings
   </h1>
 
-  <%= render 'form', setting: @setting %>
+  <%= form_with model: [:admin, @setting] do |form| %>
+    <% if @setting.errors.any? %>
+      <div id="error_explanation" class="bg-red-100 px-4 py-2">
+        <h2><%= pluralize(setting.errors.count, "error") %> prohibited this setting from being saved:</h2>
+
+        <ul class="list-disc list-inside">
+          <% @setting.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <section class="mt-8 sm:mt-5">
+      <div>
+        <h3 class="text-lg leading-6 font-medium text-gray-900">
+          Metadata
+        </h3>
+        <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
+          This is the default info used on the site for things like the SEO page title and default site description.
+        </p>
+      </div>
+      <div class="mt-6 sm:mt-5">
+        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <%= form.label :site_title, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+              <%= render "inline_fields", form: form, attribute: :site_title do %>
+                <%= form.text_field :site_title, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+              <% end %>
+            </div>
+            <p class="sm:max-w-xs mt-2 text-sm text-gray-500">Used for things such as the page title when a page-specific page one is not provided.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5">
+        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <%= form.label :site_tagline, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+              <%= render "inline_fields", form: form, attribute: :site_tagline do %>
+                <%= form.text_field :site_tagline, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+              <% end %>
+            </div>
+            <p class="sm:max-w-xs mt-2 text-sm text-gray-500">This is used in the default page title as well as other places it's natural to include it.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <%= form.label :site_description, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="sm:max-w-xs flex rounded-md shadow-sm">
+            <%= render "inline_fields", form: form, attribute: :site_description do %>
+              <%= form.text_area :site_description, class: "form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            <% end %>
+          </div>
+          <p class="sm:max-w-xs mt-2 text-sm text-gray-500">Used for things such as the meta description when a page-specific page one is not provided.</p>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5">
+        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <%= form.label :logo, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+              <% if @setting.logo.attached? %>
+                <p class="sm:max-w-xs mt-2 text-sm text-gray-500">
+                  Current logo:
+                </p>
+                <%= image_tag @setting.logo.variant(resize_to_fit: [100, 100]), class: "mt-2", alt: "featured image preview", loading: "lazy" %>
+              <% else %>
+                <p class="sm:max-w-xs mt-2 text-sm text-gray-500">
+                  Add your logo:
+                </p>
+              <% end %>
+
+              <div class="mt-2 flex items-center">
+                <span class="h-12 w-12 overflow-hidden">
+                  <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
+                    <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </span>
+                <span class="shadow-sm">
+                  <%= form.file_field :logo, direct_upload: true, accept: "image/png,image/gif,image/jpeg,image/jpg", class: "py-2 px-3 border border-gray-300 text-sm leading-4 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out" %>
+                </span>
+              </div>
+              <p class="mt-1 text-xs text-gray-500">
+                PNG, JPG, GIF
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-8 border-t border-gray-200 pt-8 sm:mt-5 sm:pt-10">
+      <div>
+        <h3 class="text-lg leading-6 font-medium text-gray-900">
+          Contact Information
+        </h3>
+      </div>
+
+      <div class="mt-6 sm:mt-5">
+        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <%= form.label :email, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+              <%= render "inline_fields", form: form, attribute: :email do %>
+                <%= form.text_field :email, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5">
+        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <%= form.label :phone, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+              <%= render "inline_fields", form: form, attribute: :phone do %>
+                <%= form.text_field :phone, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-8 border-t border-gray-200 pt-8 sm:mt-5 sm:pt-10">
+      <div>
+        <h3 class="text-lg leading-6 font-medium text-gray-900">
+          Social Media
+        </h3>
+      </div>
+
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <%= form.label :facebook_handle, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+            <%= render "inline_fields", form: form, attribute: :facebook_handle do %>
+              <%= form.text_field :facebook_handle, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <%= form.label :twitter_handle, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+            <%= render "inline_fields", form: form, attribute: :twitter_handle do %>
+              <%= form.text_field :twitter_handle, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <%= form.label :instagram_handle, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+            <%= render "inline_fields", form: form, attribute: :instagram_handle do %>
+              <%= form.text_field :instagram_handle, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-8 border-t border-gray-200 pt-8 sm:mt-5 sm:pt-10">
+      <div>
+        <h3 class="text-lg leading-6 font-medium text-gray-900">
+          Address
+        </h3>
+      </div>
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <%= form.label :address_line_one, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+            <%= render "inline_fields", form: form, attribute: :address_line_one do %>
+              <%= form.text_field :address_line_one, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <%= form.label :address_line_two, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+            <%= render "inline_fields", form: form, attribute: :address_line_two do %>
+              <%= form.text_field :address_line_two, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <%= form.label :city, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"  %>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+            <%= render "inline_fields", form: form, attribute: :city do %>
+              <%= form.text_field :city, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <%= form.label :state_or_province, "State", class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"  %>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+            <%= render "inline_fields", form: form, attribute: :state_or_province do %>
+              <%= form.text_field :state_or_province, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <%= form.label :postal_code, "Zip code", class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+            <%= render "inline_fields", form: form, attribute: :postal_code do %>
+              <%= form.text_field :postal_code, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <%= form.label :country, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+            <%= render "inline_fields", form: form, attribute: :country do %>
+              <%= form.text_field :country, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <fieldset class="form-actions mb-2">
+      <div class="mt-8 border-t border-gray-200 pt-5">
+        <div class="flex justify-end">
+          <span class="inline-flex rounded-md shadow-sm">
+            <%= link_to admin_settings_path, class: "py-2 px-4 border border-gray-300 rounded-md text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out" do %>
+              Cancel
+            <% end %>
+          </span>
+          <span class="ml-3 inline-flex rounded-md shadow-sm">
+            <%= form.submit "Save", class: "inline-flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out" %>
+          </span>
+        </div>
+      </div>
+    </fieldset>
+  <% end %>
 <% end %>

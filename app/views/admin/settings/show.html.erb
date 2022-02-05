@@ -13,7 +13,9 @@
                 Site title
               </dt>
               <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                <%= @setting.site_title %>
+                <%= render "inline_edit", model: @setting, attribute: :site_title do %>
+                  <%= @setting.site_title %>
+                <% end %>
               </dd>
             </div>
             <div class="mt-8 sm:grid sm:mt-5 sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
@@ -21,7 +23,9 @@
                 Site tagline
               </dt>
               <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                <%= @setting.site_tagline %>
+                <%= render "inline_edit", model: @setting, attribute: :site_tagline do %>
+                  <%= @setting.site_tagline %>
+                <% end %>
               </dd>
             </div>
             <div class="mt-8 sm:grid sm:mt-5 sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
@@ -29,7 +33,9 @@
                 Site description
               </dt>
               <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                <%= @setting.site_description %>
+                <%= render "inline_edit", model: @setting, attribute: :site_description do %>
+                  <%= @setting.site_description %>
+                <% end %>
               </dd>
             </div>
 
@@ -38,12 +44,47 @@
                 Logo
               </dt>
 
-              <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+              <dd data-controller="visibility"
+                  class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
                 <% if @setting.logo.attached? %>
                   <%= image_tag @setting.logo.variant(resize_to_fit: [100, 100]), class: "mt-2", alt: "featured image preview", loading: "lazy" %>
                 <% else %>
                   No logo added
                 <% end %>
+
+                <button data-action="visibility#showTargets"
+                   class="block text-xs mt-2 text-indigo-600 hover:text-gray-700 transition ease-in-out duration-150">
+                  Update Logo
+                </button>
+
+                <div data-visibility-target="hideable" hidden>
+                  <%= form_with model: [:admin, @setting], class: "contents" do |form| %>
+                    <div class="mt-2 flex items-center">
+                      <span class="h-12 w-12 overflow-hidden">
+                        <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
+                          <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                      </span>
+                      <span class="shadow-sm">
+                        <%= form.file_field :logo, direct_upload: true, accept: "image/png,image/gif,image/jpeg,image/jpg", class: "py-2 px-3 border border-gray-300 text-sm leading-4 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out" %>
+                      </span>
+                    </div>
+                    <p class="mt-1 text-xs text-gray-500">
+                      PNG, JPG, GIF
+                    </p>
+                    <div class="actions block text-xs mt-4 text-indigo-600 hover:text-gray-700 transition ease-in-out duration-150">
+                      <%= form.button do %>
+                        <span class="show-when-enabled">
+                          <p class="inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Save File
+                          </p>
+                        </span>
+                        <span class="show-when-disabled">Processing...</span>
+                      <% end %>
+                    </div>
+                  <% end %>
+
+                </div>
               </dd>
             </div>
 
@@ -52,7 +93,9 @@
                 Email address
               </dt>
               <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                <%= @setting.email %>
+                <%= render "inline_edit", model: @setting, attribute: :email do %>
+                  <%= @setting.email %>
+                <% end %>
               </dd>
             </div>
             <div class="mt-8 sm:grid sm:mt-5 sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
@@ -60,7 +103,9 @@
                 Phone
               </dt>
               <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                <%= @setting.phone %>
+                <%= render "inline_edit", model: @setting, attribute: :phone do %>
+                  <%= @setting.phone %>
+                <% end %>
               </dd>
             </div>
             <div class="mt-8 sm:grid sm:mt-5 sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
@@ -68,7 +113,9 @@
                 Facebook handle
               </dt>
               <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                <%= @setting.facebook_handle %>
+                <%= render "inline_edit", model: @setting, attribute: :facebook_handle do %>
+                  <%= @setting.facebook_handle %>
+                <% end %>
               </dd>
             </div>
             <div class="mt-8 sm:grid sm:mt-5 sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
@@ -76,7 +123,9 @@
                 Twitter handle
               </dt>
               <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                <%= @setting.twitter_handle %>
+                <%= render "inline_edit", model: @setting, attribute: :twitter_handle do %>
+                  <%= @setting.twitter_handle %>
+                <% end %>
               </dd>
             </div>
 
@@ -85,7 +134,9 @@
                 Instagram handle
               </dt>
               <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                <%= @setting.instagram_handle %>
+                <%= render "inline_edit", model: @setting, attribute: :instagram_handle do %>
+                  <%= @setting.instagram_handle %>
+                <% end %>
               </dd>
             </div>
 
@@ -94,28 +145,44 @@
                 Address
               </dt>
               <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                <%= @setting.address_line_one %><br />
-                <%= @setting.address_line_two %><br />
-                <%= @setting.city %>, <%= @setting.state_or_province %> <%= @setting.postal_code %><br />
-                <%= @setting.country %>
+                <%= render "inline_edit", model: @setting, attribute: :address_line_one do %>
+                  <span class="block text-xs text-gray-500">Street line one</span>
+                  <span class="block"><%= @setting.address_line_one %></span>
+                <% end %>
+                <%= render "inline_edit", model: @setting, attribute: :address_line_two do %>
+                  <span class="block text-xs text-gray-500 mt-6">Street line two</span>
+                  <span class="block"><%= @setting.address_line_two %></span>
+                <% end %>
+                <%= render "inline_edit", model: @setting, attribute: :city do %>
+                  <span class="block text-xs text-gray-500 mt-6">City</span>
+                  <span class="block"><%= @setting.city %></span>
+                <% end %>
+                <%= render "inline_edit", model: @setting, attribute: :state_or_province do %>
+                  <span class="block text-xs text-gray-500 mt-6">State</span>
+                  <span class="block"><%= @setting.state_or_province %></span>
+                <% end %>
+                <%= render "inline_edit", model: @setting, attribute: :postal_code do %>
+                  <span class="block text-xs text-gray-500 mt-6">Zip</span>
+                  <span class="block"><%= @setting.postal_code %></span>
+                <% end %>
+                <%= render "inline_edit", model: @setting, attribute: :country do %>
+                  <span class="block text-xs text-gray-500 mt-6">Country</span>
+                  <span class="block"><%= @setting.country %></span>
+                <% end %>
               </dd>
             </div>
           </dl>
         </div>
       </div>
-
-      <span class="block mt-12 mb-4">
-        <%= link_to "Update Settings", edit_admin_setting_path(Setting.last), class: "inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out" %>
-      </span>
-    <% else %>
-
-      <p>
-        You need to add your default settings for the site. (Your default page titles, contact email, etc. will be Spark CMS settings until you update your settings.)
-      </p>
-
-      <p>
-        <%= link_to "Add Settings", new_admin_setting_path %>
-      </p>
     <% end %>
+  <% else %>
+
+    <p>
+      You need to add your default settings for the site. (Your default page titles, contact email, etc. will be Spark CMS settings until you update your settings.)
+    </p>
+
+    <p>
+      <%= link_to "Add Settings", new_admin_setting_path %>
+    </p>
   </section>
 <% end %>
