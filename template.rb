@@ -196,8 +196,9 @@ def copy_templates
   directory "app", force: true
   directory "config", force: true
   directory "db", force: true
-  directory "test", force: true
+  directory "lib", force: true
   directory "public", force: true
+  directory "test", force: true
 end
 
 def setup_the_db
@@ -280,14 +281,17 @@ after_bundle do
   say
   say "Your app was successfully Spark-ed up! Tests should be green if everything was installed properly ; )", :green
   say
-  say "### Next Steps ###", :blue
-  say "1. Don't forget to move your new app to the correct directory on your local machine. Example: `mv ./#{original_app_name} ../ && cd ../#{original_app_name} && rails s`", :blue
+  say "### Next Steps ###", :cyan
+  say "1. Don't forget to move your new app to the correct directory on your local machine. Example: `mv ./#{original_app_name} ../ && cd ../#{original_app_name} && rails s`", :cyan
   say
-  say "2. Update config/environments/production.rb with your mailer domain and set up your Amazon keys to send password reset emails in production", :blue
+  say "2. Update config/environments/production.rb with your mailer domain and set up your Amazon keys to send password reset emails in production", :cyan
   say
-  say "3. Make sure you have libvips (brew install vips) or any of the other depedencies required for Active Storage that Rails does not install for you. More on that at https://edgeguides.rubyonrails.org/active_storage_overview.html#requirements", :blue
+  say "3. Make sure you have libvips (brew install vips) or any of the other depedencies required for Active Storage that Rails does not install for you. More on that at https://edgeguides.rubyonrails.org/active_storage_overview.html#requirements", :cyan
   say
-  say "4. Update views/layouts/shared/metadata to use the canonical domain for your new site. You might also want to add default meta image for twitter and facebook links", :blue
+  say "4. Update views/layouts/shared/metadata to use the canonical domain for your new site. You might also want to add default meta image for twitter and facebook links", :cyan
+  say
+  say
+  say "Note: You can extend the functionality of your site with generators. For instance, you can get started with a blog very easily by running `bin/rails generator blog Article`. Check out the available generators in lib/generators", :yellow
   say
   say
   say "### Render Deployment Checklist ###", :cyan

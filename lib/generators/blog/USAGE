@@ -1,0 +1,8 @@
+Description:
+    Create a starter blog with the blog resource named however you'd like (e.g. Post or Article or BlogPost etc.). This generator will create barebones MVC with basic tailwind views, permissions, and tests. Everything you need to get a blog started with the basic features common to any blog.
+
+Example:
+    bin/rails generate blog Article
+
+    This example will create:
+        scaffold files along with tests, routes etc. for an Article model
