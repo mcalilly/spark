@@ -1,0 +1,8 @@
+Description:
+    Creates a basic Issues resource for a political campaign or non-profit.
+
+Example:
+    bin/rails generate issues
+
+    This example will create:
+        scaffold files along with tests, routes, permissions etc. for an Issue model
