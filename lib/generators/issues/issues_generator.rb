@@ -73,6 +73,12 @@ class IssuesGenerator < Rails::Generators::Base
     end
   end
 
+  def add_friendly_id
+    rails_command "generate migration AddSlugToIssues slug:uniq"
+    rails_command "generate friendly_id"
+    rails_command "db:migrate"
+  end
+
   def commit_changes
     # Commit everything to git
     unless ENV["SKIP_GIT"]

@@ -51,7 +51,7 @@ class Admin::IssuesController < ApplicationController
 
   private
     def set_issue
-      @issue = Issue.find(params[:id])
+      @issue = Issue.friendly.find(params[:id])
       authorize @issue
     end
 

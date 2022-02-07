@@ -1,7 +1,9 @@
 climate:
   title: Climate Change
+  slug: climate-change
   body: This is a huge problem that we need to address.
 
 immigration:
   title: Immigration
+  slug: immigration
   body: I believe we can protect our borders and have a immigration system that is fair, functional, and compassionate.

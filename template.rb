@@ -192,7 +192,7 @@ def copy_templates
   # Now copy any files from Spark that you removed
   copy_file ".ruby-version"
   copy_file "Procfile"
-  
+
   # copying directories will copy any files within these directories, recursively, that are different from what's already in the app you just created.
   directory "app", force: true
   directory "config", force: true
@@ -264,8 +264,8 @@ after_bundle do
   # Run tests
   rails_command "test:all"
 
-  # Optional: configure Render
-  configure_render_deployment if yes?("Do you want to deploy to Render?")
+  # Set up Render
+  configure_render_deployment
 
   # Commit everything to git
   unless ENV["SKIP_GIT"]

@@ -20,6 +20,7 @@ gem "image_processing", "~> 1.2"
 # App-specific gems
 gem "devise"
 gem "pundit"
+gem "friendly_id"
 
 # Development & Test
 group :development, :test do

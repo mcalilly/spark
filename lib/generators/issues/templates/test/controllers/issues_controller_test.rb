@@ -28,6 +28,10 @@ class IssuesControllerTest < ActionDispatch::IntegrationTest
     get issue_url(@issue)
     assert_response :success
 
+    # check friendly url
+    get issue_url(Issue.friendly.find('climate-change'))
+    assert_response :success
+
     # contributors can view
     sign_in @non_admin
     get issue_url(@issue)
