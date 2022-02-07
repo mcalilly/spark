@@ -190,8 +190,9 @@ def copy_templates
   remove_file "test/system/settings_test.rb"
 
   # Now copy any files from Spark that you removed
+  copy_file ".ruby-version"
   copy_file "Procfile"
-
+  
   # copying directories will copy any files within these directories, recursively, that are different from what's already in the app you just created.
   directory "app", force: true
   directory "config", force: true
