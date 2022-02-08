@@ -65,13 +65,13 @@ class AdminNewsClipsControllerTest < ActionDispatch::IntegrationTest
     # public cannot do this
     patch admin_news_clip_url(@news_clip), params: { news_clip: { publication: "NY Times", publication_date: 1.year.ago, headline: "A Revised Headline" } }
     assert_response :redirect
-    refute_match("A Revised Headline", @news_clip.title)
+    refute_match("A Revised Headline", @news_clip.headline)
 
     # contributors cannot do this
     sign_in @non_admin
     patch admin_news_clip_url(@news_clip), params: { news_clip: { publication: "NY Times", publication_date: 1.year.ago, headline: "A Revised Headline" } }
     assert_response :redirect
-    refute_match("A Revised Headline", @news_clip.title)
+    refute_match("A Revised Headline", @news_clip.headline)
 
     # only admins can do this
     sign_in @admin
