@@ -31,7 +31,7 @@ class AdminNewsClipsTest < ApplicationSystemTestCase
     assert_no_selector "a", text: "Delete"
     assert_no_selector "a", text: "Destroy"
 
-    visit admin_news_clip_path
+    visit admin_news_clip_path(@news_clip)
     assert_no_selector "h1", text: "News"
     assert_no_selector "a", text: "Delete"
     assert_no_selector "a", text: "Destroy"
