@@ -5,11 +5,11 @@
 
   <section class="prose">
     <ul>
-    <% @news_clips.each do |news_clip| %>
-      <li class="py-2">
-        <%= link_to "#{news_clip.headline}", admin_news_clip_path(news_clip) %>
-      </li>
-    <% end %>
+      <% @news_clips.each_with_index do |news_clip, index| %>
+        <li class="py-2 news-clip-<%= index %>">
+          <%= link_to "#{news_clip.headline}", admin_news_clip_path(news_clip) %>
+        </li>
+      <% end %>
     </ul>
   </section>
 

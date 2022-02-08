@@ -34,7 +34,7 @@ class Admin::NewsClipsController < ApplicationController
   def update
     respond_to do |format|
       if @news_clip.update(news_clip_params)
-        format.html { redirect_to admin_news_clips_url(@news_clip), notice: I18n.t("news_clips.update.success") }
+        format.html { redirect_to admin_news_clip_url(@news_clip), notice: I18n.t("news_clips.update.success") }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end

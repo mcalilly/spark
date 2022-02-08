@@ -3,6 +3,9 @@ class NewsClipsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
+    @featured_video = NewsClip.where.not(youtube_id: "").last
+    @videos = NewsClip.where.not(youtube_id: "").offset(1)
+    @articles = NewsClip.where(youtube_id: "")
   end
 
   def show

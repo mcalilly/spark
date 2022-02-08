@@ -21,8 +21,8 @@
       <% end %>
     </div>
 
-    <% if @news_clip.youtube_id %>
-      <div class="pl-8 lg:pr-24 lg:pb-8">
+    <% if @news_clip.youtube_id.present? %>
+      <div class="py-8">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @news_clip.youtube_id %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     <% end %>

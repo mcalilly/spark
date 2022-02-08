@@ -4,75 +4,56 @@
   </h1>
 </div>
 
-<p>
-  To do:
-</p>
-<ol>
-  <li>
-    default scope order by publication_date (add test for this)
-  </li>
-  <li>
-    gather latest video
-  </li>
-  <li>
-    gather videos offset by latest
-  </li>
-  <li>
-    gather non video articles
-  </li>
-</ol>
-
 <section class="block w-full pt-8 pb-8 lg:pt-16 lg:pb-28">
-  video
+  <div>
+    <p class="uppercase text-sm font-avenirBold text-primary-greenLight px-4 lg:px-0 pt-4">
+      <%= @featured_video.publication %> | <%= @featured_video.publication_date %>
+    </p>
+    <% if @featured_video.headline %>
+      <h3 class="font-arnhem text-primary-cream text-3xl lg:text-5xl pt-4 lg:pt-6 max-w-3xl px-4 lg:px-0">
+        <%= @featured_video.headline %>
+      </h3>
+    <% end %>
+  </div>
+  Featured video
+  <iframe class="w-full block md:hidden mx-auto" width="560" height="315" src="https://www.youtube.com/embed/<%= @featured_video.youtube_id %>?controls=0&modestbranding=1&rel=0&showinfo=0" frameborder="0"></iframe>
+  <iframe class="w-full hidden md:block lg:hidden mx-auto" width="854" height="480" src="https://www.youtube.com/embed/<%= @featured_video.youtube_id %>?controls=0&modestbranding=1&rel=0&showinfo=0" frameborder="0"></iframe>
+  <iframe class="w-full hidden lg:block mx-auto" width="1188" height="668" src="https://www.youtube.com/embed/<%= @featured_video.youtube_id %>?controls=0&modestbranding=1&rel=0&showinfo=0" frameborder="0"></iframe>
 </section>
 
 <section class="block w-full pt-8 pb-8 lg:pt-16 lg:pb-28">
-  non video headlines
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8">
+    <% @videos.each do |video| %>
+      <div class="border-t border-b border-primary-black">
+        <div class="grid grid grid-cols-2 lg:grid-cols-1 gap-x-8 py-8 lg:py-0">
+          <div>
+            <p class="w-full uppercase text-sm font-avenirBold text-primary-greenLight lg:px-8 lg:py-8">
+              <%= video.publication %> | <%= video.publication_date %>
+            </p>
+          </div>
+
+          <div class="pl-8 lg:pr-24 lg:pb-8">
+            <iframe class="w-full mx-auto block md:hidden" width="316" height="178" src="https://www.youtube.com/embed/<%= video.youtube_id %>?controls=0&modestbranding=1&rel=0&showinfo=0" frameborder="0"></iframe>
+            <iframe class="w-full mx-auto hidden md:block lg:hidden" width="440" height="238" src="https://www.youtube.com/embed/<%= video.youtube_id %>?controls=0&modestbranding=1&rel=0&showinfo=0" frameborder="0"></iframe>
+            <iframe class="w-full mx-auto hidden lg:block" width="450" height="253" src="https://www.youtube.com/embed/<%= video.youtube_id %>?controls=0&modestbranding=1&rel=0&showinfo=0" frameborder="0"></iframe>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </section>
 
-<div class="grid grid-cols-1 grid-rows-1 lg:grid-cols-2 lg:grid-rows-2 gap-8 text-primary-cream">
-  <%= link_to "https://www.nydailynews.com/opinion/ny-oped-dems-get-behind-bidens-bills-20210924-e7ujqjd7ofac5p73fkbvwzfluq-story.html", class: "bg-primary-black px-8 py-6 h-52 lg:h-80", target: "_blank" do %>
-    <p class="uppercase text-sm font-avenirBold text-primary-greenLight">
-      New York Daily News | Sep 24, 2021
-    </p>
-    <h3 class="font-arnhem text-primary-cream text-3xl lg:text-5xl pt-4 lg:pt-6 max-w-3xl">
-      Dems, get behind Biden’s bills
-    </h3>
-  <% end %>
-
-  <%= link_to "https://www.nytimes.com/2021/07/21/us/politics/a-covid-adviser-to-the-pentagon-max-rose-departs-and-reflects-on-his-role.html", class: "bg-primary-black px-8 py-6 h-52 lg:h-80", target: "_blank" do %>
-    <p class="uppercase text-sm font-avenirBold text-primary-greenLight">
-      New York Times | Jul 21, 2021
-    </p>
-    <h3 class="font-arnhem text-primary-cream text-3xl lg:text-5xl pt-4 lg:pt-6 max-w-3xl">
-      A Covid adviser to the Pentagon, Max Rose, departs and reflects on his role.
-    </h3>
-  <% end %>
-
-  <%= link_to "https://www.nytimes.com/2020/02/11/opinion/politics/white-supremacist-terrorism.html", class: "bg-primary-black px-8 py-6 h-52 lg:h-80", target: "_blank" do %>
-    <p class="uppercase text-sm font-avenirBold text-primary-greenLight">
-      New York Times | Feb 11, 2020
-    </p>
-    <h3 class="font-arnhem text-primary-cream text-3xl lg:text-5xl pt-4 lg:pt-6 max-w-3xl">
-      We Once Fought Jihadists. Now We Battle White Supremacists.
-    </h3>
-  <% end %>
-
-  <%= link_to "https://www.silive.com/news/2019/05/rep-max-rose-secures-support-for-911-victims-fund-guarantees-house-vote.html", class: "bg-primary-black px-8 py-6 h-52 lg:h-80", target: "_blank" do %>
-    <p class="uppercase text-sm font-avenirBold text-primary-greenLight">
-      SI Live | May 23, 2019
-    </p>
-    <h3 class="font-arnhem text-primary-cream text-3xl lg:text-5xl pt-4 lg:pt-6 max-w-3xl">
-      Rep. Max Rose secures support for 9/11 victims’ fund
-    </h3>
-  <% end %>
-
-  <%= link_to "https://www.silive.com/news/2019/05/rep-max-rose-secures-support-for-911-victims-fund-guarantees-house-vote.html", class: "bg-primary-black px-8 py-6 h-52 lg:h-80", target: "_blank" do %>
-    <p class="uppercase text-sm font-avenirBold text-primary-greenLight">
-      New York Times | Jan 3, 2019
-    </p>
-    <h3 class="font-arnhem text-primary-cream text-3xl lg:text-5xl pt-4 lg:pt-6 max-w-3xl">
-      Congressman Max Rose Deploys With National Guard for Coronavirus Relief
-    </h3>
-  <% end %>
-</div>
+<section class="block w-full pt-8 pb-8 lg:pt-16 lg:pb-28">
+  <div class="grid grid-cols-1 grid-rows-1 lg:grid-cols-2 lg:grid-rows-2 gap-8 text-primary-cream">
+    <% @articles.each do |article| %>
+      <%= link_to article.url, class: "bg-primary-black px-8 py-6 h-52 lg:h-80", target: "_blank" do %>
+        <p class="uppercase text-sm font-avenirBold text-primary-greenLight">
+          <%= article.publication %> | <%= article.publication_date %>
+        </p>
+        <h3 class="font-arnhem text-primary-cream text-3xl lg:text-5xl pt-4 lg:pt-6 max-w-3xl">
+          <%= article.headline %>
+        </h3>
+      <% end %>
+    <% end %>
+  </div>
+</section>

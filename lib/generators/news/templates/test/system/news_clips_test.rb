@@ -5,6 +5,9 @@ class NewsClipsTest < ApplicationSystemTestCase
     @news_clip = news_clips(:nytimes_article)
     @admin = users(:admin)
     @non_admin = users(:member)
+    @most_recent = news_clips(:nytimes_article)
+    @second_most_recent = news_clips(:silive_article)
+    @oldest = news_clips(:nypost_article)
   end
 
   test "visiting the index should be accessible to everyone" do
@@ -34,5 +37,4 @@ class NewsClipsTest < ApplicationSystemTestCase
     assert_current_path news_clip_path(@news_clip)
     assert_selector "h1", text: @news_clip.headline
   end
-
 end

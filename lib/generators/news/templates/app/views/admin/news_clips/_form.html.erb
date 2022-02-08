@@ -1,3 +1,7 @@
+<p>
+  Add a link to a video clip or a news article. If you leave the YouTube ID blank the clip will be displayed as an article.
+</p>
+
 <%= form_with model: [:admin, @news_clip] do |form| %>
   <% if @news_clip.errors.any? %>
     <div id="error_explanation" class="bg-red-100 px-4 py-2">
@@ -27,7 +31,7 @@
       <%= form.label :publication_date, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
       <div class="mt-1 sm:mt-0 sm:col-span-3">
         <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
-          <%= form.text_field :publication_date, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+          <%= form.date_select :publication_date, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
         </div>
       </div>
     </div>
@@ -46,10 +50,10 @@
 
   <div class="mt-6 sm:mt-5">
     <div class="sm:grid sm:grid-cols-4 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-      <%= form.label :url, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+      <%= form.label :url, "Web address", class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
       <div class="mt-1 sm:mt-0 sm:col-span-3">
         <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
-          <%= form.text_field :url, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+          <%= form.url_field :url, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
         </div>
       </div>
     </div>
@@ -57,10 +61,13 @@
 
   <div class="mt-6 sm:mt-5">
     <div class="sm:grid sm:grid-cols-4 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-      <%= form.label :youtube_id, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+      <%= form.label :youtube_id, "YouTube ID", class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
       <div class="mt-1 sm:mt-0 sm:col-span-3">
         <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
           <%= form.text_field :youtube_id, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+          <p class="mt-2 max-w-xl text-xs text-gray-500">
+            The YouTube ID is the part of a YouTube URL that comes right after "v=". So in the URL https://www.youtube.com/watch?v=liJVSwOiiwg, the ID is "liJVSwOiiwg". By only saving the YouTube ID and not the embed code, we can ensure the design works on every page. If you need more info on how to get the YouTube ID, <%= link_to "watch this video", "https://www.youtube.com/watch?v=liJVSwOiiwg", target: "_blank", class: "text-blue-600 hover:text-blue-500 transition duration-150 ease-in-out" %>.
+          </p>
         </div>
       </div>
     </div>

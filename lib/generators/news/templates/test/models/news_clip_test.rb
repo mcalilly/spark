@@ -15,4 +15,9 @@ class NewsClipTest < ActiveSupport::TestCase
     assert_not @news_clip.valid?
   end
 
+  test "headline should be present" do
+    @news_clip.headline = '   '
+    assert_not @news_clip.valid?
+  end
+
 end

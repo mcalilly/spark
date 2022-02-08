@@ -1,34 +1,52 @@
+# most recent
 nytimes_article:
   publication: New York Times
   headline: A Covid adviser to the Pentagon, Max Rose, departs and reflects on role
-  publication_date: <%= 1.month.ago %>
+  publication_date: <%= 1.day.ago %>
   url: https://www.nytimes.com/2021/07/21/us/politics/a-covid-adviser-to-the-pentagon-max-rose-departs-and-reflects-on-his-role.html
   youtube_id:
 
+# second most recent
 silive_article:
   publication: SI Live
   headline: Rep. Max Rose secures support for 9/11 victims’ fund, guarantees House vote
-  publication_date: <%= 1.year.ago %>
+  publication_date: <%= 2.days.ago %>
   url: https://www.silive.com/news/2019/05/rep-max-rose-secures-support-for-911-victims-fund-guarantees-house-vote.html
+  youtube_id:
+
+# third most recent
+nypost_article:
+  publication: NY Post
+  headline: Another example article
+  publication_date: <%= 3.days.ago %>
+  url: https://www.nypost.com/example
+  youtube_id:
+
+# another example article
+wapo_article:
+  publication: Washington Post
+  headline: And yet another example article
+  publication_date: <%= 1.year.ago %>
+  url: https://www.nypost.com/example
   youtube_id:
 
 all_in_video:
   publication: All In With Chris Hayes
   headline: '"Dear Democrats: Don’t play defense for big pharma."'
-  publication_date: <%= 2.days.ago %>
+  publication_date: <%= 1.week.ago %>
   url:
   youtube_id: wAasZVaVYUs
 
 real_time_video:
   publication: Real Time With Bill Maher
   headline: Spending at Home
-  publication_date: <%= 1.week.ago %>
+  publication_date: <%= 2.weeks.ago %>
   url:
   youtube_id: COj3qDKbjM8
 
 farewell_video:
-  publication: Rep. Rose Delivers Farewell Address to Congress
-  headline:
-  publication_date: <%= 1.month.ago %>
+  publication: NowThis
+  headline: Rep. Rose Delivers Farewell Address to Congress
+  publication_date: <%= 3.months.ago %>
   url:
   youtube_id: qBrdRnja2jw
