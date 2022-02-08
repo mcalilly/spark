@@ -1,0 +1,30 @@
+<section class="block w-full bg-white">
+  <p class="text-lg text-gray-500 lg:text-xl xl:text-2xl">
+    <%= @news_clip.publication_date %>
+  </p>
+  <h1 class="max-w-3xl text-4xl lg:text-5xl xl:text-6xl">
+    <%= @news_clip.headline %>
+  </h1>
+</section>
+
+<section class="block w-full bg-primary-white">
+  <div class="prose max-w-4xl text-xl">
+    <p>
+      Published in <%= @news_clip.publication %>
+    </p>
+
+    <% if @news_clip.url %>
+      <p>
+        URL: <%= @news_clip.url %>
+      </p>
+    <% end %>
+  </div>
+
+  <% if @news_clip.youtube_id %>
+    <div class="pl-8 lg:pr-24 lg:pb-8">
+      <iframe class="w-full mx-auto block md:hidden" width="316" height="178" src="https://www.youtube.com/embed/<%= @news_clip.youtube_id %>?controls=0&modestbranding=1&rel=0&showinfo=0" frameborder="0"></iframe>
+      <iframe class="w-full mx-auto hidden md:block lg:hidden" width="440" height="238" src="https://www.youtube.com/embed/<%= @news_clip.youtube_id %>?controls=0&modestbranding=1&rel=0&showinfo=0" frameborder="0"></iframe>
+      <iframe class="w-full mx-auto hidden lg:block" width="450" height="253" src="https://www.youtube.com/embed/<%= @news_clip.youtube_id %>?controls=0&modestbranding=1&rel=0&showinfo=0" frameborder="0"></iframe>
+    </div>
+  <% end %>
+</section>

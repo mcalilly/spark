@@ -1,0 +1,8 @@
+Description:
+    Creates a "News" resource for saving news clips and articles in a /news section on your site. Note: this is intended for news/press clips in other publications, not a blog.
+
+Example:
+    bin/rails generate news
+
+    This example will create:
+        scaffold files along with tests, routes, permissions etc. for a NewsClip model
