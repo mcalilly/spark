@@ -14,14 +14,14 @@ silive_article:
 
 all_in_video:
   publication: All In With Chris Hayes
-  headline: “Dear Democrats: Don’t play defense for big pharma.”
+  headline: '"Dear Democrats: Don’t play defense for big pharma."'
   publication_date: <%= 2.days.ago %>
   url:
   youtube_id: wAasZVaVYUs
 
 real_time_video:
   publication: Real Time With Bill Maher
-  headline: “Dear Democrats: Don’t play defense for big pharma.”
+  headline: Spending at Home
   publication_date: <%= 1.week.ago %>
   url:
   youtube_id: COj3qDKbjM8

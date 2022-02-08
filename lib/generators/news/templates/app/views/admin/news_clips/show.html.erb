@@ -1,23 +1,32 @@
 <% if current_user && current_user.admin? %>
-  <h1 class="text-2xl pb-4">
-    <%= @issue.title %>
-  </h1>
-
-  <section class="prose">
-    <%= @issue.body %>
+  <section class="block w-full bg-white">
+    <p class="text-lg text-gray-500 lg:text-xl xl:text-2xl">
+      <%= @news_clip.publication_date %>
+    </p>
+    <h1 class="max-w-3xl text-4xl lg:text-5xl xl:text-6xl">
+      <%= @news_clip.headline %>
+    </h1>
   </section>
 
-  <section class="my-2">
-    <div class="mt-8 border-t border-gray-200 pt-5">
-      <div class="flex justify-end">
-        <span class="inline-flex rounded-md shadow-sm">
-          <%= link_to "Edit", edit_admin_issue_path(@issue), class: "inline-flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out" %>
-        </span>
+  <section class="block w-full bg-primary-white">
+    <div class="prose max-w-4xl text-xl">
+      <p>
+        Published in <%= @news_clip.publication %>
+      </p>
 
-        <span class="ml-3 inline-flex rounded-md shadow-sm">
-          <%= link_to "Delete", admin_issue_path(@issue), class: "inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500", data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
-        </span>
-      </div>
+      <% if @news_clip.url %>
+        <p>
+          URL: <%= @news_clip.url %>
+        </p>
+      <% end %>
     </div>
+
+    <% if @news_clip.youtube_id %>
+      <div class="pl-8 lg:pr-24 lg:pb-8">
+        <iframe class="w-full mx-auto block md:hidden" width="316" height="178" src="https://www.youtube.com/embed/<%= @news_clip.youtube_id %>?controls=0&modestbranding=1&rel=0&showinfo=0" frameborder="0"></iframe>
+        <iframe class="w-full mx-auto hidden md:block lg:hidden" width="440" height="238" src="https://www.youtube.com/embed/<%= @news_clip.youtube_id %>?controls=0&modestbranding=1&rel=0&showinfo=0" frameborder="0"></iframe>
+        <iframe class="w-full mx-auto hidden lg:block" width="450" height="253" src="https://www.youtube.com/embed/<%= @news_clip.youtube_id %>?controls=0&modestbranding=1&rel=0&showinfo=0" frameborder="0"></iframe>
+      </div>
+    <% end %>
   </section>
 <% end %>

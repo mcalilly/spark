@@ -57,10 +57,10 @@ class NewsGenerator < Rails::Generators::Base
     end
 
     inject_into_file 'app/views/layouts/shared/admin/_sidebar_menu.html.erb', after: "  <!-- Additional menu items... -->\n" do <<-EOF
-    <%= link_to admin_issues_path, class: "group flex items-center px-2 py-2 text-sm leading-5 font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition ease-in-out duration-150" do %>
+    <%= link_to admin_news_clips_path, class: "group flex items-center px-2 py-2 text-sm leading-5 font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition ease-in-out duration-150" do %>
       <!-- Heroicon name: newspaper -->
       <svg class="mr-3 h-6 w-6
-      <% if current_page?(admin_issues_path) %>
+      <% if current_page?(admin_news_clips_path) %>
         text-gray-500
       <% else %>
         text-gray-400

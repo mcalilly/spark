@@ -1,10 +1,10 @@
-<%= form_with model: [:admin, @issue] do |form| %>
-  <% if @issue.errors.any? %>
+<%= form_with model: [:admin, @news_clip] do |form| %>
+  <% if @news_clip.errors.any? %>
     <div id="error_explanation" class="bg-red-100 px-4 py-2">
-      <h2><%= pluralize(issue.errors.count, "error") %> prohibited this issue from being saved:</h2>
+      <h2><%= pluralize(news_clip.errors.count, "error") %> prohibited this news clip from being saved:</h2>
 
       <ul class="list-disc list-inside">
-        <% @issue.errors.full_messages.each do |message| %>
+        <% @news_clip.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
@@ -13,20 +13,56 @@
 
   <div class="mt-6 sm:mt-5">
     <div class="sm:grid sm:grid-cols-4 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-      <%= form.label :title, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+      <%= form.label :publication, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
       <div class="mt-1 sm:mt-0 sm:col-span-3">
         <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
-          <%= form.text_field :title, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+          <%= form.text_field :publication, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-4 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-    <%= form.label :body, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+  <div class="mt-6 sm:mt-5">
+    <div class="sm:grid sm:grid-cols-4 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+      <%= form.label :publication_date, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+      <div class="mt-1 sm:mt-0 sm:col-span-3">
+        <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+          <%= form.text_field :publication_date, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <div class="rounded-md shadow-sm mt-1 sm:mt-0 sm:col-span-3">
-      <%= form.rich_text_area :body, spellcheck: true, class: "rich-text form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+  <div class="mt-6 sm:mt-5">
+    <div class="sm:grid sm:grid-cols-4 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+      <%= form.label :headline, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+      <div class="mt-1 sm:mt-0 sm:col-span-3">
+        <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+          <%= form.text_field :headline, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-6 sm:mt-5">
+    <div class="sm:grid sm:grid-cols-4 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+      <%= form.label :url, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+      <div class="mt-1 sm:mt-0 sm:col-span-3">
+        <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+          <%= form.text_field :url, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-6 sm:mt-5">
+    <div class="sm:grid sm:grid-cols-4 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+      <%= form.label :youtube_id, class: "block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2" %>
+      <div class="mt-1 sm:mt-0 sm:col-span-3">
+        <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+          <%= form.text_field :youtube_id, class: "form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -34,7 +70,7 @@
     <div class="mt-8 border-t border-gray-200 pt-5">
       <div class="flex justify-end">
         <span class="inline-flex rounded-md shadow-sm">
-          <%= link_to admin_issues_path, class: "py-2 px-4 border border-gray-300 rounded-md text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out" do %>
+          <%= link_to admin_news_clips_path, class: "py-2 px-4 border border-gray-300 rounded-md text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out" do %>
             Cancel
           <% end %>
         </span>
