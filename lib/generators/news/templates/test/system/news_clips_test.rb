@@ -24,15 +24,15 @@ class NewsClipsTest < ApplicationSystemTestCase
   test "viewing show page should be accessible to everyone" do
     visit news_clip_path(@news_clip)
     assert_current_path news_clip_path(@news_clip)
-    assert_selector "h1", text: @news_clip.title
+    assert_selector "h1", text: @news_clip.headline
     sign_in @non_admin
     visit news_clip_path(@news_clip)
     assert_current_path news_clip_path(@news_clip)
-    assert_selector "h1", text: @news_clip.title
+    assert_selector "h1", text: @news_clip.headline
     sign_in @admin
     visit news_clip_path(@news_clip)
     assert_current_path news_clip_path(@news_clip)
-    assert_selector "h1", text: @news_clip.title
+    assert_selector "h1", text: @news_clip.headline
   end
 
 end
