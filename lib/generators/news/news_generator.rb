@@ -23,7 +23,7 @@ class NewsGenerator < Rails::Generators::Base
     gsub_file "config/routes.rb", 'resources :news_clips', ''.squish
 
     inject_into_file "config/routes.rb", after: "  # Additional resources...\n" do <<-EOF
-  # Issues
+  # News
   resources :news_clips, only: [:index, :show]
   namespace :admin do
     resources :news_clips
