@@ -38,6 +38,7 @@ def add_gems
   # remove sqlite
   gsub_file "Gemfile", /^gem\s+["']sqlite3["'].*$/,'gem "pg"'
 
+  gem "aws-sdk-s3", require: false
   gem "devise"
   gem "pundit"
 
