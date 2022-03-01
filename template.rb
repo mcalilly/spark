@@ -27,11 +27,11 @@ def rails_version
 end
 
 def rails_7_or_newer?
-  Gem::Requirement.new(">= 7.0.1").satisfied_by? rails_version
+  Gem::Requirement.new(">= 7.0.2").satisfied_by? rails_version
 end
 
 unless rails_7_or_newer?
-  puts "Please use Rails 7.0.1 or newer to create a Spark application"
+  puts "Please use Rails 7.0.2 or newer to create a Spark application"
 end
 
 def add_gems
