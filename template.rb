@@ -291,6 +291,9 @@ after_bundle do
   say "3. Make sure you have libvips (brew install vips) or any of the other depedencies required for Active Storage that Rails does not install for you. More on that at https://edgeguides.rubyonrails.org/active_storage_overview.html#requirements", :cyan
   say
   say "4. Update views/layouts/shared/metadata to use the canonical domain for your new site. You might also want to add default meta image for twitter and facebook links", :cyan
+  say "5. Update your .gitignore using the example-gitignore file you'll find in the root of this directory. We don't assume anything about your local environment but you'll probably want to make sure you're ignoring things like .DS_STORE files, etc.", :cyan
+  say
+  say
   say
   say
   say "Note: You can extend the functionality of your site with generators. For instance, you can get started with a blog very easily by running `bin/rails generator blog Article`. Check out the available generators in lib/generators", :yellow
