@@ -2,10 +2,12 @@ databases:
   - name: mysite
     databaseName: mysite
     user: mysite
+    region: ohio
 
 services:
   - type: web
     name: mysite
+    region: ohio
     env: ruby
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
